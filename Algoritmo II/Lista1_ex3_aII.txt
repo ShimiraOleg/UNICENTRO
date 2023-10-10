@@ -1,0 +1,19 @@
+Lista 1
+Exercicio III
+
+1 - Funções são sessões independentes de código que resolvem problemas específicos, 
+podendo receber parâmetros e retornar um valor.
+
+2 - Argumentos/parâmetros são variaveis que as funções podem receber para realizar instruções.
+Eles são inicializados quando uma função é chamada e deixam de existir quando a função se encerra.
+
+3 - O tipo de uma função é definido pela variavel que ela recebe (int, float, bool, string, char) ou 
+é void caso ela não receba variaveis.
+
+4 - Void determina que a função não recebe parâmetros e não há valor de retorno.
+
+5 - Os tipos são: por valor (a função recebe uma cópia do valor, não alterando a variavel de origem do valor) 
+e por referência (a função recebe o endereço da variável e altera o seu conteúdo).
+
+6 - A instrução return termina a execução da função, retorna para o código um valor de uma variavel, e volta
+para o main no ponto onde a função foi chamada.
