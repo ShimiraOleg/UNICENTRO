@@ -17,32 +17,20 @@ int main()
 
 int transformarBinario(int num)
 {
-    int numBinario[10];
+    int numBinario[32];
+    int i = 0;
 
-    while(num != 1)
+    while(num > 0)
     {
-        int i = 0;
-        if(num % 2 == 0)
-        {
-            num /= 2;
-            cout << num << endl;
-            numBinario[i] = 0;
-            i++;
-        }
-
-        else if(num % 2 == 1)
-        {
-            num /= 2;
-            cout << num << endl;
-            numBinario[i] = 1;
-            i++;
-        }
+        numBinario[i] = num % 2;
+        num /= 2;
+        i++;
     }
-    for (int i = 10; i >= 0; i--)
+    for (int j = i - 1; j >= 0; j--)
     {
-        cout << numBinario[i] << endl;
+        cout << numBinario[j];
     }
+    cout << endl;
     
     return 0;
 }
-
