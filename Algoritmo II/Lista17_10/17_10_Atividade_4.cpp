@@ -11,7 +11,7 @@ int main()
     string s;
     bool hasOito, hasMaiuscula = false, hasMinuscula = false, hasNumero = false;
 
-    cout << "Insira uma senha (min 8 char, incluindos letras maiusculas, minusculas e numeros): ";
+    cout << "Insira uma senha (min 8 char, incluindo letras maiusculas, minusculas e numeros): ";
     cin >> s;
 
     hasOito = (verificarTamanho(s)) ? true : false;
