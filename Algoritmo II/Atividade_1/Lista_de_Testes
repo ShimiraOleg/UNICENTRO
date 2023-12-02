@@ -2,14 +2,14 @@ Lista de Testes
 
 Ex 1 - Multiplicação
 Input:
-2
-3
+Insira o numero de linhas de m1: 2
+Insira o numero de colunas de m1: 3
 
 2 2 2
 2 2 2
 
-3
-2
+Insira o numero de linhas de m2: 3
+Insira o numero de colunas de m2: 2
 
 2 2
 2 2
@@ -23,8 +23,8 @@ Output:
 Ex 2 - Soma
 
 Input:
-3
-3
+Insira o numero de colunas das matrizes: 3
+Insira o numero de linhas das matrizes: 3
 
 1 1 1
 1 1 1
@@ -35,9 +35,9 @@ Input:
 1 1 1
 
 Output:
-2 2 2
-2 2 2
-2 2 2
+2  2  2
+2  2  2
+2  2  2
 
 
 Ex 3 - Gauss Jordan
