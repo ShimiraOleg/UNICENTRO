@@ -1,0 +1,393 @@
+Selection Sort
+
+I) v1 = {7,2,5,4,9}
+	v = {7,2,5,4,9}, n = 5;
+	i = 0; is(i < n-1) (0 < 4) (true)
+		menor = 0;
+		j = 1; is(j < n) (1 < 5) (true)
+			is(v[1] < v[0]) (2 < 7) (true)
+				menor = 1;
+			j = 2;
+		is(j < n) (2 < 5) (true)
+			is(v[2] < v[1]) (5 < 2) (false)
+			j = 3;
+		is(j < n) (3 < 5) (true)
+			is(v[3] < v[1]) (4 < 2) (false)
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[1]) (9 < 2) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[1] != v[0]) (2 != 7) (true)
+			troca(&v[1], &v[0]) (v = {2,7,5,4,9});
+		i = 1;
+	is(i < n-1) (1 < 4) (true)
+		menor = 1;
+		j = 2; is(j < n) (2 < 5) (true)
+			is(v[2] < v[1]) (5 < 7) (true)
+				menor = 2;
+			j = 3;
+		is(j < n) (3 < 5) (true)
+			is(v[3] < v[2]) (5 < 4) (true)
+				menor = 3;
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[3]) (9 < 4) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[3] != v[1]) (5 != 7) (true)
+			troca(&v[3], &v[1]) (v = {2,4,5,7,9});
+		i = 2;
+	is(i < n-1) (2 < 4) (true)
+		menor = 2;
+		j = 3; is(j < n) (3 < 5) (true)
+			is(v[3] < v[2]) (7 < 5) (false)
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[2]) (9 < 5) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[2] != v[2]) (5 != 5) (false)
+		i = 3;
+	is(i < n-1) (3 < 4) (true)
+		menor = 3;
+		j = 4; is(j < n) (4 < 5) (true)
+			is(v[4] < v[3]) (9 < 7) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[3] != v[3]) (7 != 7) (false)
+		i = 4;
+	is(i < n-1) (4 < 4) (false)
+	Código termina com o v1 = {2,4,5,7,9}
+   
+   v2 = {7,5,5,3,9}
+	v = {7,5,5,3,9}, n = 5;
+	i = 0; is(i < n-1) (0 < 4) (true)
+		menor = 0;
+		j = 1; is(j < n) (1 < 5) (true)
+			is(v[1] < v[0]) (5 < 7) (true)
+				menor = 1;
+			j = 2;
+		is(j < n) (2 < 5) (true)
+			is(v[2] < v[1]) (5 < 5) (false)
+			j = 3;
+		is(j < n) (3 < 5) (true)
+			is(v[3] < v[1]) (3 < 5) (true)
+				menor = 3;
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[3]) (9 < 3) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[3] != v[0]) (3 != 7) (true)
+			troca(&v[3], &v[0]) (v = {3,5,5,7,9});
+		i = 1;
+	is(i < n-1) (1 < 4) (true)
+		menor = 1;
+		j = 2; is(j < n) (2 < 5) (true)
+			is(v[2] < v[1]) (5 < 5) (false)
+			j = 3;
+		is(j < n) (3 < 5) (true)
+			is(v[3] < v[1]) (7 < 5) (false)
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[1]) (9 < 5) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[1] != v[1]) (5 != 5) (false)
+		i = 2;
+	is(i < n-1) (2 < 4) (true)
+		menor = 2;
+		j = 3; is(j < n) (3 < 5) (true)
+			is(v[3] < v[2]) (7 < 5) (false)
+			j = 4;
+		is(j < n) (4 < 5) (true)
+			is(v[4] < v[2]) (9 < 5) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[2] != v[2]) (5 != 5) (false)
+		i = 3;
+	is(i < n-1) (3 < 4) (true)
+		menor = 3;
+		j = 4; is(j < n) (4 < 5) (true)
+			is(v[4] < v[3]) (9 < 7) (false)
+			j = 5;
+		is(j < n) (5 < 5) (false)
+		is(v[3] != v[3]) (7 != 7) (false)
+		i = 4;
+	is(i < n-1) (4 < 4) (false)
+	Código termina com o v2 = {3,5,5,7,9}
+
+   v3 = {1,2,3,4}
+	v = {1,2,3,4}, n = 4;
+	i = 0; is(i < n-1) (0 < 3) (true)
+		menor = 0;
+		j = 1; is(j < n) (1 < 5) (true)
+			is(v[1] < v[0]) (2 < 1) (false)
+			j = 2;
+		is(j < n) (2 < 4) (true)
+			is(v[2] < v[0]) (3 < 1) (false)
+			j = 3;
+		is(j < n) (3 < 4) (true)
+			is(v[3] < v[0]) (4 < 1) (false)
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[0] != v[0]) (1 != 1) (false)
+		i = 1;
+	is(i < n-1) (1 < 3) (true)
+		menor = 1;
+		j = 2; is(j < n) (2 < 4) (true)
+			is(v[2] < v[1]) (3 < 2) (false)
+			j = 3;
+		is(j < n) (3 < 4) (true)
+			is(v[3] < v[1]) (4 < 2) (false)
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[1] != v[1]) (2 != 2) (false)
+		i = 2;
+	is(i < n-1) (2 < 3) (true)
+		menor = 2;
+		j = 3; is(j < n) (3 < 4) (true)
+			is(v[3] < v[2]) (4 < 3) (false)
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[2] != v[2]) (3 != 3) (false)
+		i = 3;
+	is(i < n-1) (3 < 3) (false)
+	Código termina com o v3 = {1,2,3,4}
+
+   v4 = {4,3,2,1}
+ 	v = {4,3,2,1}, n = 4;
+	i = 0; is(i < n-1) (0 < 3) (true)
+		menor = 0;
+		j = 1; is(j < n) (1 < 5) (true)
+			is(v[1] < v[0]) (3 < 4) (true)
+				menor = 1;
+			j = 2;
+		is(j < n) (2 < 4) (true)
+			is(v[2] < v[1]) (2 < 3) (true)
+				menor = 2;
+			j = 3;
+		is(j < n) (3 < 4) (true)
+			is(v[3] < v[2]) (1 < 2) (true)
+				menor = 3;
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[3] != v[0]) (1 != 4) (true)
+			troca(&v[3], &v[0]) (v = {1,3,2,4});
+		i = 1;
+	is(i < n-1) (1 < 3) (true)
+		menor = 1;
+		j = 2; is(j < n) (2 < 4) (true)
+			is(v[2] < v[1]) (2 < 3) (true)
+				menor = 2;
+			j = 3;
+		is(j < n) (3 < 4) (true)
+			is(v[3] < v[2]) (4 < 2) (false)
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[2] != v[1]) (2 != 3) (true)
+			troca(&v[2], &v[1]) (v = {1,2,3,4});
+		i = 2;
+	is(i < n-1) (2 < 3) (true)
+		menor = 2;
+		j = 3; is(j < n) (3 < 4) (true)
+			is(v[3] < v[2]) (4 < 3) (false)
+			j = 4;
+		is(j < n) (4 < 4) (false)
+		is(v[2] != v[2]) (3 != 3) (false)
+		i = 3;
+	is(i < n-1) (3 < 3) (false)
+	Código termina com o v4 = {1,2,3,4}
+
+II) Como nos vetores a contagem de elementos começa em zero, o código é realizado ignorando o primeiro elemento (v[0]) do vetor e usando o elemento v[n], que não é declarado.
+
+III) Como a verificação na linha 7 é se v[j] é menor (<) que o v[menor] e não menor igual (<=), no caso de elementos iguais o código de troca não é realizado. Assim, os elementos iguais
+mantém a mesmo posição.
+
+IV) para v3 nenhuma troca é realizada, enquanto em v4 são realizadas duas trocas.
+
+V) Para que a ordenação seja decrescente, basta trocar o sinal de "<" da linha 7 pelo sinal de ">".
+
+
+Bubble Sort
+
+I) v1 = {7,2,5,4,9}
+	v = {7,2,5,4,9}, n = 5;
+	i = 4; is(4 > 0) (true)
+		j = 0; is(0 < 4) (true)
+			is(v[0] > v[1]) (7 > 2) (true)
+				troca(&v[0], &v[1]) (v = {2,7,5,4,9})
+			j = 1;
+		is(1 < 4) (true)
+			is(v[1] > v[2]) (7 > 5) (true)
+				troca(&v[1], &v[2]) (v = {2,5,7,4,9})
+			j = 2;
+		is(2 < 4) (true)
+			is(v[2] > v[3]) (7 > 4) (true)
+				troca(&v[2], &v[3]) (v = {2,5,4,7,9})
+			j = 3;
+		is(3 < 4) (true)
+			is(v[3] > v[4]) (7 > 9) (false)
+			j = 4;
+		is(4 < 4) (false);
+		i = 3;
+	is(3 > 0) (true)
+		j = 0; is(0 < 3) (true)
+			is(v[0] > v[1]) (2 > 5) (false)
+			j = 1;
+		is(1 < 3) (true)
+			is(v[1] > v[2]) (5 > 4) (true)
+				troca(&v[1], &v[2]) (v = {2,4,5,7,9})
+			j = 2;
+		is(2 < 3) (true)
+			is(v[2] > v[3]) (5 > 7) (false)
+			j = 3;
+		is(3 < 3) (false)
+		i = 2;
+	is(2 > 0) (true)
+		j = 0; is(0 < 2) (true)
+			is(v[0] > v[1]) (2 > 4) (false)
+			j = 1;
+		is(1 < 2) (true)
+			is(v[1] > v[2]) (4 > 5) (false)
+			j = 2;
+		is(2 < 2) (false)
+		i = 1;
+	is(1 > 0) (true)
+		j = 0; is(0 < 1) (true)
+			is(v[0] > v[1]) (2 > 4) (false)
+			j = 1;
+		is(1 < 1) (false)
+		i = 0;
+	is(0 > 0) (false)
+	Código termina com v1 = {2,4,5,7,9}
+
+   v2 = {7,5,5,3,9}
+	v = {7,5,5,3,9}, n = 5;
+	i = 4; is(4 > 0) (true)
+		j = 0; is(0 < 4) (true)
+			is(v[0] > v[1]) (7 > 5) (true)
+				troca(&v[0], &v[1]) (v = {5,7,5,3,9})
+			j = 1;
+		is(1 < 4) (true)
+			is(v[1] > v[2]) (7 > 5) (true)
+				troca(&v[1], &v[2]) (v = {5,5,7,3,9})
+			j = 2;
+		is(2 < 4) (true)
+			is(v[2] > v[3]) (7 > 3) (true)
+				troca(&v[2], &v[3]) (v = {5,5,3,7,9})
+			j = 3;
+		is(3 < 4) (true)
+			is(v[3] > v[4]) (7 > 9) (false)
+			j = 4;
+		is(4 < 4) (false);
+		i = 3;
+	is(3 > 0) (true)
+		j = 0; is(0 < 3) (true)
+			is(v[0] > v[1]) (5 > 5) (false)
+			j = 1;
+		is(1 < 3) (true)
+			is(v[1] > v[2]) (5 > 3) (true)
+				troca(&v[1], &v[2]) (v = {5,3,5,7,9})
+			j = 2;
+		is(2 < 3) (true)
+			is(v[2] > v[3]) (5 > 7) (false)
+			j = 3;
+		is(3 < 3) (false)
+		i = 2;
+	is(2 > 0) (true)
+		j = 0; is(0 < 2) (true)
+			is(v[0] > v[1]) (5 > 3) (true)
+				troca(&v[0], &v[1]) (v = {3,5,5,7,9})
+			j = 1;
+		is(1 < 2) (true)
+			is(v[1] > v[2]) (4 > 5) (false)
+			j = 2;
+		is(2 < 2) (false)
+		i = 1;
+	is(1 > 0) (true)
+		j = 0; is(0 < 1) (true)
+			is(v[0] > v[1]) (2 > 4) (false)
+			j = 1;
+		is(1 < 1) (false)
+		i = 0;
+	is(0 > 0) (false)
+	Código termina com v2 = {3,5,5,7,9}
+
+   v3 = {1,2,3,4}
+	v = {1,2,3,4}, n = 4;
+	i = 3; is(3 > 0) (true)
+		j = 0; is(0 < 3) (true)
+			is(v[0] > v[1]) (1 > 2) (false)
+			j = 1;
+		is(1 < 3) (true)
+			is(v[1] > v[2]) (2 > 3) (false)
+			j = 2;
+		is(2 < 3) (true)
+			is(v[2] > v[3]) (3 > 4) (false)
+			j = 3;
+		is(3 < 3) (false)
+		i = 2;
+	is(2 > 0) (true)
+		j = 0; is(0 < 2) (true)
+			is(v[0] > v[1]) (1 > 2) (false)
+			j = 1;
+		is(1 < 2) (true)
+			is(v[1] > v[2]) (2 > 3) (false)
+			j = 2;
+		is(2 < 2) (false)
+		i = 1;
+	is(1 > 0) (true)
+		j = 0; is(0 < 1) (true)
+			is(v[0] > v[1]) (1 > 2) (false)
+			j = 1;
+		is(1 < 1) (false)
+		i = 0;
+	is(0 > 0) (false)
+	Código termina com v3 = {1,2,3,4}
+
+
+   v4 = {4,3,2,1}
+	v = {4,3,2,1}, n = 4;
+	i = 3; is(3 > 0) (true)
+		j = 0; is(0 < 3) (true)
+			is(v[0] > v[1]) (4 > 3) (true)
+				troca(&v[0], &v[1]) (v = {3,4,2,1});
+			j = 1;
+		is(1 < 3) (true)
+			is(v[1] > v[2]) (4 > 2) (true)
+				troca(&v[1], &v[2]) (v = {3,2,4,1})
+			j = 2;
+		is(2 < 3) (true)
+			is(v[2] > v[3]) (4 > 1) (true)
+				troca(&v[2], &v[3]) (v = {3,2,1,4})
+			j = 3;
+		is(3 < 3) (false)
+		i = 2;
+	is(2 > 0) (true)
+		j = 0; is(0 < 2) (true)
+			is(v[0] > v[1]) (3 > 2) (true)
+				troca(&v[0], &v[1]) (v = {2,3,1,4})
+			j = 1;
+		is(1 < 2) (true)
+			is(v[1] > v[2]) (2 > 1) (true)
+				troca(&v[1], &v[2]) (v = {2,1,3,4})
+			j = 2;
+		is(2 < 2) (false)
+		i = 1;
+	is(1 > 0) (true)
+		j = 0; is(0 < 1) (true)
+			is(v[0] > v[1]) (1 > 2) (true)
+				troca(&v[0], &v[1]) (v = {1,2,3,4})
+			j = 1;
+		is(1 < 1) (false)
+		i = 0;
+	is(0 > 0) (false)
+	Código termina com v4 = {1,2,3,4}
+
+II) Em v2 são realizadas 10 comparações e 5 trocas
+
+III) Quando comparado com o método de ordenação por seleção, o por flutuação realiza menos comparações mas realiza mais trocas.
+
+IV)  Link no Github: 
