@@ -33,7 +33,7 @@ int main()
     criarRAM(memoriaRAM,tamanhoMemoriaRAM,&RAMUsada);
     criarDisco(memoriaDisco,tamanhoMemoriaDisco,&discoUsado);
 
-    cout << "Iniciando testes de busca de endereco virtual: \n" << endl;
+    cout << "Iniciando testes de busca de memoria virtual: \n" << endl;
     
     endereco = 42;
     resultadoBusca = buscarMV(endereco,pagina,memoriaRAM,memoriaDisco,tamanhoMemoriaRAM,&paginaUsada,&RAMUsada,&discoUsado);
