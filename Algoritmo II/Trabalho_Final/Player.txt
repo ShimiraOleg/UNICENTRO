@@ -1,0 +1,8 @@
+Inteligencia: 23
+Agilidade: 18
+Forca: 26
+HP: 692
+Mana: 351
+Armadura: 3
+Resistencia Magica: 27
+Gold: 500

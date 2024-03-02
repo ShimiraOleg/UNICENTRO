@@ -1,0 +1,47 @@
+0
+Nome: Balsamo de Cura
+Descricao: Um remedio magico que pode rapidamente curar ate a mais profunda ferida.
+Preco: 110
+Tag: 0
+Quantidade: 1
+isConsumivel: 1
+isUsavel: 0
+
+1
+Nome: Tango
+Descricao: Alimente-se para sobreviver no campo de batalha.
+Preco: 90
+Tag: 1
+Quantidade: 3
+isConsumivel: 1
+isUsavel: 0
+
+2
+Nome: Pocao de Clareza
+Descricao: Agua limpa que aprimora a habilidade de meditar.
+Preco: 50
+Tag: 2
+Quantidade: 1
+isConsumivel: 1
+isUsavel: 0
+
+3
+Nome: Coroa
+Preco: 450
+Tag: 3
+Quantidade: 1
+Inteligencia: 4
+Agilidade: 4
+Forca: 4
+isConsumivel: 0
+isUsavel: 0
+
+4
+Nome: Manto
+Descricao: Um manto feito de um material mágico que funciona dissipando qualquer mágica usada nele.
+Preco: 550
+Tag: 4
+Quantidade: 1
+ResistenciaMagica: 15
+isConsumivel: 0
+isUsavel: 0
