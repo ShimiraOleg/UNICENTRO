@@ -43,15 +43,16 @@ struct jogador
 };
 
 void criarItensNaLoja(loja*, int, string);
+void atribuirAtributos(jogador*, string);
 void menu(loja*, loja*, loja*, jogador*, int, int, int*);
 void verInventarioJogador(jogador*);
-void atribuirAtributos(jogador*, string);
 void verStatsPlayer(jogador);
 void ganharGold(jogador*);
 void comprarNaLoja(loja, jogador*, int);
 void organizarItens(loja*, loja*, int, int);
 void ordenar(loja*, int, int);
 void adcionarAtributos(jogador*, itens);
+void removerAtributos(jogador*, itens);
 void printItem(itens);
 void testeBuscaItemPorTagBase(loja);
 int buscarItemPorTag(itens[], int, int);
@@ -67,12 +68,13 @@ int main()
 
     string nomeArq1 = "LojaBase.txt", nomeArq2 = "LojaSecreta.txt", nomeArq3 = "Player.txt";
 
-    int totalItensBase = 6, totalItensSecretos = 1, totalItensAtual = 0; 
+    int totalItensBase = 7, totalItensSecretos = 4, totalItensAtual = 0; 
     
     criarItensNaLoja(&lojaBase,totalItensBase,nomeArq1);
     criarItensNaLoja(&lojaSecreta,totalItensSecretos,nomeArq2);
     atribuirAtributos(&player, nomeArq3);
     testeBuscaItemPorTagBase(lojaBase);
+    cout << "Teste inicial funciona!\n" << endl;
     
     lojaAtual = lojaBase;
 
@@ -205,9 +207,17 @@ void menu(loja *atual, loja *base, loja *secreta, jogador *player, int totalBase
         switch (botao) {
         case '1':
             system("cls");  
-            isMenu = false;
-            isComprando = true;
             *atual = escolherLoja(*base, *secreta, totalBase, totalSecreto, totalAtual);
+            if(atual->itensLoja[0].nome.empty())
+            {
+                system("cls");
+                cout << "O valor inserido para a loja eh invalido\n" << endl;
+            }
+            else
+            {
+                isMenu = false;
+                isComprando = true;
+            }
             break;
         case '2':
             system("cls");  
@@ -270,10 +280,14 @@ void verInventarioJogador(jogador *player)
             item = buscarItemPorTag(player->inventario, item, 5);
             if(item == -1)
             {
+                system("cls");
                 cout << "Opcao invalida!" << endl;
             }
             else
+            {
+                system("cls");
                 printItem(player->inventario[item]);
+            }
             break;
         case '2':
             cout << "\nEscolha um dos itens acima pela tag (numero entre parentesis)" << endl;
@@ -281,10 +295,15 @@ void verInventarioJogador(jogador *player)
             item = buscarItemPorTag(player->inventario, item, 5);
             if(item == -1)
             {
+                system("cls");
                 cout << "Opcao invalida!" << endl;
             }
             else
+            {
+                system("cls");
+                removerAtributos(player, player->inventario[item]);
                 player->inventario[item] = player->inventario[6];
+            }
             break;
         case '0':
             system("cls");  
@@ -377,17 +396,17 @@ loja escolherLoja(loja base, loja secreta, int totalBase, int totalSecreto, int 
     cout << "2 - Loja Secreta" << endl;
     if(_kbhit)
     {
-        char botao = _getch();
+        int botao = _getch();
         switch (botao)
         {
-        case '1':
+        case 49:
             system("cls");
             *lojaPtr = base;
             *totalAtual = totalBase;
             return *lojaPtr;
             delete lojaPtr;
             break;
-        case '2':
+        case 50:
             system("cls");
             *lojaPtr = secreta;
             *totalAtual = totalSecreto;
@@ -534,6 +553,17 @@ void adcionarAtributos(jogador *player, itens valor)
     player->atributosAtuais.mana += valor.atributosItens.mana;
     player->atributosAtuais.armadura += valor.atributosItens.armadura;
     player->atributosAtuais.resistenciaMagica += valor.atributosItens.resistenciaMagica;
+}
+
+void removerAtributos(jogador *player, itens valor)
+{
+    player->atributosAtuais.agilidade -= valor.atributosItens.agilidade;
+    player->atributosAtuais.inteligencia -= valor.atributosItens.inteligencia;
+    player->atributosAtuais.forca -= valor.atributosItens.forca;
+    player->atributosAtuais.hp -= valor.atributosItens.hp;
+    player->atributosAtuais.mana -= valor.atributosItens.mana;
+    player->atributosAtuais.armadura -= valor.atributosItens.armadura;
+    player->atributosAtuais.resistenciaMagica -= valor.atributosItens.resistenciaMagica;
 }
 
 void printItem(itens item)

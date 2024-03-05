@@ -33,9 +33,19 @@ Tag: 4
 ResistenciaMagica: 15
 
 5
-Nome: Terror de Pudge
-Descricao: medo.
-Preco: 5
+Nome: Lanca do Furacao
+Preco: 4450
 Tag: 5
-ResistenciaMagica: 80
-HP: 1500
+Inteligencia: 15
+Agilidade: 20
+Forca: 15
+HP: 200
+
+6
+Nome: Coracao do Tarrasque
+Descricao: O coracao preservado de um monstro extinto, ele aumenta a fortitude do portador.
+Preco: 5200
+Tag: 6
+Forca: 40
+HP: 500
+
