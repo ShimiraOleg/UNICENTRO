@@ -4,5 +4,5 @@ Forca: 26
 HP: 692
 Mana: 351
 Armadura: 3
-Resistencia Magica: 27
+ResistenciaMagica: 27
 Gold: 500
