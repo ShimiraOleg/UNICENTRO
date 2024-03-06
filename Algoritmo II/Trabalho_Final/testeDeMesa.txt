@@ -1,0 +1,48 @@
+ID - "TF_GANHAR_GOLD_001".
+Título - Verificar a funcionalidade da função "ganharGold".
+Objetivo - Assegurar que a função atribui os valores corretos a variavel de gold do player.
+Pré-Condições - O usuário deve acessar essa função pela tela de inicio do código e inserir um input para definir qual valor de gold ele quer receber.
+
+ETAPAS DE TESTE:
+	- Acesse a função "ganharGold" pelo .exe.
+	- Apertar a tecla "4" para escolher a opção "4 - Rampage (adciona 10000 de gold)".
+
+DADOS DO TESTE:
+	- char botao = 4;
+	- jogador player.gold = 500;
+
+RESULTADOS ESPERADOS:
+	- O sistema adciona 10000 ao valor de player.gold.
+	- RESULTADOS REAIS: O sistema adciona 10000 ao valor de player.gold.
+
+ID - "TF_GANHAR_GOLD_002".
+Título - Verificar a funcionalidade da função "ganharGold".
+Objetivo - Assegurar que a função atribui os valores corretos a variavel de gold do player.
+Pré-Condições - O usuário deve acessar essa função pela tela de inicio do código e inserir um input para definir qual valor de gold ele quer receber.
+
+ETAPAS DE TESTE:
+	- Acesse a função "ganharGold" pelo .exe.
+	- Apertar a tecla "3" para escolher a opção "3 - megakill (adciona 1000 de gold)".
+
+DADOS DO TESTE:
+	- char botao = 3;
+	- jogador player.gold = 500;
+
+RESULTADOS ESPERADOS:
+	- O sistema adciona 1000 ao valor de player.gold.
+	- RESULTADOS REAIS: O sistema adciona 1000 ao valor de player.gold.
+
+ID - "TF_VER_STATS_PLAYER_001"
+Título - Verificar a funcionalidade da função "verStatsPlayer".
+Objetivo - Assegurar que a função mostra corretamento os atributos de player.
+Pré-Condições - O usuário deve acessar essa função pela tela de inicio do código.
+
+ETAPAS DE TESTE:
+	- Acesse a função "verStatsPlayer" pelo .exe.
+
+DADOS DO TESTE:
+	- jogador player;
+
+RESULTADOS ESPERADOS:
+	- O sistema mostra todos os valores do Struct de jogador enviado fora o inventário.
+	- RESULTADOS REAIS: O sistema mostra todos os valores do Struct de jogador enviado fora o inventário.

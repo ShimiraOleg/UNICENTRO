@@ -293,7 +293,7 @@ void verInventarioJogador(jogador *player)
             cout << "\nEscolha um dos itens acima pela tag (numero entre parentesis)" << endl;
             cin >> item;
             item = buscarItemPorTag(player->inventario, item, 5);
-            if(item == -1)
+            if(item == -1 || cin.fail())
             {
                 system("cls");
                 cout << "Opcao invalida!" << endl;
@@ -396,17 +396,17 @@ loja escolherLoja(loja base, loja secreta, int totalBase, int totalSecreto, int 
     cout << "2 - Loja Secreta" << endl;
     if(_kbhit)
     {
-        int botao = _getch();
+        char botao = _getch();
         switch (botao)
         {
-        case 49:
+        case '1':
             system("cls");
             *lojaPtr = base;
             *totalAtual = totalBase;
             return *lojaPtr;
             delete lojaPtr;
             break;
-        case 50:
+        case '2':
             system("cls");
             *lojaPtr = secreta;
             *totalAtual = totalSecreto;
@@ -430,6 +430,7 @@ void comprarNaLoja(loja atual, jogador *player, int totalAtual)
     cout << "Voce tem: " << player->gold << " de gold" << endl;
     cout << "\nEscolha qual dos itens voce vai comprar (Digite '0' para comprar nenhum)" << endl;
     cin >> compra;
+
     if(compra == 0)
     {
         system("cls");  
@@ -598,5 +599,5 @@ void testeBuscaItemPorTagBase(loja base)
 {
     assert(buscarItemPorTag(base.itensLoja, 5, 6) == 5);
     assert(buscarItemPorTag(base.itensLoja, 4, 6) == 4);
-    assert(buscarItemPorTag(base.itensLoja, 3, 6) == 3);
+    assert(buscarItemPorTag(base.itensLoja, 100, 6) == -1);
 }
