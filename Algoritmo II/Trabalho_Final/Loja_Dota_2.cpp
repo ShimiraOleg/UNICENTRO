@@ -351,7 +351,7 @@ void ganharGold(jogador *player)
     cout << "1 - farm (adciona 10 de gold)" << endl;
     cout << "2 - kill (adciona 100 de gold)" << endl;
     cout << "3 - megakill (adciona 1000 de gold)" << endl;
-    cout << "4 - ultrakill (adciona 10000 de gold)" << endl;
+    cout << "4 - Rampage (adciona 10000 de gold)" << endl;
     cout << "0 - voltar ao menu" << endl;
     if(_kbhit)
     {
