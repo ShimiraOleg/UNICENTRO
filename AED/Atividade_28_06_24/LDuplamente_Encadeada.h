@@ -62,12 +62,26 @@ no *inicializa_Fila(no *L) {
 	return L;
 }
 
-/*
-// a ser desenvolvido 
 no *insere_Final_Fila(no *L, int x) {
+	no *AUX, *ANT;
+	AUX = new no;
+	if(L == NULL)
+	{
+		AUX->prev = NULL;
+		AUX->prox = L;
+	}
+	else
+	{
+		AUX = L;
+		while(AUX->prox != NULL)
+		{
+			ANT->prox = AUX;
+			AUX = AUX->prox;
 
-} 
-*/
+		}
+	}
+	return L;
+}
 
 no *remove_Inicio_Fila(no *L, int *n) {
 	no *AUX;
