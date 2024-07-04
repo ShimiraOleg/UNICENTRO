@@ -6,9 +6,6 @@ public class Main {
         tab.setTabuleiro("X", 0);
         tab.setTabuleiro("X", 1);
         tab.setTabuleiro("X", 2);
-        tab.setTabuleiro("O", 3);
-        tab.setTabuleiro("O", 4);
-        tab.setTabuleiro("O", 5);
         tab.verificarVencedor(tab.getTabuleiro());
     }
 }
