@@ -1,7 +1,9 @@
 package jogoDaVelha;
 
 public class Jogo{
-    public void verificarVencedor(String[] tab)
+    private char vencedor;
+
+    public char verificarVencedor(String[] tab)
     {
         for(int i = 0; i < 8; i++)
         {
@@ -32,13 +34,22 @@ public class Jogo{
                     v = tab[6] + tab[4] + tab[2];
                     break;
             }
-            System.out.println("Linha " +i+ " = " + v);
             if(v.equals("XXX"))
-                System.out.println("X ganhou");
+            {
+                vencedor = 'X';
+                break;
+            }
             else if(v.equals("OOO"))
-                System.out.println("O ganhou");
+            {
+                vencedor = 'O';
+                break;
+            }
             else
-                System.out.println("Empatou");
+            {
+                vencedor = '1';
+            }
+
         }
+        return vencedor;
     }
 }
