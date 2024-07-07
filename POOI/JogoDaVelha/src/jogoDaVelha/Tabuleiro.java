@@ -4,6 +4,15 @@ public class Tabuleiro extends Jogo{
     private String[] tabuleiro = new String[9];
     private int rodadas = 0;
 
+    public Tabuleiro()
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            String s = String.valueOf(i+1);
+            tabuleiro[i] = s;
+        }
+    }
+
     public String[] getTabuleiro() {
         return tabuleiro;
     }
