@@ -1,5 +1,4 @@
 package entradaDados;
-import jogoDaVelha.Jogador;
 import java.util.Scanner;
 
 public class Console {
@@ -13,11 +12,11 @@ public class Console {
 
 
 
-  public static void jogada(String[] tabuleiro, Jogador jogador){  
+  public static int receberEntradaJogada(){  
     System.out.println("Digite a posição que deseja jogar: ");
     Scanner scanner = new Scanner(System.in);
     int posicao = scanner.nextInt();
-    tabuleiro[posicao] = jogador.getSimbolo();
     scanner.close();
+    return posicao;
   }
 }
