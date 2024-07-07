@@ -14,6 +14,6 @@ public class Console {
     System.out.println("Digite a posição que deseja jogar: ");
     Scanner scanner = new Scanner(System.in);
     int posicao = scanner.nextInt();
-
+    
   }
 }
