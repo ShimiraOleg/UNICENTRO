@@ -1,17 +1,17 @@
 package jogoDaVelha;
 
 public class Jogador {
-  char simbolo; // pode ser 'X' ou 'O'  
+  String simbolo; // pode ser 'X' ou 'O'  
   String nome;
 
-  public Jogador(char simbolo, String nome) {
+  public Jogador(String simbolo, String nome) {
     this.simbolo = simbolo;
     this.nome = nome;
   }
-  public char getSimbolo() {
+  public String getSimbolo() {
     return simbolo;
   }
-  public void setSimbolo(char simbolo) {
+  public void setSimbolo(String simbolo) {
     this.simbolo = simbolo;
   }
 }
