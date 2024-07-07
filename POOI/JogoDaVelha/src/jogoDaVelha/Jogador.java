@@ -1,8 +1,13 @@
 package jogoDaVelha;
 
 public class Jogador {
-  String simbolo; // pode ser 'X' ou 'O'  
+  String simbolo; // pode ser 'X' ou 'O'
   String nome;
+
+  public Jogador()
+  {
+
+  }
 
   public Jogador(String simbolo, String nome) {
     this.simbolo = simbolo;

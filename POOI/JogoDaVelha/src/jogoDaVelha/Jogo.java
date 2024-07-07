@@ -53,21 +53,21 @@ public class Jogo{
         return vencedor;
     }
 
-    public boolean analizarVencedor(int qntRodadas,char vencedor)
+    public boolean analizarVencedor(int qntRodadas,char vencedor, String nome)
     {
         if(vencedor == 'X')
         {
-            System.out.println("Jogador X ganhou");
+            System.out.println("Jogador "+ nome +" (jogando com X) ganhou!");
             return true;
         }
         else if (vencedor == 'O')
         {
-            System.out.println("Jogador O venceu");
+            System.out.println("Jogador "+ nome +" (jogando com O) ganhou!");
             return true;
         }
         else if (qntRodadas == 8 && vencedor == '1')
         {
-            System.out.println("Empatou");
+            System.out.println("Empatou!");
             return true;
         }
         else {

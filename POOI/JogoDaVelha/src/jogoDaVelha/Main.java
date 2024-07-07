@@ -7,15 +7,31 @@ import java.lang.invoke.ConstantCallSite;
 public class Main {
     public static void main(String[] args) {
         char vencedor;
-        //Console con = new Console();
+        Jogador j1 = new Jogador("X", "Teste");
+        Jogador j2 = new Jogador("O", "Testador");
+        Jogador jAtual = new Jogador();
         boolean isWin = false;
+        boolean j1Turno = true;
         Tabuleiro tab = new Tabuleiro();
+
+        Console.printTabuleiro(tab.getTabuleiro());
         while(tab.getRodadas() < 9 && !(isWin))
         {
+            if(j1Turno) {
+                jAtual = j1;
+                j1Turno = false;
+            }
+            else
+            {
+                jAtual = j2;
+                j1Turno = true;
+            }
+
+            System.out.println("\nTurno do jogador: " + jAtual.nome);
+            tab.setTabuleiro(jAtual.getSimbolo(), Console.receberEntradaJogada() - 1);
             Console.printTabuleiro(tab.getTabuleiro());
-            tab.setTabuleiro("O", Console.receberEntradaJogada());
             vencedor = tab.verificarSeTemVencedor(tab.getTabuleiro());
-            isWin = tab.analizarVencedor(tab.getRodadas(), vencedor);
+            isWin = tab.analizarVencedor(tab.getRodadas(), vencedor, jAtual.nome);
             tab.setRodadas();
         }
     }
