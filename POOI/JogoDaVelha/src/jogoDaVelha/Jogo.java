@@ -3,7 +3,7 @@ package jogoDaVelha;
 public class Jogo{
     private char vencedor;
 
-    public char verificarVencedor(String[] tab)
+    public char verificarSeTemVencedor(String[] tab)
     {
         for(int i = 0; i < 8; i++)
         {
@@ -51,5 +51,28 @@ public class Jogo{
 
         }
         return vencedor;
+    }
+
+    public boolean analizarVencedor(int qntRodadas,char vencedor)
+    {
+        if(vencedor == 'X')
+        {
+            System.out.println("Jogador X ganhou");
+            return true;
+        }
+        else if (vencedor == 'O')
+        {
+            System.out.println("Jogador O venceu");
+            return true;
+        }
+        else if (qntRodadas == 8 && vencedor == '1')
+        {
+            System.out.println("Empatou");
+            return true;
+        }
+        else {
+            System.out.println("Jogo em Andamento");
+            return false;
+        }
     }
 }
