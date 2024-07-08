@@ -15,7 +15,7 @@ public class Jogada {
       }
       if(tabuleiro.getTabuleiro()[posicao -1] == "X" || tabuleiro.getTabuleiro()[posicao -1] == "O")
       {
-        throw new InvalidPositionException(posicao-1, jogador.getSimbolo());
+        throw new InvalidPositionException(posicao, tabuleiro.getTabuleiro()[posicao -1]);
       }
       tabuleiro.getTabuleiro()[posicao - 1] = jogador.getSimbolo();
       tabuleiro.setRodadas();
