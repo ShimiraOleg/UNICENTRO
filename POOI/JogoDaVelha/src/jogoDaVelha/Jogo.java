@@ -65,7 +65,7 @@ public class Jogo{
             System.out.println("Jogador "+ nome +" (jogando com O) ganhou!");
             return true;
         }
-        else if (qntRodadas == 8 && vencedor == '1')
+        else if (qntRodadas == 9 && vencedor == '1')
         {
             System.out.println("Empatou!");
             return true;

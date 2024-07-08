@@ -15,7 +15,7 @@ public class Main {
         Tabuleiro tab = new Tabuleiro();
 
         Console.printTabuleiro(tab.getTabuleiro());
-        while(tab.getRodadas() < 9 && !(isWin))
+        while(!(isWin))
         {
             if(j1Turno) {
                 jAtual = j1;
@@ -27,12 +27,11 @@ public class Main {
                 j1Turno = true;
             }
 
-            System.out.println("\nTurno do jogador: " + jAtual.nome);
-            tab.setTabuleiro(jAtual.getSimbolo(), Console.receberEntradaJogada() - 1);
+            System.out.println("\nTurno do jogador: " + jAtual.nome + " (" + jAtual.getSimbolo() + ")");
+            j1Turno = Jogada.jogada(tab, jAtual, j1Turno);
             Console.printTabuleiro(tab.getTabuleiro());
             vencedor = tab.verificarSeTemVencedor(tab.getTabuleiro());
             isWin = tab.analizarVencedor(tab.getRodadas(), vencedor, jAtual.nome);
-            tab.setRodadas();
         }
     }
     
