@@ -1,3 +1,8 @@
+/*
+Código da exceção de quando o valor não está entre 1 e 9
+@version 0.5
+@author Mateus de Oliveira Lopes
+ */
 package jogoDaVelha;
 
 public class InvalidValueException extends Exception{
@@ -7,6 +12,6 @@ public class InvalidValueException extends Exception{
     }
     public String toString()
     {
-        return "O valor inserido não é válido!\nPor favor, escreva um valor válido";
+        return "A coordenada inserida não está presente no tabuleiro!\nPor favor, insira uma coordenada válida (1-9)";
     }
 }

@@ -1,5 +1,9 @@
+/*
+Código que rege os jogadores
+@version 0.5
+@author Mateus de Oliveira Lopes
+ */
 package jogoDaVelha;
-
 public class Jogador {
   String simbolo; // pode ser 'X' ou 'O'
   String nome;

@@ -1,4 +1,13 @@
+/*
+xi
+@version 0.5
+@author Mateus de Oliveira Lopes
+ */
+
 package armazenamento;
 
-public class GerenciaJogadores {
+import jogoDaVelha.Jogador;
+
+public class GerenciaJogadores extends Jogador {
+
 }

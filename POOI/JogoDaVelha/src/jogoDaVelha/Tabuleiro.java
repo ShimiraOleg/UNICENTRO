@@ -1,6 +1,11 @@
+/*
+Código que rege o tabuleiro
+@version 0.5
+@author Mateus de Oliveira Lopes
+ */
 package jogoDaVelha;
 
-public class Tabuleiro extends Jogo{
+public class Tabuleiro{
     private String[] tabuleiro = new String[9];
     private int rodadas = 0;
 
@@ -25,6 +30,10 @@ public class Tabuleiro extends Jogo{
     public void setRodadas()
     {
         rodadas++;
+    }
+    public void setRodadas(int valor)
+    {
+        rodadas = valor;
     }
 
     public int getRodadas()

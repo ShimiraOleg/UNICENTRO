@@ -1,7 +1,16 @@
+/*
+Código que rege as regras do jogo da velha
+@version 0.6
+@author Mateus de Oliveira Lopes
+ */
 package jogoDaVelha;
+import entradaDados.Console;
 
 public class Jogo{
     private char vencedor;
+    private boolean isWin = false;
+    private boolean j1Turno = true;
+    private Tabuleiro tab = new Tabuleiro();
 
     public char verificarSeTemVencedor(String[] tab)
     {
@@ -74,5 +83,36 @@ public class Jogo{
             System.out.println("Jogo em Andamento");
             return false;
         }
+    }
+
+    public void jogando(Jogador j1, Jogador j2, Jogador jAtual)
+    {
+        Console.printTabuleiro(tab.getTabuleiro());
+        while(!(isWin))
+        {
+            if(j1Turno) {
+                jAtual = j1;
+                j1Turno = false;
+            }
+            else
+            {
+                jAtual = j2;
+                j1Turno = true;
+            }
+
+            System.out.println("\nTurno do jogador: " + jAtual.nome + " (" + jAtual.getSimbolo() + ")");
+            j1Turno = Jogada.jogada(tab, jAtual, j1Turno);
+            Console.printTabuleiro(tab.getTabuleiro());
+            vencedor = verificarSeTemVencedor(tab.getTabuleiro());
+            isWin = analizarVencedor(tab.getRodadas(), vencedor, jAtual.nome);
+        }
+    }
+
+    public void reiniciar()
+    {
+       tab.setRodadas(0);
+       tab = new Tabuleiro();
+       isWin = false;
+       j1Turno = true;
     }
 }

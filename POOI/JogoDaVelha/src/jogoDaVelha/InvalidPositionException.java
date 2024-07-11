@@ -1,3 +1,8 @@
+/*
+Código da execeção de quando o lugar já tem uma peça e não pode ser colocado uma outra peça no lugar
+@version 0.5
+@author Mateus de Oliveira Lopes
+ */
 package jogoDaVelha;
 
 public class InvalidPositionException extends Exception{
@@ -10,6 +15,6 @@ public class InvalidPositionException extends Exception{
     }
     public String toString()
     {
-        return "O valor inserido (" + pos + ") já tem uma peça (" + sim + ")!\nEscolha outra posição" ;
+        return "A coordenada inserida (" + pos + ") já tem uma peça (" + sim + ")!\nPor favor, escolha outra coordenada" ;
     }
 }
