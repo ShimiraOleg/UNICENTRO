@@ -1,9 +1,10 @@
 /*
 Código que printa o tabuleiro e recebe a entrada do usuário
-@version 0.6
+@version 0.65
 @author Mateus de Oliveira Lopes
  */
 package entradaDados;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -15,7 +16,15 @@ public class Console {
     System.out.println(" " + tabuleiro[6] + " | " + tabuleiro[7] + " | " + tabuleiro[8]);
   }
 
-  public static int receberEntradaJogada(){  
+  public static String escolherNome(char sin)
+  {
+    System.out.println("Insira o nome do jogador de (" + sin +")");
+    Scanner scanner = new Scanner(System.in);
+    String nome = scanner.nextLine().toString();
+    return nome;
+  }
+
+  public static int receberEntradaJogada(){
     System.out.println("Digite a posição que deseja jogar: ");
     Scanner scanner = new Scanner(System.in);
     int posicao = scanner.nextInt();
@@ -24,7 +33,7 @@ public class Console {
 
   public static char jogarNovamente()
   {
-    System.out.println("\nDeseja jogar novamente? (y/n)");
+    System.out.println("\nAperte 'Y' caso queira jogar novamente ");
     Scanner scanner = new Scanner(System.in);
     char escolha = scanner.next().charAt(0);
     return escolha;

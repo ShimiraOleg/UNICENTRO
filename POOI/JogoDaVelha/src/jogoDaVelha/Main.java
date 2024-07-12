@@ -1,6 +1,6 @@
 /*
 Main que junta todos os .java
-@version 0.6
+@version 0.65
 @author Mateus de Oliveira Lopes
  */
 package jogoDaVelha;
@@ -9,11 +9,14 @@ import entradaDados.Console;
 
 public class Main {
     public static void main(String[] args) {
-        Jogador j1 = new Jogador("X", "Teste");
-        Jogador j2 = new Jogador("O", "Testador");
         Jogador jAtual = new Jogador();
         Jogo jogo = new Jogo();
         boolean isJogando = true;
+
+        String nome = Console.escolherNome('X');
+        Jogador j1 = new Jogador("X", nome);
+        nome = Console.escolherNome('O');
+        Jogador j2 = new Jogador("O", nome);
 
 
         while (isJogando)
