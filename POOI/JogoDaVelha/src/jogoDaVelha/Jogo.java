@@ -62,16 +62,13 @@ public class Jogo{
         return vencedor;
     }
 
-    public boolean analizarVencedor(int qntRodadas,char vencedor, String nome)
+    public boolean analizarVencedor(int qntRodadas,char vencedor, Jogador jVencedor)
     {
-        if(vencedor == 'X')
+        if(vencedor == 'X' || vencedor == 'O')
         {
-            System.out.println("Jogador "+ nome +" (jogando com X) ganhou!");
-            return true;
-        }
-        else if (vencedor == 'O')
-        {
-            System.out.println("Jogador "+ nome +" (jogando com O) ganhou!");
+            System.out.println("Jogador "+ jVencedor.getNome() +" (jogando com "+ jVencedor.getSimbolo() +") ganhou!");
+            int p = jVencedor.getPontos();
+            jVencedor.setPontos(p+1);
             return true;
         }
         else if (qntRodadas == 9 && vencedor == '1')
@@ -87,6 +84,7 @@ public class Jogo{
 
     public void jogando(Jogador j1, Jogador j2, Jogador jAtual)
     {
+        int rodadas = 0;
         Console.printTabuleiro(tab.getTabuleiro());
         while(!(isWin))
         {
@@ -100,12 +98,18 @@ public class Jogo{
                 j1Turno = true;
             }
 
-            System.out.println("\nTurno do jogador: " + jAtual.nome + " (" + jAtual.getSimbolo() + ")");
+            System.out.println("\nTurno do jogador: " + jAtual.getNome() + " (" + jAtual.getSimbolo() + ")");
             j1Turno = Jogada.jogada(tab, jAtual, j1Turno);
             Console.printTabuleiro(tab.getTabuleiro());
             vencedor = verificarSeTemVencedor(tab.getTabuleiro());
-            isWin = analizarVencedor(tab.getRodadas(), vencedor, jAtual.nome);
+            isWin = analizarVencedor(rodadas, vencedor, jAtual);
         }
+    }
+
+    public void mostrarPontuacao(Jogador j1, Jogador j2)
+    {
+        System.out.println("\nPontuação de " + j1.getNome() + " (" + j1.getSimbolo() + "):\n" + j1.getPontos());
+        System.out.println("Pontuação de " + j2.getNome() + " (" + j2.getSimbolo() + "):\n" + j2.getPontos());
     }
 
     public void reiniciar()

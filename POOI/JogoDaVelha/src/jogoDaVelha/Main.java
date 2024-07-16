@@ -18,13 +18,12 @@ public class Main {
         nome = Console.escolherNome('O');
         Jogador j2 = new Jogador("O", nome);
 
-
         while (isJogando)
         {
             jogo.jogando(j1,j2,jAtual);
+            jogo.mostrarPontuacao(j1,j2);
             char escolha = Console.jogarNovamente();
             isJogando = continuar(isJogando, jogo, escolha);
-
         }
     }
 
