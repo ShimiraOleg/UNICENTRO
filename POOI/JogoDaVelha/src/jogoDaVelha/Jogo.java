@@ -82,7 +82,7 @@ public class Jogo{
         }
     }
 
-    public void jogando(Jogador j1, Jogador j2, Jogador jAtual)
+    public void jogando(Jogador j1, Jogador j2, Jogador jAtual, int mJ)
     {
         int rodadas = 0;
         Console.printTabuleiro(tab.getTabuleiro());
@@ -99,10 +99,10 @@ public class Jogo{
             }
 
             System.out.println("\nTurno do jogador: " + jAtual.getNome() + " (" + jAtual.getSimbolo() + ")");
-            j1Turno = Jogada.jogada(tab, jAtual, j1Turno);
+            j1Turno = Jogada.jogada(tab, jAtual, j1Turno,mJ);
             Console.printTabuleiro(tab.getTabuleiro());
             vencedor = verificarSeTemVencedor(tab.getTabuleiro());
-            isWin = analizarVencedor(rodadas, vencedor, jAtual);
+            isWin = analizarVencedor(tab.getRodadas(), vencedor, jAtual);
         }
     }
 
@@ -112,9 +112,11 @@ public class Jogo{
         System.out.println("Pontuação de " + j2.getNome() + " (" + j2.getSimbolo() + "):\n" + j2.getPontos());
     }
 
-    public void reiniciar()
+    public void reiniciar(Jogador j1, Jogador j2)
     {
        tab.setRodadas(0);
+       j1.setTrocas(3);
+       j2.setTrocas(3);
        tab = new Tabuleiro();
        isWin = false;
        j1Turno = true;

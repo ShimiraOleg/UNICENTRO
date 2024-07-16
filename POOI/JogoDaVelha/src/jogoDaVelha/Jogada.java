@@ -1,6 +1,6 @@
 /*
 Código que rege as jogadas (se elas são validas e onde elas vão)
-@version 0.5
+@version 1.0
 @author Mateus de Oliveira Lopes
  */
 package jogoDaVelha;
@@ -8,9 +8,10 @@ import entradaDados.Console;
 import java.util.InputMismatchException;
 
 public class Jogada {
-    public static boolean jogada(Tabuleiro tabuleiro, Jogador jogador, boolean turnoJogador1){
+    private static int posicao;
+    public static boolean jogada(Tabuleiro tabuleiro, Jogador jogador, boolean turnoJogador1, int mJ){
         try {
-            int posicao = Console.receberEntradaJogada();
+            posicao = Console.receberEntradaJogada();
             if(posicao - 1 < 0 || posicao - 1 > 8)
             {
               throw new InvalidValueException();
@@ -26,8 +27,28 @@ public class Jogada {
             System.out.println(exc);
             return turnoJogador1 = !(turnoJogador1);
         } catch (InvalidPositionException exc) {
-            System.out.println(exc);
-            return turnoJogador1 = !(turnoJogador1);
+            if(mJ == 0)
+            {
+                System.out.println(exc);
+                return turnoJogador1 = !(turnoJogador1);
+            }
+            else if (mJ == 1 && jogador.getTrocas() > 0 && tabuleiro.getTabuleiro()[posicao - 1] != jogador.getSimbolo())
+            {
+                tabuleiro.getTabuleiro()[posicao - 1] = jogador.getSimbolo();
+                jogador.setTrocas(jogador.getTrocas()-1);
+                System.out.println("Jogador (" + jogador.getSimbolo() +") tem mais " + jogador.getTrocas() + " trocas disponiveis") ;
+                return turnoJogador1 = turnoJogador1;
+            }
+            else if (tabuleiro.getTabuleiro()[posicao - 1] == jogador.getSimbolo())
+            {
+                System.out.println("O espaço já possui o simbolo (" +jogador.getSimbolo()+")!") ;
+                return turnoJogador1 = !(turnoJogador1);
+            }
+            else
+            {
+                System.out.println("Jogador (" + jogador.getSimbolo() +") não tem mais trocas disponiveis") ;
+                return turnoJogador1 = !(turnoJogador1);
+            }
         } catch (InputMismatchException exc) {
             System.out.println("Coordenada inválida!\nPor favor, insira uma coordenada válida (1-9)");
             return turnoJogador1 = !(turnoJogador1);

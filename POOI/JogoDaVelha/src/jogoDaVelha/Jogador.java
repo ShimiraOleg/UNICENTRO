@@ -1,23 +1,25 @@
 /*
 Código que rege os jogadores
-@version 0.5
+@version 0.9
 @author Mateus de Oliveira Lopes
  */
 package jogoDaVelha;
 public class Jogador {
   private String simbolo; // pode ser 'X' ou 'O'
   private String nome;
-  private int pontos;
+  private int pontos, trocas;
 
   public Jogador()
   {
     pontos = 0;
+    trocas = 3;
   }
 
   public Jogador(String simbolo, String nome) {
     this.simbolo = simbolo;
     this.nome = nome;
     pontos = 0;
+    trocas = 3;
   }
   public String getSimbolo() {
     return simbolo;
@@ -42,6 +44,14 @@ public class Jogador {
 
   public void setPontos(int pontos) {
     this.pontos = pontos;
+  }
+
+  public void setTrocas(int trocas) {
+    this.trocas = trocas;
+  }
+
+  public int getTrocas(){
+    return trocas;
   }
 }
 
