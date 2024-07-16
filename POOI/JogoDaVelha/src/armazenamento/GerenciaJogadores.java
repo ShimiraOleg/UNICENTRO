@@ -6,8 +6,9 @@ xi
 
 package armazenamento;
 
-import jogoDaVelha.Jogador;
+import java.io.FileWriter;
 
-public class GerenciaJogadores extends Jogador {
-
+public interface GerenciaJogadores {
+  void adicionarJogador(String nome1, int pontuacao1, String nome2, int pontuacao2, FileWriter fw);
+  
 }
