@@ -9,6 +9,7 @@ package armazenamento;
 import java.io.FileWriter;
 
 public interface GerenciaJogadores {
-  void adicionarJogador(String nome1, int pontuacao1, String nome2, int pontuacao2, FileWriter fw);
+  void adicionarJogador(String nome1, int pontuacao1, FileWriter fw);
   
+  //void atualizarJogador(String nome1, int pontuacao1, FileWriter fw);
 }

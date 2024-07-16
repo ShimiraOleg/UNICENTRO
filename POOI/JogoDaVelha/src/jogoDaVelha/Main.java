@@ -31,12 +31,13 @@ public class Main {
             jogo.jogando(j1,j2,jAtual, modoJogo);
             jogo.mostrarPontuacao(j1,j2);
             char escolha = Console.jogarNovamente();
-            isJogando = continuar(isJogando, jogo, escolha, j1, j2);
-            gerencia.adicionarJogador(j1.getNome(), j1.getPontos(),j2.getNome(), j2.getPontos(), fw);
-            gerencia.atualizarContRodadas();
+            
             isJogando = continuar(isJogando, jogo, escolha, j1, j2);
         }
-        
+        gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
+        gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+        gerencia.criarArquivoFinal();
+        //System.out.println(gerencia.criarMapaDoArquivo());
     }
 
     public static boolean continuar(boolean isJogando, Jogo jogo, char escolha, Jogador j1, Jogador j2)
