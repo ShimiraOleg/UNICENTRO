@@ -1,6 +1,6 @@
 /*
 Main que junta todos os .java
-@version 0.65
+@version 0.7
 @author Mateus de Oliveira Lopes
  */
 package jogoDaVelha;
@@ -12,6 +12,7 @@ public class Main {
         Jogador jAtual = new Jogador();
         Jogo jogo = new Jogo();
         boolean isJogando = true;
+        int modoJogo = 1;
 
         String nome = Console.escolherNome('X');
         Jogador j1 = new Jogador("X", nome);
@@ -20,19 +21,19 @@ public class Main {
 
         while (isJogando)
         {
-            jogo.jogando(j1,j2,jAtual);
+            jogo.jogando(j1,j2,jAtual, modoJogo);
             jogo.mostrarPontuacao(j1,j2);
             char escolha = Console.jogarNovamente();
-            isJogando = continuar(isJogando, jogo, escolha);
+            isJogando = continuar(isJogando, jogo, escolha, j1, j2);
         }
     }
 
-    public static boolean continuar(boolean isJogando, Jogo jogo, char escolha)
+    public static boolean continuar(boolean isJogando, Jogo jogo, char escolha, Jogador j1, Jogador j2)
     {
         if(escolha == 'Y' || escolha == 'y')
         {
             isJogando = true;
-            jogo.reiniciar();
+            jogo.reiniciar(j1,j2);
         }
         else
         {
