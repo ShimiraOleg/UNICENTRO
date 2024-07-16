@@ -102,7 +102,7 @@ public class Jogo{
             j1Turno = Jogada.jogada(tab, jAtual, j1Turno);
             Console.printTabuleiro(tab.getTabuleiro());
             vencedor = verificarSeTemVencedor(tab.getTabuleiro());
-            isWin = analizarVencedor(rodadas, vencedor, jAtual);
+            isWin = analizarVencedor(tab.getRodadas(), vencedor, jAtual);
         }
     }
 
