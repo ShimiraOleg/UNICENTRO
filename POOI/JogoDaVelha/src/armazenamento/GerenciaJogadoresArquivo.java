@@ -33,6 +33,11 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
     }
   }
 
+  @Override 
+  public void adicionarJogador(String nome1, int pontuacao1) {
+  
+  }
+
   public void adicionarJogador(String nome1, int pontuacao1, FileWriter fw) {
     try {
       fw.write(nome1 + " " + pontuacao1 + "\n");
