@@ -6,20 +6,23 @@ Main que junta todos os .java
 package jogoDaVelha;
 
 import entradaDados.Console;
-
+import armazenamento.DadosArray;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 import armazenamento.GerenciaJogadoresArquivo;
+import armazenamento.GerenciaJogadoresArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Jogador jAtual = new Jogador();
         Jogo jogo = new Jogo();
         GerenciaJogadoresArquivo gerencia = new GerenciaJogadoresArquivo("dadosArmazenados.txt");
+        GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();
         FileWriter fw = gerencia.criarArquivo(true);
         boolean isJogando = true;
         int modoJogo = 1;
-
+        ArrayList<DadosArray> array = new ArrayList<DadosArray>();
         String nome = Console.escolherNome('X');
         Jogador j1 = new Jogador("X", nome);
         nome = Console.escolherNome('O');
@@ -32,11 +35,14 @@ public class Main {
             jogo.mostrarPontuacao(j1,j2);
             char escolha = Console.jogarNovamente();
             isJogando = continuar(isJogando, jogo, escolha, j1, j2);
-            gerencia.adicionarJogador(j1.getNome(), j1.getPontos(),j2.getNome(), j2.getPontos(), fw);
-            gerencia.atualizarContRodadas();
-            isJogando = continuar(isJogando, jogo, escolha, j1, j2);
         }
-        
+        gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
+        gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
+        gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
+        gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+        gerencia.criarArquivoFinal();
+        //System.out.println(gerencia.criarMapaDoArquivo());
+        System.out.println(array);
     }
 
     public static boolean continuar(boolean isJogando, Jogo jogo, char escolha, Jogador j1, Jogador j2)
