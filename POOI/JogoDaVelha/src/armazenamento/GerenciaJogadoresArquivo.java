@@ -103,6 +103,13 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
       System.out.println("Erro ao criar o arquivo final.");
     }
   }
+
+  public void printarPontosGerais(){
+    Map<String, Integer> mapa = criarMapaDoArquivo();
+    for (Map.Entry<String, Integer> entry : mapa.entrySet()) {
+      System.out.println(entry.getKey() + " " + entry.getValue());
+    }
+  }
 }
 
 
