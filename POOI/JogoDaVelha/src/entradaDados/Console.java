@@ -4,9 +4,8 @@ Código que printa o tabuleiro e recebe a entrada do usuário
 @author Mateus de Oliveira Lopes
  */
 package entradaDados;
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import armazenamento.GerenciaJogadoresArquivo;
+
 
 public class Console {
   public static void printTabuleiro(String[] tabuleiro) {
@@ -39,21 +38,6 @@ public class Console {
     char escolha = scanner.next().charAt(0);
     return escolha;
   }
-  /*/
-  public static boolean printarPontosGerais(){
-      System.out.println("Digite 'P' para ver os pontos gerais, 'Y' para jogar");
-      Scanner scanner = new Scanner(System.in);
-      char escolha = scanner.next().charAt(0);
-      if(escolha == 'P' || escolha == 'p'){
-        GerenciaJogadoresArquivo gerencia = new GerenciaJogadoresArquivo("arquivoFinal.txt");
-        gerencia.printarPontosGerais();
-        return true;
-      } else if(escolha == 'Y' || escolha == 'y'){
-        return false;
-      }
-      return true;
-  }
-      */
 
   public static int escolhaMenu(){
     System.out.println("Digite 'P' para ver os pontos gerais, 'Y' para jogar, 'S' para sair");
