@@ -34,7 +34,10 @@ public class Main {
                     isJogando = true;
                     break;
                 case 2: // leaderboard
-                    gerencia.printarPontosGerais();
+                    //gerencia.printarPontosGerais();
+                    gerenciaArray.atualizarJogador(array);
+                    //System.out.println(array);
+                    gerenciaArray.printarPontosGerais(array);
                     isJogando = false;
                     break;
                 case 3: // sair
@@ -46,11 +49,9 @@ public class Main {
                     System.out.println("Ta tirando amostradinho");
                     break;
             }
-
-            //String nome = Console.escolherNome('X');
             Jogador j1 = new Jogador("X", null);
-            //nome = Console.escolherNome('O');
             Jogador j2 = new Jogador("O", null);
+
             if(isJogando == true){
                 j1.setNome(Console.escolherNome('X'));
                 j2.setNome(Console.escolherNome('O'));
@@ -63,22 +64,20 @@ public class Main {
                 char escolha = Console.jogarNovamente();
                 isJogando = continuar(isJogando, jogo, escolha, j1, j2);
                 if(!isJogando) {
-                    gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
-                    gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
+                    
+                    //gerenciaArray.atualizarJogador(array);
                     gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
                     gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+                    gerenciaArray.atualizarJogador(array);
                 }
                 isRodando = !isJogando;
             }
-
-            }
-            //gerencia.criarArquivoFinal();
+            } 
         }
+        System.out.println("Fim do programa");
+        
     }
-    
-        //gerencia2.printarPontosGerais();
-        //System.out.println(gerencia.criarMapaDoArquivo());
-        //System.out.println(array);
+        
     
     public static boolean continuar(boolean isJogando, Jogo jogo, char escolha, Jogador j1, Jogador j2)
     {

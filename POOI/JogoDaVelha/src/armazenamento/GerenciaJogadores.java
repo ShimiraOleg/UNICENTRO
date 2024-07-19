@@ -6,8 +6,6 @@ xi
 
 package armazenamento;
 
-import java.io.FileWriter;
-
 public interface GerenciaJogadores {
   void adicionarJogador(String nome1, int pontuacao1);
   

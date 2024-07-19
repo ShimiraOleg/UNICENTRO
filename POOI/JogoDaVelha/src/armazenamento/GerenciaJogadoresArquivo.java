@@ -6,13 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.*;
 
 public class GerenciaJogadoresArquivo implements GerenciaJogadores {
 
-  private String nomeDoArquivo;
+  private static String nomeDoArquivo;
 
   public GerenciaJogadoresArquivo(String nomeDoArquivo) {
     this.nomeDoArquivo = nomeDoArquivo;
@@ -65,7 +63,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
     }
   }
 
-  public Map<String, Integer> criarMapaDoArquivo() {
+  public static Map<String, Integer> criarMapaDoArquivo() {
     Map<String, Integer> mapa = new TreeMap<>();
     try (BufferedReader br = new BufferedReader(new FileReader(nomeDoArquivo))) {
       String linha;
