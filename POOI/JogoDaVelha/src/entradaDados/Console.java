@@ -55,24 +55,30 @@ public class Console {
   }
       */
 
-  public static int escolha(int modoJogo){
+  public static int escolhaMenu(){
     System.out.println("Digite 'P' para ver os pontos gerais, 'Y' para jogar, 'S' para sair");
     Scanner scanner = new Scanner(System.in);
     char escolha = scanner.next().charAt(0);
     if(escolha == 'P' || escolha == 'p'){
       return 2;
     } else if(escolha == 'Y' || escolha == 'y'){
-      System.out.println("Digite '1' para jogar modo facil, '2' para jogar modo tryhard");
-      char escolha2 = scanner.next().charAt(0);
-      if(escolha2 == '1'){
-        modoJogo = 1;
-      } else if(escolha2 == '2'){
-        modoJogo = 2;
-      }
       return 1;
     } else if(escolha == 'S' || escolha == 's'){
       return 3;
     }
     return 0;
+  }
+
+  public static int escolhaModoJogo(int modoJogo)
+  {
+    System.out.println("Digite '1' para jogar modo facil, '2' para jogar modo tryhard");
+    Scanner scanner = new Scanner(System.in);
+    char escolha2 = scanner.next().charAt(0);
+    if(escolha2 == '1'){
+      modoJogo = 0;
+    } else if(escolha2 == '2'){
+      modoJogo = 1;
+    }
+    return modoJogo;
   }
 }

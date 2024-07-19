@@ -17,19 +17,21 @@ public class Main {
         Jogador jAtual = new Jogador();
         Jogo jogo = new Jogo();
         GerenciaJogadoresArquivo gerencia = new GerenciaJogadoresArquivo("dadosArmazenados.txt");
-        //GerenciaJogadoresArquivo gerencia2 = new GerenciaJogadoresArquivo("arquivoFinal.txt");
         GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();
         FileWriter fw = gerencia.criarArquivo(true);
         boolean isJogando = true;
         boolean isRodando = true;
-        int modoJogo = 1;
+        int modoJogo = 0;
         ArrayList<DadosArray> array = new ArrayList<DadosArray>();
         
         if(isJogando == true){
         while(isRodando){
-            switch (Console.escolha(modoJogo)) {
+            switch (Console.escolhaMenu()) {
                 case 1: // jogar
+                    modoJogo = Console.escolhaModoJogo(modoJogo);
+                    System.out.println("Modo Jogo: " + modoJogo);
                     isRodando = false;
+                    isJogando = true;
                     break;
                 case 2: // leaderboard
                     gerencia.printarPontosGerais();
@@ -44,35 +46,33 @@ public class Main {
                     System.out.println("Ta tirando amostradinho");
                     break;
             }
-        
 
-                //String nome = Console.escolherNome('X');
-                Jogador j1 = new Jogador("X", null);
-                //nome = Console.escolherNome('O');
-                Jogador j2 = new Jogador("O", null);
-                if(isJogando == true){
-                    j1.setNome(Console.escolherNome('X'));
-                    j2.setNome(Console.escolherNome('O'));
-                }
-            
-            
-        
+            //String nome = Console.escolherNome('X');
+            Jogador j1 = new Jogador("X", null);
+            //nome = Console.escolherNome('O');
+            Jogador j2 = new Jogador("O", null);
+            if(isJogando == true){
+                j1.setNome(Console.escolherNome('X'));
+                j2.setNome(Console.escolherNome('O'));
+            }
+
             while (isJogando)
             {
                 jogo.jogando(j1,j2,jAtual, modoJogo);
                 jogo.mostrarPontuacao(j1,j2);
                 char escolha = Console.jogarNovamente();
                 isJogando = continuar(isJogando, jogo, escolha, j1, j2);
+                gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
+                gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
+                gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
+                gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
                 isRodando = !isJogando;
             }
-            gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
-            gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
-            gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
-            gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+
             }
             //gerencia.criarArquivoFinal();
         }
-        }
+    }
     
         //gerencia2.printarPontosGerais();
         //System.out.println(gerencia.criarMapaDoArquivo());
