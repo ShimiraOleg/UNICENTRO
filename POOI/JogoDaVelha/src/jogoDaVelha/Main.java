@@ -19,10 +19,12 @@ public class Main {
         Jogo jogo = new Jogo();
         GerenciaJogadoresArquivo gerencia = new GerenciaJogadoresArquivo("dadosArmazenados.txt");
         GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();
+        ArrayList<DadosArray> array = new ArrayList<DadosArray>();
         FileWriter fw = gerencia.criarArquivo(true);
         boolean isJogando = true;
         int modoJogo = 1;
-        ArrayList<DadosArray> array = new ArrayList<DadosArray>();
+
+
         String nome = Console.escolherNome('X');
         Jogador j1 = new Jogador("X", nome);
         nome = Console.escolherNome('O');

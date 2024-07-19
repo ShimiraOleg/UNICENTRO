@@ -10,9 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.*;
 
-
-
-
 public class GerenciaJogadoresArquivo implements GerenciaJogadores {
 
   private String nomeDoArquivo;
