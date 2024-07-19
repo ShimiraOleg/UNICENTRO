@@ -24,7 +24,8 @@ public class Main {
         boolean isRodando = true;
         int modoJogo = 1;
         ArrayList<DadosArray> array = new ArrayList<DadosArray>();
-        //
+        
+        if(isJogando == true){
         while(isRodando){
             switch (Console.escolha(modoJogo)) {
                 case 1: // jogar
@@ -32,21 +33,29 @@ public class Main {
                     break;
                 case 2: // leaderboard
                     gerencia.printarPontosGerais();
+                    isJogando = false;
                     break;
                 case 3: // sair
                     isRodando = false;
                     isJogando = false;
                     break;
                 default:
+                    isJogando = false;
                     System.out.println("Ta tirando amostradinho");
                     break;
             }
-            }
-            if(isJogando == true){
-            String nome = Console.escolherNome('X');
-            Jogador j1 = new Jogador("X", nome);
-            nome = Console.escolherNome('O');
-            Jogador j2 = new Jogador("O", nome);
+        
+
+                //String nome = Console.escolherNome('X');
+                Jogador j1 = new Jogador("X", null);
+                //nome = Console.escolherNome('O');
+                Jogador j2 = new Jogador("O", null);
+                if(isJogando == true){
+                    j1.setNome(Console.escolherNome('X'));
+                    j2.setNome(Console.escolherNome('O'));
+                }
+            
+            
         
             while (isJogando)
             {
@@ -54,6 +63,7 @@ public class Main {
                 jogo.mostrarPontuacao(j1,j2);
                 char escolha = Console.jogarNovamente();
                 isJogando = continuar(isJogando, jogo, escolha, j1, j2);
+                isRodando = !isJogando;
             }
             gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
             gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
@@ -62,6 +72,8 @@ public class Main {
             }
             //gerencia.criarArquivoFinal();
         }
+        }
+    
         //gerencia2.printarPontosGerais();
         //System.out.println(gerencia.criarMapaDoArquivo());
         //System.out.println(array);
@@ -76,6 +88,7 @@ public class Main {
         else
         {
             isJogando = false;
+            
         }
         return isJogando;
     }
