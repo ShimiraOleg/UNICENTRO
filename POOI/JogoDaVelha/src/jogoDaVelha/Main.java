@@ -1,6 +1,6 @@
 /*
 Main que junta todos os .java
-@version 0.7
+@version 0.8
 @author Mateus de Oliveira Lopes
  */
 package jogoDaVelha;
@@ -62,10 +62,12 @@ public class Main {
                 jogo.mostrarPontuacao(j1,j2);
                 char escolha = Console.jogarNovamente();
                 isJogando = continuar(isJogando, jogo, escolha, j1, j2);
-                gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
-                gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
-                gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
-                gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+                if(!isJogando) {
+                    gerenciaArray.atualizarJogador(array, j1.getNome(), j1.getPontos());
+                    gerenciaArray.atualizarJogador(array, j2.getNome(), j2.getPontos());
+                    gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
+                    gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+                }
                 isRodando = !isJogando;
             }
 
@@ -83,13 +85,12 @@ public class Main {
         if(escolha == 'Y' || escolha == 'y')
         {
             isJogando = true;
-            jogo.reiniciar(j1,j2);
         }
         else
         {
             isJogando = false;
-            
         }
+        jogo.reiniciar(j1,j2);
         return isJogando;
     }
 
