@@ -24,7 +24,7 @@ public class Main extends Console {
         GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();
         FileWriter fw = gerencia.criarArquivo(true);
         boolean isJogando = true;
-        int modoJogo = 0;
+        int modoJogo = 0; //Funcionalidade Extra: essa variavel é usada para definir se o modo de jogo vai ser o tradicional ou o modificado.
         int escolhaMenu;
         ArrayList<DadosArray> array = new ArrayList<DadosArray>();
         
@@ -36,13 +36,15 @@ public class Main extends Console {
                         isJogando = false;
                         break;
                     case 1: // jogar
-                        modoJogo = escolhaModoJogo(modoJogo);
+                        modoJogo = escolhaModoJogo(modoJogo); // Aqui é salvo em modoJogo o modo de jogo escolhido.
                         System.out.println("Modo de Jogo Escolhido: " + modoJogo);
                         isJogando = true;
                         break;
                     case 2: // leaderboard
                         //gerencia.printarPontosGerais();
-                        gerenciaArray.atualizarJogador(array);
+                        if(isJogando == true) {
+                            gerenciaArray.atualizarJogador(array);
+                        }
                         //System.out.println(array);
                         gerenciaArray.printarPontosGerais(array);
                         isJogando = false;

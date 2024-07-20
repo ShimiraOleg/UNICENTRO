@@ -9,6 +9,9 @@ public class Tabuleiro{
     private String[] tabuleiro = new String[9];
     private int rodadas = 0;
 
+    /*
+     * Construtor que inicializa o tabuleiro
+     */
     public Tabuleiro()
     {
         for(int i = 0; i < 9; i++)
@@ -18,6 +21,10 @@ public class Tabuleiro{
         }
     }
 
+    /*
+     * Construtor que inicializa o tabuleiro
+     * @return String[] tabuleiro O tabuleiro
+     */
     public String[] getTabuleiro() {
         return tabuleiro;
     }

@@ -4,6 +4,7 @@ Classe que printa o tabuleiro e recebe entradas do usuário
 @author Mateus de Oliveira Lopes e Yan
  */
 package entradaDados;
+import armazenamento.GerenciaJogadoresArrayList;
 import jogoDaVelha.InvalidValueException;
 import jogoDaVelha.Jogador;
 import jogoDaVelha.Jogo;
@@ -80,7 +81,7 @@ public class Console {
     }
   }
 
-  /*
+  /* FUNCIONALIDADE EXTRA:
    * Recebe do usuário um char que define o modo de jogo.
    * @param int modoJogo o modo de jogo.
    * @return Um inteiro escolhido com base no input do usuário.
