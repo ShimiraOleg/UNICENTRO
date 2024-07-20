@@ -1,3 +1,10 @@
+/*
+Implementação da interface GerenciaJogadores para ler o arquivo de texto e colocar 
+as informações em uma ArrayList.
+@version 1.0
+@author Yan Gabriel Reis Oliveira
+*/
+
 package armazenamento;
 import java.util.ArrayList;
 import java.util.Map;
@@ -14,6 +21,11 @@ public class GerenciaJogadoresArrayList implements GerenciaJogadores {
     
   }
 
+  /*
+  * Este metodo percorre o mapa criado a partir do arquivo de texto e coloca as informações em um ArrayList.
+    @param array ArrayList que irá armazenar as informações.
+    @return void
+  */
   public void atualizarJogador(ArrayList<DadosArray> array) {
     Map<String, Integer> mapa = GerenciaJogadoresArquivo.criarMapaDoArquivo();
     
@@ -23,6 +35,11 @@ public class GerenciaJogadoresArrayList implements GerenciaJogadores {
     }
   }
 
+  /*
+   * Este metodo percorre o ArrayList e imprime as informações contidas nele.
+   * @param array ArrayList que contém as informações.
+   * @return void
+   */
   public void printarPontosGerais(ArrayList<DadosArray> array) {
     for (DadosArray dados : array) {
       System.out.println(dados);

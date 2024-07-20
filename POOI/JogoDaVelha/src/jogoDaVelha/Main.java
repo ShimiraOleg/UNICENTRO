@@ -42,7 +42,7 @@ public class Main extends Console {
                         break;
                     case 2: // leaderboard
                         //gerencia.printarPontosGerais();
-                        if(isJogando == true) {
+                        if(isJogando == true && escolhaMenu != 3) {
                             gerenciaArray.atualizarJogador(array);
                         }
                         //System.out.println(array);

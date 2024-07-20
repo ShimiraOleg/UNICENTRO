@@ -1,7 +1,7 @@
 /*
-xi
-@version 0.5
-@author Mateus de Oliveira Lopes
+Interface que sera implementada pelas classes que irao gerenciar os jogadores e salvar os dados.
+@version 1.0
+@author Yan Gabriel Reis Oliveira
  */
 
 package armazenamento;
@@ -9,5 +9,4 @@ package armazenamento;
 public interface GerenciaJogadores {
   void adicionarJogador(String nome1, int pontuacao1);
   
-  //void atualizarJogador(String nome1, int pontuacao1, FileWriter fw);
 }
