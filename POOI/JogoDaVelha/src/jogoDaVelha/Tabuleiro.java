@@ -22,7 +22,6 @@ public class Tabuleiro{
         return tabuleiro;
     }
 
-    
     public void setTabuleiro(String tabuleiro, int i) {
         this.tabuleiro[i] = tabuleiro;
     }

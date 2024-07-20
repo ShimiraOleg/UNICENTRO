@@ -9,6 +9,14 @@ import java.util.InputMismatchException;
 
 public class Jogada {
     private static int posicao;
+    /*
+     * Determina o que acontece quando uma jogada é feita
+     * @param Tabuleiro tabuleiro, Jogador jogador, boolean turnoJogador1, int mj Modo de Jogo.
+     * @return Uma boolean que determina se é ou não o turno do jogador 1.
+     * @exception InvalidValueException se a entrada não for um valor inteiro aceito.
+     * @exception InvalidPositionException se a posição do tabuleiro definida pela entrada já tem um valor dentro.
+     * @exception InputMismatchException se a entrada não for um inteiro.
+     */
     public static boolean jogada(Tabuleiro tabuleiro, Jogador jogador, boolean turnoJogador1, int mJ){
         try {
             posicao = Console.receberEntradaJogada();

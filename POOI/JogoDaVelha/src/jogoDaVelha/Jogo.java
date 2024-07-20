@@ -6,7 +6,7 @@ Código que rege as regras do jogo da velha
 package jogoDaVelha;
 import entradaDados.Console;
 
-public class Jogo{
+public class Jogo extends Console{
     private char vencedor;
     private boolean isWin = false;
     private boolean j1Turno = true;
@@ -85,7 +85,7 @@ public class Jogo{
     public void jogando(Jogador j1, Jogador j2, Jogador jAtual, int mJ)
     {
         int rodadas = 0;
-        Console.printTabuleiro(tab.getTabuleiro());
+        printTabuleiro(tab.getTabuleiro());
         while(!(isWin))
         {
             if(j1Turno) {
@@ -100,16 +100,10 @@ public class Jogo{
 
             System.out.println("\nTurno do jogador: " + jAtual.getNome() + " (" + jAtual.getSimbolo() + ")");
             j1Turno = Jogada.jogada(tab, jAtual, j1Turno,mJ);
-            Console.printTabuleiro(tab.getTabuleiro());
+            printTabuleiro(tab.getTabuleiro());
             vencedor = verificarSeTemVencedor(tab.getTabuleiro());
             isWin = analizarVencedor(tab.getRodadas(), vencedor, jAtual);
         }
-    }
-
-    public void mostrarPontuacao(Jogador j1, Jogador j2)
-    {
-        System.out.println("\nPontuação de " + j1.getNome() + " (" + j1.getSimbolo() + "):\n" + j1.getPontos());
-        System.out.println("Pontuação de " + j2.getNome() + " (" + j2.getSimbolo() + "):\n" + j2.getPontos());
     }
 
     public void reiniciar(Jogador j1, Jogador j2)
