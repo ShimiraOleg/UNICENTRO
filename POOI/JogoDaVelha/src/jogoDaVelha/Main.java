@@ -18,7 +18,6 @@ public class Main extends Console {
      * @param args Argumentos da linha de comando.
      */
     public static void main(String[] args) {
-        Jogador jAtual = new Jogador();
         Jogo jogo = new Jogo();
         GerenciaJogadoresArquivo gerencia = new GerenciaJogadoresArquivo("dadosArmazenados.txt");
         GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();

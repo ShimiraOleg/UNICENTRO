@@ -60,7 +60,7 @@ public class Jogada {
                 tabuleiro.getTabuleiro()[posicao - 1] = jogador.getSimbolo();
                 jogador.setTrocas(jogador.getTrocas()-1);
                 System.out.println("Jogador (" + jogador.getSimbolo() +") tem mais " + jogador.getTrocas() + " trocas disponiveis") ;
-                return turnoJogador1 = turnoJogador1;
+                return turnoJogador1;
             }
             else if (tabuleiro.getTabuleiro()[posicao - 1] == jogador.getSimbolo())
             //Caso o simbolo do jogador seja o mesmo da peça no tabuleiro, é dito que a peça é igual a simbolo do jogador e não é feita a troca de turno.

@@ -102,7 +102,6 @@ public class Jogo extends Console{
      */
     public void jogando(Jogador j1, Jogador j2, int mJ)
     {
-        int rodadas = 0;
         Jogador jAtual;
         printTabuleiro(tab.getTabuleiro());
         while(!(isWin))

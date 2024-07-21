@@ -46,3 +46,5 @@ Douglas 1
 Reana 1
 Singed 1
 Sion 0
+Benan 1
+Renan 0
