@@ -24,11 +24,9 @@ public class Main extends Console {
         GerenciaJogadoresArrayList gerenciaArray = new GerenciaJogadoresArrayList();
         FileWriter fw = gerencia.criarArquivo(true);
         boolean isJogando = true;
-        boolean primeiro = true;
         int modoJogo = 0; //Funcionalidade Extra: essa variavel é usada para definir se o modo de jogo vai ser o tradicional ou o modificado.
         int escolhaMenu;
         ArrayList<DadosArray> array = new ArrayList<>();
-        ArrayList<DadosArray> primeiroArray = new ArrayList<>();
 
         if(isJogando){
             do{
@@ -40,15 +38,8 @@ public class Main extends Console {
                         isJogando = true;
                         break;
                     case 2: // leaderboard
-                        if(primeiro)
-                        {
-                            gerenciaArray.atualizarJogador(primeiroArray);
-                            primeiro = false;
-                        }
-                        if(primeiroArray != null)
-                        {
-                            gerenciaArray.printarPontosGerais(primeiroArray);
-                        }
+                        array = new ArrayList<>();
+                        gerenciaArray.atualizarJogador(array);
                         gerenciaArray.printarPontosGerais(array);
                         isJogando = false;
                         break;
@@ -77,8 +68,8 @@ public class Main extends Console {
                     if(!isJogando) {
                         gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);
                         gerencia.adicionarJogador(j2.getNome(), j2.getPontos(), fw);
+                        array = new ArrayList<>();
                         gerenciaArray.atualizarJogador(array);
-                        primeiroArray = null;
                     }
                 }
             }while(escolhaMenu != 3);
