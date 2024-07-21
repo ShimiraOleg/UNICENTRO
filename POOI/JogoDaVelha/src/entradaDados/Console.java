@@ -85,7 +85,7 @@ public class Console {
   public static int escolhaModoJogo(int modoJogo)
   {
     do {
-      System.out.println("ESCOLHA O MODO DE JOGO:\n1 - Modo Tradicional\n2 - Modo com trocas");
+      System.out.println("ESCOLHA O MODO DE JOGO:\n1 - Modo Tradicional\n2 - Modo com Trocas");
       Scanner scanner = new Scanner(System.in);
       char escolha2 = scanner.next().charAt(0);
       if (escolha2 == '1') {
@@ -94,8 +94,9 @@ public class Console {
         modoJogo = 1;
       } else {
         System.out.println("Escolha inválida!\nPor favor, escolha uma das opções abaixo:");
+        modoJogo = -1;
       }
-    } while (modoJogo != 1 && modoJogo != 2);
+    } while (modoJogo != 0 && modoJogo != 1);
     return modoJogo;
   }
 
