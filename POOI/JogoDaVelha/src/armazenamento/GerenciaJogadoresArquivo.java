@@ -1,35 +1,32 @@
-/*
-Implementação da interface GerenciaJogadores para adicionar e atualizar jogadores em um arquivo de texto, além
-de salvar todos esses dados para serem acessados fora do tempo de execução.
-@version 1.0
-@author Yan Gabriel Reis Oliveira
-*/
-
-
 package armazenamento;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ Implementação da interface GerenciaJogadores para adicionar e atualizar jogadores em um arquivo de texto, além
+ de salvar todos esses dados para serem acessados fora do tempo de execução.
+ @version 1.0
+ @author Yan Gabriel Reis Oliveira
+ */
 public class GerenciaJogadoresArquivo implements GerenciaJogadores {
 
   private static String nomeDoArquivo;
 
-  /*
+  /**
    * Construtor da classe GerenciaJogadoresArquivo.
    */
   public GerenciaJogadoresArquivo(String nomeDoArquivo) {
     this.nomeDoArquivo = nomeDoArquivo;
   }
 
-  /*
+  /**
    * Este método cria um arquivo de texto.
-   * @param append boolean que determina se o arquivo será criado do zero ou se será adicionado ao final do arquivo.
+   * @param append Boolean que determina se o arquivo será criado do zero ou se será adicionado ao final do arquivo.
    * @return FileWriter que é o arquivo criado.
    */
   public FileWriter criarArquivo(boolean append) {
@@ -49,7 +46,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
   
   }
 
-  /*
+  /**
    * Este método adiciona um jogador ao arquivo de texto.
    * @param nome1 String que é o nome do jogador.
    * @param pontuacao1 int que é a pontuação do jogador.
@@ -65,7 +62,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
     }
   }
 
-  /*
+  /**
    * Este método atualiza a pontuação de um jogador no arquivo de texto.
    * @param nome1 String que é o nome do jogador.
    * @param pontuacao1 int que é a pontuação do jogador.
@@ -93,7 +90,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
     }
   }
 
-  /*
+  /**
    * Este método cria um mapa a partir do arquivo de texto.
    * @return Map<String, Integer> que é o mapa criado.
    */
@@ -122,7 +119,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
   }
 
   
-  /*
+  /**
    * Este método imprime os pontos gerais dos jogadores.
    * @return void
    */

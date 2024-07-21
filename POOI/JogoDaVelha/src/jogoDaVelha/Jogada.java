@@ -1,17 +1,20 @@
-/*
-Código que rege as jogadas (se elas são validas e onde elas vão)
-@version 1.0
-@author Mateus de Oliveira Lopes
- */
 package jogoDaVelha;
 import entradaDados.Console;
 import java.util.InputMismatchException;
 
+/**
+ Código que rege as jogadas (se elas são validas e onde elas vão)
+ @version 1.0
+ @author Mateus de Oliveira Lopes
+ */
 public class Jogada {
     private static int posicao;
-    /*
-     * Determina o que acontece quando uma jogada é feita
-     * @param Tabuleiro tabuleiro, Jogador jogador, boolean turnoJogador1, int mj Modo de Jogo.
+    /**
+     * Determina o que acontece quando uma jogada é feita.
+     * @param tabuleiro o tabuleiro sendo usado.
+     * @param jogador o jogador dessa rodada.
+     * @param turnoJogador1 determina se é o turno do jogador 1.
+     * @param mJ o modo de jogo.
      * @return Uma boolean que determina se é ou não o turno do jogador 1.
      * @exception InvalidValueException se a entrada não for um valor inteiro aceito.
      * @exception InvalidPositionException se a posição do tabuleiro definida pela entrada já tem um valor dentro.
@@ -30,10 +33,10 @@ public class Jogada {
             }
             tabuleiro.getTabuleiro()[posicao - 1] = jogador.getSimbolo();
             tabuleiro.setRodadas();
-            return turnoJogador1 = turnoJogador1;
+            return turnoJogador1;
         } catch (InvalidValueException exc) {
-            System.out.println(exc);
-            return turnoJogador1 = !(turnoJogador1);
+            System.err.println(exc);
+            return !(turnoJogador1);
         } catch (InvalidPositionException exc) {
             /* FUNCIONALIDADE EXTRA
              * Aqui é implementado a lógica da funcionalidade extra, cujo é um modo de jogo alternativo.
@@ -47,7 +50,7 @@ public class Jogada {
              */
             if(mJ == 0) //Caso o modo de jogo seja zero (que é o jogo da velha normal), ele só printa a mensagem de erro normal e não é feita a troca de turno
             {
-                System.out.println(exc);
+                System.err.println(exc);
                 return turnoJogador1 = !(turnoJogador1);
             }
             else if (mJ == 1 && jogador.getTrocas() > 0 && tabuleiro.getTabuleiro()[posicao - 1] != jogador.getSimbolo())
@@ -62,18 +65,18 @@ public class Jogada {
             else if (tabuleiro.getTabuleiro()[posicao - 1] == jogador.getSimbolo())
             //Caso o simbolo do jogador seja o mesmo da peça no tabuleiro, é dito que a peça é igual a simbolo do jogador e não é feita a troca de turno.
             {
-                System.out.println("O espaço já possui o simbolo (" +jogador.getSimbolo()+")!") ;
+                System.err.println("O espaço já possui o simbolo (" +jogador.getSimbolo()+")!") ;
                 return turnoJogador1 = !(turnoJogador1);
             }
             else
             //Caso nada acima seja executado, significa que o jogador não tem mais trocas disponíveis.
             //Então, é dito que o jogador não tem mais trocas e não é feita a troca de turno.
             {
-                System.out.println("Jogador (" + jogador.getSimbolo() +") não tem mais trocas disponiveis") ;
+                System.err.println("Jogador (" + jogador.getSimbolo() +") não tem mais trocas disponiveis") ;
                 return turnoJogador1 = !(turnoJogador1);
             }
         } catch (InputMismatchException exc) {
-            System.out.println("Coordenada inválida!\nPor favor, insira uma coordenada válida (1-9)");
+            System.err.println("Coordenada inválida!\nPor favor, insira uma coordenada válida (1-9)");
             return turnoJogador1 = !(turnoJogador1);
         }
     }

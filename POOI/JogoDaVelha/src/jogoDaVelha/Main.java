@@ -1,8 +1,3 @@
-/*
- * Classe main que inicia o jogo e o menu inicial de opções.
- * @version 0.8
- * @author Mateus de Oliveira Lopes e Yan Gabriel Reis
- */
 package jogoDaVelha;
 
 import entradaDados.Console;
@@ -12,8 +7,13 @@ import java.util.ArrayList;
 import armazenamento.GerenciaJogadoresArquivo;
 import armazenamento.GerenciaJogadoresArrayList;
 
+/**
+ * Classe main que inicia o jogo e o menu inicial de opções.
+ * @version 0.8
+ * @author Mateus de Oliveira Lopes e Yan Gabriel Reis
+ */
 public class Main extends Console {
-    /*
+    /**
      * Método principal do programa.
      * @param args Argumentos da linha de comando.
      */
@@ -26,9 +26,9 @@ public class Main extends Console {
         boolean isJogando = true;
         int modoJogo = 0; //Funcionalidade Extra: essa variavel é usada para definir se o modo de jogo vai ser o tradicional ou o modificado.
         int escolhaMenu;
-        ArrayList<DadosArray> array = new ArrayList<DadosArray>();
+        ArrayList<DadosArray> array = new ArrayList<>();
         
-        if(isJogando == true){
+        if(isJogando){
             do{
                 escolhaMenu = Menu();
                 switch (escolhaMenu) {
@@ -42,7 +42,7 @@ public class Main extends Console {
                         break;
                     case 2: // leaderboard
                         //gerencia.printarPontosGerais();
-                        if(isJogando == true && escolhaMenu != 3) {
+                        if(isJogando && escolhaMenu != 3) {
                             gerenciaArray.atualizarJogador(array);
                         }
                         //System.out.println(array);
@@ -60,17 +60,17 @@ public class Main extends Console {
                 Jogador j1 = new Jogador("X", null);
                 Jogador j2 = new Jogador("O", null);
 
-                if(isJogando == true){
+                if(isJogando){
                     j1.setNome(escolherNome('X'));
                     j2.setNome(escolherNome('O'));
                 }
 
                 while (isJogando)
                 {
-                    jogo.jogando(j1,j2,jAtual, modoJogo);
+                    jogo.jogando(j1, j2, modoJogo);
                     jogo.mostrarPontuacao(j1,j2);
                     char escolha = jogarNovamente();
-                    isJogando = continuar(isJogando, jogo, escolha, j1, j2);
+                    isJogando = continuar(jogo, escolha, j1, j2);
                     if(!isJogando) {
                         //gerenciaArray.atualizarJogador(array);
                         gerencia.adicionarJogador(j1.getNome(), j1.getPontos(), fw);

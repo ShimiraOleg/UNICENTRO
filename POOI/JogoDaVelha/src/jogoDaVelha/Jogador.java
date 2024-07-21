@@ -1,15 +1,16 @@
-/*
-Código que rege os jogadores
-@version 0.9
-@author Mateus de Oliveira Lopes
- */
 package jogoDaVelha;
+
+/**
+ Código que rege os jogadores
+ @version 0.9
+ @author Mateus de Oliveira Lopes
+ */
 public class Jogador {
   private String simbolo; // pode ser 'X' ou 'O'
   private String nome;
   private int pontos, trocas; //FUNCIONALIDADE EXTRA: na Classe Jogador é salvo a quantidade de trocas que ele possui, sendo usado o get e set para altera-las.
 
-  /*
+  /**
    * Construtor que inicializa o jogador
    */
   public Jogador()
@@ -18,7 +19,7 @@ public class Jogador {
     trocas = 3; //As trocas são inicializadas sempre como 3.
   }
 
-  /*
+  /**
    * Construtor que inicializa o jogador
    * @param simbolo O simbolo do jogador
    * @param nome O nome do jogador
@@ -30,7 +31,7 @@ public class Jogador {
     trocas = 3; //As trocas são inicializadas sempre como 3.
   }
 
-  /*
+  /**
    * retorna o simbolo do jogador
    * @return o valor do simbolo
    */
@@ -42,7 +43,7 @@ public class Jogador {
     this.simbolo = simbolo;
   }
 
-  /*
+  /**
    * retorna o nome do jogador
    * @return o valor do nome
    */
@@ -51,7 +52,7 @@ public class Jogador {
     return nome;
   }
 
-  /*
+  /**
    * atribui para nome o valor recebido
    * @param nome O nome recebido
    */
@@ -59,7 +60,7 @@ public class Jogador {
     this.nome = nome;
   }
 
-  /*
+  /**
    * retorna os pontos do jogador
    * @return o valor dos pontos
    */
@@ -67,7 +68,7 @@ public class Jogador {
     return pontos;
   }
 
-  /*
+  /**
    * atribui para pontos o valor recebido
    * @param pontos O valor de pontos recebido
    */
@@ -75,7 +76,7 @@ public class Jogador {
     this.pontos = pontos;
   }
 
-  /*
+  /**
    * retorna a quantidade de trocas do jogador
    * @return o valor de trocas
    */
@@ -83,9 +84,9 @@ public class Jogador {
     return trocas;
   }
 
-  /*
+  /**
    * atribui para trocas o valor recebido
-   * @param pontos O valor de trocas recebido
+   * @param trocas O valor de trocas recebido
    */
   public void setTrocas(int trocas) {
     this.trocas = trocas;

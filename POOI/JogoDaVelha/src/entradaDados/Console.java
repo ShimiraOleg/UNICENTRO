@@ -1,20 +1,18 @@
-/*
-Classe que printa o tabuleiro e recebe entradas do usuário
-@version 0.9
-@author Mateus de Oliveira Lopes e Yan
- */
 package entradaDados;
-import armazenamento.GerenciaJogadoresArrayList;
-import jogoDaVelha.InvalidValueException;
 import jogoDaVelha.Jogador;
 import jogoDaVelha.Jogo;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ Classe que printa o tabuleiro e recebe entradas do usuário
+ @version 1.0
+ @author Mateus de Oliveira Lopes e Yan Gabriel Reis
+ */
 public class Console {
-  /*
+  /**
    * Escreve no console o tabuleiro.
-   * @param Strin[] tabuleiro O tabuleiro que vai ser escrito.
+   * @param tabuleiro O tabuleiro que vai ser escrito.
    */
   public static void printTabuleiro(String[] tabuleiro) {
     System.out.println(" " + tabuleiro[0] + " | " + tabuleiro[1] + " | " + tabuleiro[2]);
@@ -24,31 +22,29 @@ public class Console {
     System.out.println(" " + tabuleiro[6] + " | " + tabuleiro[7] + " | " + tabuleiro[8]);
   }
 
-  /*
+  /**
    * Recebe do usuário o nome do jogador.
-   * @param char sin O simbolo desse jogador.
+   * @param sin O simbolo desse jogador.
    * @return A string lida pelo console.
    */
   public static String escolherNome(char sin)
   {
     System.out.println("Insira o nome do jogador de (" + sin +")");
     Scanner scanner = new Scanner(System.in);
-    String nome = scanner.next().toString();
-    return nome;
+    return scanner.next().toString();
   }
 
-  /*
+  /**
    * Recebe do usuário um valor de uma posição do tabuleiro.
    * @return O inteiro lido pelo console.
    */
   public static int receberEntradaJogada(){
     System.out.println("Digite a posição que deseja jogar: ");
     Scanner scanner = new Scanner(System.in);
-    int posicao = scanner.nextInt();
-    return posicao;
+    return scanner.nextInt();
   }
 
-  /*
+  /**
    * Recebe do usuário um char que define se ele quer jogar novamente.
    * @return O character lido pelo console.
    */
@@ -60,7 +56,7 @@ public class Console {
     return escolha;
   }
 
-  /*
+  /**
    * Recebe do usuário um int que define qual opção do menu ele escolheu.
    * @return O inteiro lido pelo console ou -1 se não for um inteiro válido.
    * @exception InputMismatchException se a entrada não for um numero inteiro.
@@ -81,45 +77,54 @@ public class Console {
     }
   }
 
-  /* FUNCIONALIDADE EXTRA:
-   * Recebe do usuário um char que define o modo de jogo.
-   * @param int modoJogo o modo de jogo.
+  /**
+   * FUNCIONALIDADE EXTRA: Recebe do usuário um char que define o modo de jogo.
+   * @param modoJogo o modo de jogo.
    * @return Um inteiro escolhido com base no input do usuário.
    */
   public static int escolhaModoJogo(int modoJogo)
   {
-    System.out.println("Digite '1' para jogar modo facil, '2' para jogar modo tryhard");
-    Scanner scanner = new Scanner(System.in);
-    char escolha2 = scanner.next().charAt(0);
-    if(escolha2 == '1'){
-      modoJogo = 0;
-    } else if(escolha2 == '2'){
-      modoJogo = 1;
-    }
+    do {
+      System.out.println("ESCOLHA O MODO DE JOGO:\n1 - Modo Tradicional\n2 - Modo com trocas");
+      Scanner scanner = new Scanner(System.in);
+      char escolha2 = scanner.next().charAt(0);
+      if (escolha2 == '1') {
+        modoJogo = 0;
+      } else if (escolha2 == '2') {
+        modoJogo = 1;
+      } else {
+        System.out.println("Escolha inválida!\nPor favor, escolha uma das opções abaixo:");
+      }
+    } while (modoJogo != 1 && modoJogo != 2);
     return modoJogo;
   }
 
-  /*
-   * Recebe do usuário um char que define se ele quer jogar novamente.
-   * @param boolean isJogando variavel que determina se o jogo continua ou não, Jogo jogo, char escolha, Jogador j1 e j2.
-   * @return O character lido pelo console.
+  /**
+   * Função que determina se o jogo reinicia ou volta para o menu
+   * @param jogo o jogo atual.
+   * @param escolha a escolha do usuário.
+   * @param j1 o jogador 1.
+   * @param j2 o jogador 2.
+   * @return uma boolean que define se o jogo reinicia ou volta para o menu
    */
-  public static boolean continuar(boolean isJogando, Jogo jogo, char escolha, Jogador j1, Jogador j2)
+  public static boolean continuar(Jogo jogo, char escolha, Jogador j1, Jogador j2)
   {
     if(escolha == 'Y' || escolha == 'y')
     {
-      isJogando = true;
+      jogo.reiniciar(j1,j2);
+      return true;
     }
     else
     {
-      isJogando = false;
+      jogo.reiniciar(j1,j2);
+      return false;
     }
-    jogo.reiniciar(j1,j2);
-    return isJogando;
   }
-  /*
-   * Mostra a pontuação atual dos dois jogadores
-   * @param Jogador j1 O jogador 1, Jogador j2 O jogador 2.
+
+  /**
+   * Função que imprime na tela a pontuação da partida atual
+   * @param j1 o jogador 1
+   * @param j2 o jogador 2
    */
   public void mostrarPontuacao(Jogador j1, Jogador j2)
   {

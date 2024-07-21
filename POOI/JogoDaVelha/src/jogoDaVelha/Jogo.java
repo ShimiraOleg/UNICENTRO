@@ -1,17 +1,22 @@
-/*
-Código que rege as regras do jogo da velha
-@version 0.6
-@author Mateus de Oliveira Lopes
- */
 package jogoDaVelha;
 import entradaDados.Console;
 
+/**
+ Código que rege as regras do jogo da velha
+ @version 0.8
+ @author Mateus de Oliveira Lopes
+ */
 public class Jogo extends Console{
     private char vencedor;
     private boolean isWin = false;
     private boolean j1Turno = true;
     private Tabuleiro tab = new Tabuleiro();
 
+    /**
+     * Função que ferifica se existe algum padrão vencedor no tabuleiro
+     * @param tab o tabuleiro a ser verificado.
+     * @return o simbolo do vencedor (empate envia 1).
+     */
     public char verificarSeTemVencedor(String[] tab)
     {
         for(int i = 0; i < 8; i++)
@@ -62,6 +67,13 @@ public class Jogo extends Console{
         return vencedor;
     }
 
+    /**
+     * Função que analiza se existe um vencedor e para o jogo no caso de alguém vencer/empatar
+     * @param qntRodadas a rodada atual
+     * @param vencedor o simbolo a ser analizado
+     * @param jVencedor o jogador da rodada atual
+     * @return uma boolean que determina se o jogo paro ou continua
+     */
     public boolean analizarVencedor(int qntRodadas,char vencedor, Jogador jVencedor)
     {
         if(vencedor == 'X' || vencedor == 'O')
@@ -82,9 +94,16 @@ public class Jogo extends Console{
         }
     }
 
-    public void jogando(Jogador j1, Jogador j2, Jogador jAtual, int mJ)
+    /**
+     * Função que faz o loop de uma partida de jogo da velha
+     * @param j1 o jogador 1
+     * @param j2 o jogador 2
+     * @param mJ o modo de jogo
+     */
+    public void jogando(Jogador j1, Jogador j2, int mJ)
     {
         int rodadas = 0;
+        Jogador jAtual;
         printTabuleiro(tab.getTabuleiro());
         while(!(isWin))
         {
@@ -106,6 +125,11 @@ public class Jogo extends Console{
         }
     }
 
+    /**
+     * Função que reseta os jogadores e o tabuleiro para suas versões iniciais
+     * @param j1
+     * @param j2
+     */
     public void reiniciar(Jogador j1, Jogador j2)
     {
        tab.setRodadas(0);
