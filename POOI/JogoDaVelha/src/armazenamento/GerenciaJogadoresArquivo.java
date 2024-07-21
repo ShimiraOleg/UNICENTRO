@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class GerenciaJogadoresArquivo implements GerenciaJogadores {
 
-  private static String nomeDoArquivo;
+  private String nomeDoArquivo;
 
   /**
    * Construtor da classe GerenciaJogadoresArquivo.
@@ -96,7 +96,7 @@ public class GerenciaJogadoresArquivo implements GerenciaJogadores {
    */
   public static Map<String, Integer> criarMapaDoArquivo() {
     Map<String, Integer> mapa = new TreeMap<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(nomeDoArquivo))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("dadosArmazenados.txt"))) {
       String linha;
       while ((linha = br.readLine()) != null) {
         String[] partes = linha.split(" ", 2);
