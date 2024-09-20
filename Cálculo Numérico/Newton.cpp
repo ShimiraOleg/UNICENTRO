@@ -5,7 +5,6 @@
 
 using namespace std;
 
-float verificarIntervalo(float, float);
 float funcaoMatematica(float, int);
 
 int main()

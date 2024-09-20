@@ -80,5 +80,5 @@ float funcaoMatematica(float num, int tipo)
 } 
 //lerFuncao()
 //{
-//
+//int
 //}
