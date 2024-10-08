@@ -11,8 +11,8 @@ html, body, #home {
 }
 
 body {
-	background: url(../imagens/capa.png),
-				url(../imagens/ruido.png),
+	background: url(../images/capa.png),
+				url(../images/ruido.png),
 				linear-gradient(50deg,#ff4169,#7c26f8);
 	background-attachment: fixed;
 	font-family: Helvetica,Arial,sans-serif;
@@ -87,6 +87,16 @@ nav.navbar-transparente {
 .caixa {
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+.caixaLogin{
+	max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px; /* Centraliza verticalmente */
 }
 
 #servicos {
