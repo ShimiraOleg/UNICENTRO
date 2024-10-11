@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exemplo.curso1.controller.MenusController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu text="Estudante">
+                    <items>
+                        <MenuItem fx:id="menuEstudanteInclui" onAction="#incluiOnAction" text="Inclui" />
+                        <MenuItem fx:id="menuEstudanteAltera" onAction="#alteraOnAction" text="Altera" />
+                    </items>
+                </Menu>
+                <Menu text="Professor">
+                    <items>
+                        <MenuItem fx:id="telaVazia" onAction="#telaVaziaOnAction" text="Tela Vazia" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fitHeight="374.0" fitWidth="600.0">
+            <image>
+                <Image url="@../image/estudantes.png" />
+            </image>
+        </ImageView>
+    </children>
+</VBox>
