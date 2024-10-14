@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <script>
+            function avaliarNota(num){
+                if (num < 6){
+                    return "Reprovado";
+                } else if(num >= 6 && num < 8){
+                    return "Aprovado";
+                } else if (num >= 8){
+                    return "Aprovado com Louvor";
+                }
+            }
+            
+            let nota = parseFloat(prompt("Insira sua nota"));
+            let resposta = avaliarNota(nota);
+
+            alert(resposta);
+
+        </script>
+    </body>
+</html>

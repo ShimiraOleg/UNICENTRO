@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <script>
+            function maiorVetor(vet){
+                var maior = 0
+                for(let i = 0; i < vet.length; i++){
+                    if(i == 0 || maior < vet[i]){
+                        maior = vet[i];
+                    }
+                } 
+                return maior;
+            }
+            
+            let vetor = [12,3,5,7,9,11];
+            let maior = maiorVetor(vetor);
+
+            alert("O maior número do vetor é " + maior + "!");
+
+        </script>
+    </body>
+</html>     

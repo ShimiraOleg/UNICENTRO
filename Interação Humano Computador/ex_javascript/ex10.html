@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <script>
+            function mediaMatriz(mat){
+                var media = 0
+                var quantElementos = 0
+                for(var i = 0; i < 2; i++){
+                    for(var j = 0; j < 3; j++){
+                        media = media + mat[i][j];
+                        quantElementos = quantElementos + 1
+                    }
+                } 
+                return parseFloat(media/quantElementos);
+            }
+            
+            let matriz = [
+                [1,3,5],
+                [7,9,11]
+            ];
+            let media = mediaMatriz(matriz);
+
+            alert("A media dos elementos da matriz é " + media + "!");
+
+        </script>
+    </body>
+</html>     

@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <script>
+            function analiseInput(letra){
+                if (letra == "1"){
+                    alert("Opção 1 Escolhida!")
+                    return true;
+                } else if(letra == "2"){
+                    alert("Opção 2 Escolhida!")
+                    return true;
+                } else if(letra == "3"){
+                    alert("Opção 3 Escolhida!")
+                    return true;
+                } else {
+                    alert("Opção Inválida!\nEscolha uma das opções disponíveis")
+                    return false
+                }
+            }
+            
+            let isValida = false
+
+            while(!isValida){
+                let input = prompt("Escolha:\n1 - Opção 1\n2 - Opção 2\n3 - Opção 3");
+                isValida = analiseInput(input);
+            }
+            
+        </script>
+    </body>
+</html>

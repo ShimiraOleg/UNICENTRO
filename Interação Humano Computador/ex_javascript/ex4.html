@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <script>
+            function mediaVetor(vet){
+                var media = 0
+                for(let i = 0; i < vet.length; i++){
+                    media = media + vet[i];
+                } 
+                return parseFloat(media/vet.length);
+            }
+            
+            let vetor = [1,3,5,7,9,11];
+            let media = mediaVetor(vetor);
+
+            alert("A média do vetor é " + media + "!");
+
+        </script>
+    </body>
+</html>     
