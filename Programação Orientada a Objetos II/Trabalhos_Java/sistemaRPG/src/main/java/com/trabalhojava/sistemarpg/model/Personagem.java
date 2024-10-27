@@ -119,7 +119,7 @@ public class Personagem {
     }
 
     public String toString(){
-        return "Personagem{personagemId=" + this.personagemId +
+        return "Personagem {personagemId=" + this.personagemId +
                 ", nome=" + this.nome +
                 ", descricao=" + this.descricao +
                 ", urlImg=" + this.urlImg +

@@ -1,7 +1,6 @@
 package com.trabalhojava.sistemarpg.dao;
 
 import com.trabalhojava.sistemarpg.model.Personagem;
-import com.trabalhojava.sistemarpg.model.PersonagemSistema;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,7 +67,7 @@ public class PersonagemDBDAO implements PersonagemDAO, IConst {
 
     public void remover(Personagem personagem) throws SQLException {
         this.open();
-        this.sql = "DELETE FROM PERSONAGEM WHERE personagemId=?";
+        this.sql = "DELETE FROM personagem WHERE personagemId=?";
         this.statement = connection.prepareStatement(this.sql);
         this.statement.setInt(1,personagem.getPersonagemId());
         this.statement.executeUpdate();

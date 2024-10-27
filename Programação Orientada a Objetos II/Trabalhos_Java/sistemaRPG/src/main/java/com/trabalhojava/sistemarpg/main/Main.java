@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import com.trabalhojava.sistemarpg.dao.PersonagemDAO;
 import com.trabalhojava.sistemarpg.dao.PersonagemDBDAO;
 import com.trabalhojava.sistemarpg.model.Personagem;
+import com.trabalhojava.sistemarpg.dao.SistemaDAO;
+import com.trabalhojava.sistemarpg.dao.SistemaDBDAO;
+import com.trabalhojava.sistemarpg.model.Sistema;
 
 public class Main {
     public static void main(String[] args) throws SQLException{
@@ -20,5 +23,19 @@ public class Main {
         System.out.println(personagemDAO.listar());
         System.out.println("REMOVE PERSONAGEM");
         personagemDAO.remover(personagem1);
+
+        Sistema sistema1 = new Sistema(1,"Torment");
+        Sistema sistema2 = new Sistema(2,"Call of Cthulhu");
+        SistemaDBDAO sistemaDAO = new SistemaDBDAO();
+        System.out.println("INSERE SISTEMAS");
+        sistemaDAO.insere(sistema1);
+        sistemaDAO.insere(sistema2);
+        Sistema sistema3 = new Sistema(1,"Tormenta");
+        System.out.println("ATUALIZA SISTEMA");
+        sistemaDAO.atualizar(sistema3);
+        System.out.println("LISTA SISTEMA");
+        System.out.println(sistemaDAO.listar());
+        System.out.println("REMOVE SISTEMA");
+        sistemaDAO.remover(sistema2);
     }
 }
