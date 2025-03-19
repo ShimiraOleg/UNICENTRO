@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <title>Introdução ao CSS</title>
     <style>
-        p{
-            background-color: blue;
-        }
         #paragrafo_especial{ /*id (pouco usado para css)*/
             font-size: 24pt;
-            color: white;
+            color: black;
         }
-        .paragrafos{ /*class, extremamente usado*/
-            font-size: 20;
-            color: greenyellow;
-            font-weight: bold;
+        .paragrafos{ /*class, extremamente usado para css*/
+            font-size: 20pt;
+            color: blue;
+            font-weight: bolder;
+        }
+        #paragrafo_teste{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 26pt;
+            font-style: italic;
+            font-weight: 700;
+            text-align: start;
+            text-decoration: line-through;
+            text-indent: 30px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
     <!--<p style="color: red; font-size: 30pt;">TEXTO</p> Ativamente não usar esse aqui-->
     <p class="paragrafos">Meu primeiro parágrafo</p>
-    <p>Meu segundo parágrafo</p>
+    <p id="paragrafo_teste">Meu segundo parágrafo</p>
     <p id="paragrafo_especial">Meu terceiro parágrafo</p>
     <p class="paragrafos">Meu quarto parágrafo</p>
-
 </body>
 </html>

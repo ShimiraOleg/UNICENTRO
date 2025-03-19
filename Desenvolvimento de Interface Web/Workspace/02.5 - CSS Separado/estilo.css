@@ -1,0 +1,43 @@
+body{
+    background-color: chartreuse;
+}
+
+#titulo1{
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+    font-size: 70px;
+    font-style: oblique;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+#titulo2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    font-style: italic;
+    text-transform: lowercase;
+    text-align: right;
+}
+
+#titulo3{
+    text-transform: uppercase;
+    background-color: aqua;
+    width: 50%;
+}
+
+.paragrafo_normal{
+    text-indent: 40px;
+    font-size: 18pt;
+    text-align: justify;
+}
+
+.paragrafo_especial{
+    text-align: right;
+    font-size: 16pt;
+    font-variant: small-caps;
+}
+
+a{
+    text-decoration: none;
+
+}
