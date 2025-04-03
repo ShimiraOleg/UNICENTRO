@@ -1,0 +1,19 @@
+{
+  "name": "00-introducao_typescript",
+  "version": "1.0.0",
+  "description": "Exercicio Introducao Typescript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+  },
+  "author": "Mateus de Oliveira Lopes",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.14.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "tsconfig-paths": "^4.2.0"
+  }
+}
