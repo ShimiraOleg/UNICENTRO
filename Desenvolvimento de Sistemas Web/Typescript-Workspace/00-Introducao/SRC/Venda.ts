@@ -45,6 +45,10 @@ export default class Venda{
     }
 
     calcularTotal(produtos: produto[]){
-        let valor: number =  produtos
+        let total: number = 0;
+        for(var i = 0; i < produtos.length; i++){
+            total =+ produtos[i].valor;
+        }
+        return total;
     }
 }
