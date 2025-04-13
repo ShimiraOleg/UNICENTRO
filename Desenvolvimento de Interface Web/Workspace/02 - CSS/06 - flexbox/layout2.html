@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox - Parte 1</title>
+    <style>
+        .flexbox{
+            height: 300px;
+            border: 5px solid black;
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .flexbox div{
+            border: 3px solid blue;
+            width: 200px;
+            margin: 10px;
+        }
+        .flex-container5 div{
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            background-color: yellow;
+        }
+        .flex-container5{
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .flex-container6 div{
+            width: 40px;
+            height: 40px;
+            background-color: cyan;
+        }
+        .flex-container6 .div3{
+            flex-basis: 100px;
+        }
+        .flex-container6{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-container7 div{
+            flex-basis: 100px;
+            background-color: lightsalmon;
+            margin: 0;
+        }
+        .flex-container7 .div3{
+            flex-grow: 1;
+        }
+
+        .flex-container7 .div4{
+            flex-grow: 2;
+        }
+
+
+        .flex-container7{
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="flexbox flex-container5">
+        <div class="div1">DIV1</div>
+        <div class="div2">DIV2</div>
+        <div class="div3">DIV3</div>
+        <div class="div4">DIV4</div>
+    </div>
+    <div class="flexbox flex-container6">
+        <div class="div1">DIV1</div>
+        <div class="div2">DIV2</div>
+        <div class="div3">DIV3</div>
+        <div class="div4">DIV4</div>
+    </div>
+    <div class="flexbox flex-container7">
+        <div class="div1">DIV1</div>
+        <div class="div2">DIV2</div>
+        <div class="div3">DIV3</div>
+        <div class="div4">DIV4</div>
+    </div>    
+</body>
+</html>

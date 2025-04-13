@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Content</title>
+    <style>
+        .container{
+            border:2px solid #000;
+            padding: 16px;
+            height: 300px;
+            width: 300px;
+            background-color: aquamarine;
+            margin-bottom: 16px;
+        }
+        .item{
+            background-color: blanchedalmond;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .fit-content .item{ 
+            width: fit-content; /*Fica do tamanho da tela*/
+        }
+        .min-content .item{
+            width: min-content; /*Fica do tamanho da maior palavra*/
+        }
+        .max-content .item{
+            width: max-content; /*Fica do tamanho da maior frase*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container fit-content">
+        <div class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque sunt sed ullam inventore, mollitia hic reprehenderit velit esse deleniti unde nam iure atque, asperiores officia sit, incidunt nemo non animi?</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, id!</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, fugit cupiditate? Architecto accusamus hic aliquam, nulla minus eum obcaecati? Porro?</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, nam officiis iure nostrum quis atque quo animi alias eaque velit doloremque modi ab dolorum numquam exercitationem enim perspiciatis repellendus, odio, et asperiores doloribus similique? Nulla dolore dolorem facere reprehenderit quam illum, repudiandae architecto, quod totam a quasi, ipsa hic labore?</div>
+    </div>
+    <div class="container min-content">
+        <div class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque sunt sed ullam inventore, mollitia hic reprehenderit velit esse deleniti unde nam iure atque, asperiores officia sit, incidunt nemo non animi?</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, id!</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, fugit cupiditate? Architecto accusamus hic aliquam, nulla minus eum obcaecati? Porro?</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, nam officiis iure nostrum quis atque quo animi alias eaque velit doloremque modi ab dolorum numquam exercitationem enim perspiciatis repellendus, odio, et asperiores doloribus similique? Nulla dolore dolorem facere reprehenderit quam illum, repudiandae architecto, quod totam a quasi, ipsa hic labore?</div>
+    </div>
+    <div class="container max-content">
+        <div class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque sunt sed ullam inventore, mollitia hic reprehenderit velit esse deleniti unde nam iure atque, asperiores officia sit, incidunt nemo non animi?</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, id!</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, fugit cupiditate? Architecto accusamus hic aliquam, nulla minus eum obcaecati? Porro?</div>
+        <div class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, nam officiis iure nostrum quis atque quo animi alias eaque velit doloremque modi ab dolorum numquam exercitationem enim perspiciatis repellendus, odio, et asperiores doloribus similique? Nulla dolore dolorem facere reprehenderit quam illum, repudiandae architecto, quod totam a quasi, ipsa hic labore?</div>
+    </div>
+</body>
+</html>
