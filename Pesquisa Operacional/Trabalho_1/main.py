@@ -3,7 +3,7 @@ palavra = ""
 isMax = False
 funcaoC = []
 contadorN = 0
-funcaoB = [[]]
+matrizA = ([[]])
 
 with (open("funcao.txt", "r") as f):
     lista = f.readlines()
@@ -28,11 +28,11 @@ for elemento in funcaoCaracteres:
     if elemento == '\n':
         contadorN += 1
     if elemento != '\n' and contadorN == 0:
-        if elemento[0].isdigit():
+        if elemento[0].isdigit() or elemento[0] == '-':
             funcaoC.append(elemento[0])
-    if elemento != '\n' and contadorN >= 1:
+    if elemento != '\n' or elemento[0] == '-' and contadorN >= 1:
         if elemento[0].isdigit():
-            funcaoB.append(elemento[0])
+            matrizA[0].append(elemento[0])
 
 print(funcaoC)
-print(funcaoB)
+print(matrizA)
