@@ -36,3 +36,5 @@ for elemento in funcaoCaracteres:
 
 print(funcaoC)
 print(matrizA)
+
+def function 

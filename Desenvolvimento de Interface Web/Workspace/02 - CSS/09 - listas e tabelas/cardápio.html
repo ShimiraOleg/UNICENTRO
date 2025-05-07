@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardápio</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        table{
+            width: 80%;
+            margin: auto;
+            background-color: beige;
+            border-collapse: collapse;
+        }
+        caption{
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+        th{
+            background-color: darkkhaki;
+            border: 2px solid darkgoldenrod;
+            padding: 16px;
+        }
+        td{
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>Tabela de Preços</caption>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Item</th>
+                <th>Valor</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3">Alimento</td>
+                <td>Hamburger</td>
+                <td>R$: 25,00</td>                
+            </tr>
+            <tr>
+                <td>Cachorro Quente</td>
+                <td>R$: 20,00</td>                
+            </tr>
+            <tr>
+                <td>Pizza</td>
+                <td>R$: 22,00</td>                
+            </tr>
+            <tr>
+                <td rowspan="4">Bebida</td>
+                <td>Água</td>
+                <td>R$: 3,00</td>                
+            </tr>
+            <tr>
+                <td>Refrigerante</td>
+                <td>R$: 5,00</td>                
+            </tr>
+            <tr>
+                <td>Suco</td>
+                <td>R$: 6,00</td>                
+            </tr>
+            <tr>
+                <td>Cerveja</td>
+                <td>R$: 7,00</td>                
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Valores Sujeitos a Alteração</td>
+            </tr>   
+        </tfoot>
+    </table>
+</body>
+</html>
