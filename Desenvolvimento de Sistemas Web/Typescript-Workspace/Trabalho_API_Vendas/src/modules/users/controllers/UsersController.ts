@@ -3,7 +3,6 @@ import ListUserService from "../services/ListUserService";
 import CreateUserService from "../services/CreateUserService";
 
 export default class UsersController{
-
     public async index(request: Request, response: Response, next: NextFunction) : Promise<Response | void>{
         try{
             const listUser = new ListUserService();
