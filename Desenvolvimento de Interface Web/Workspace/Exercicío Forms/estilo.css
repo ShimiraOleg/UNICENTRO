@@ -1,0 +1,80 @@
+html{
+    background-color: blue;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form{
+    width: 90%;
+    min-width: 28.125em;
+    max-width: 35em;
+    background-color: #fff;
+}
+
+fieldset{
+    border: none;
+    margin: 3em;
+    padding: 0;
+}
+
+label, input{
+    display: block;
+    width: 100%;
+    padding: 1em 0;
+}
+
+label{
+    text-transform: uppercase;
+}
+
+input{
+    border: 1px solid transparent;
+    border-bottom-color: black;
+    margin: .5em 0 2.5em;
+    outline: 0;
+}
+
+legend{
+    text-align: center;
+    font-size: 2.4em;
+}
+
+.btn{
+    background-color: blue;
+    color: #fff;
+    cursor: pointer;
+    padding: .7em;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+}
+
+.btn2{
+    background-color: #fff;
+    cursor: pointer;
+    padding: .7em;
+    text-transform: uppercase;
+    font-size: 1em;
+    border: none;
+}
+
+.btn3{
+    text-align: right;
+    background-color: #fff;
+    cursor: pointer;
+    padding: .7em;
+    font-size: .7em;
+    border: none;
+}
+.action{
+    display: flex;
+    justify-content: space-between;
+}

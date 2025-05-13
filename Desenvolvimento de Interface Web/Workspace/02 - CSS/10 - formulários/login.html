@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        html{
+            background-color: #95a5a6;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 110vh;
+            margin: 0;
+        }
+        form{
+            width: 400px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            box-shadow: 3px 3px 10px #333;
+        }
+        input, label{
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        label{
+            margin-bottom: .25em;
+        }
+        input{
+            padding: .75em;
+            border-radius: 5px;
+            border: 1px solid #bbb;
+            margin-bottom: 1.5em;
+            font-size: 1em;
+        }
+        fieldset{
+            border: none;
+        }
+        legend{
+            padding: 1em;
+            text-align: center;
+            font-weight: bold;
+            color: #454e4f;
+            font-size: 1.2em;
+        }
+        .action{
+            display: flex;
+            gap: 1em;
+        }
+        .btn{
+            background-color: #95a5a6;
+            color: #fff;
+            cursor: pointer;
+        }        
+        .btn2{
+            background-color: #FA8072;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="#" method="get">
+        <fieldset>
+            <legend>Insira seus dados</legend>
+            <label for="user">Usuário</label>
+            <input type="text" name="user" id="user" required>
+            <label for="pass">Senha</label>
+            <input type="password" name="pass" id="pass" required>
+            <div class="action">
+                <input type="reset" value="Limpar" class="btn2">
+                <input type="submit" value="Entrar" class="btn">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

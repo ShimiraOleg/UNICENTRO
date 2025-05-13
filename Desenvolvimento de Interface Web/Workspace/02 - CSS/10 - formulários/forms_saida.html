@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulários de Saída</title>
+</head>
+
+<body>
+    <h1>Meter</h1>
+    <meter min="0" max="100" low="30" high="80" value="50"></meter>
+    <h1>Progress</h1>
+    <progress max="100" value="50"></progress>
+    <form oninput="result.value = a.value * b.value;">
+        <fieldset>
+            <legend>OUTPUT</legend>
+            <input type="number" name="a" id="a"> *
+            <input type="number" name="b" id="b"> = 
+            <output name="result" for="a b"></output>
+        </fieldset>
+    </form>
+</body>
+
+</html>
