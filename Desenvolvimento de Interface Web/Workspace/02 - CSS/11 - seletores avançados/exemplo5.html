@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo Elementos</title>
+    <style>
+        p{
+            text-align: center;
+        }
+        p::before{
+            content: "<<<< ";
+        }
+        p::after{
+            content: " >>>>";
+        }
+        div::before{
+            content:"";
+            width: 1em;
+            height: 1em;
+            background-color: red;
+            display: block;
+        }
+        div::after{
+            content: url(https://cdn-icons-png.flaticon.com/256/69/69544.png);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Parágrafo com texto simples.</p>
+    </div>
+</body>
+</html>

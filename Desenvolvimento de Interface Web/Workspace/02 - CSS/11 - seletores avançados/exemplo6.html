@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo Classes</title>
+    <style>
+        button{
+            background-color: gray;
+            color: white;
+            border: none;
+            padding: 1em;
+            margin-bottom: .5em;
+        }
+        button:disabled{
+            opacity: .5;
+        }
+        p:empty::before{
+            content: "parágrafo";
+        }
+    </style>
+</head>
+<body>
+    <button>Vai</button>
+    <button disabled>Vai disabled</button>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, commodi!</p>
+    <p> </p>
+    <p>Pós Espaço</p>
+    <p></p>
+    <p>Pós Sem Espaço</p>
+</body>
+</html>
