@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Transformação</title>
+    <style>
+        div{
+            outline: 1px solid black;
+            width: 200px;
+            margin: .5em auto;
+        }
+        p{
+            width: 50%;
+        }
+        .destaque{
+            background-color: yellow;
+        }
+        .div1 .destaque{
+            transform: translateX(50px);
+        }      
+        .div2 .destaque{
+            transform: rotate(90deg);
+        }        
+        .div3 .destaque{
+            transform: scale(2)
+        }        
+        .div4 .destaque{
+            transform: skew(25deg,45deg)
+        }        
+        .div5 .destaque{
+            transform: translate(50px, -50px) rotate(90deg);
+        }        
+        .div6 .destaque{
+            transform: translateX(50px);
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>
+    <div class="div2">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>    
+    <div class="div3">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>    
+    <div class="div4">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>    
+    <div class="div5">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>    
+    <div class="div6">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p class="destaque">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, explicabo.</p>
+    </div>
+</body>
+</html>
