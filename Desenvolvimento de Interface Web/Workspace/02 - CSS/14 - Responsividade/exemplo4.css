@@ -1,0 +1,24 @@
+body{
+    background-color: #696969;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+h1{
+    font-weight: 300;
+}
+.card_container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.card{
+    background-color: rgb(39, 39, 39);
+    color: #ffffff;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+@media screen and (min-width: 800px) and (orientation: landscape){
+    .card_container{
+        flex-direction: row;
+    }
+}
