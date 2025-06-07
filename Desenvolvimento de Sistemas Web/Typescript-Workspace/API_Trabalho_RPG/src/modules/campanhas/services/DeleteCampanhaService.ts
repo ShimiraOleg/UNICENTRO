@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import CampanhaRepository from "../typeorm/repositories/CampanhasRepository";
+import CampanhasRepository from "../typeorm/repositories/CampanhasRepository";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest{
@@ -9,7 +9,7 @@ interface IRequest{
 
 export default class DeleteCampanhaService{
     public async execute({campanha_id, mestre_id} : IRequest): Promise<void>{
-        const campanhasRepository = getCustomRepository(CampanhaRepository);
+        const campanhasRepository = getCustomRepository(CampanhasRepository);
 
         const campanha = await campanhasRepository.findById(campanha_id);
         if(!campanha){

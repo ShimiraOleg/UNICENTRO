@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import Campanha from "../typeorm/entities/Campanha";
 import CampanhasRepository from "../typeorm/repositories/CampanhasRepository";
-import UsuariosRepository from "@modules/usuarios/typeorm/repositories/UsuariosRepository";
 import AppError from "@shared/errors/AppError";
 
 interface IRequest{
