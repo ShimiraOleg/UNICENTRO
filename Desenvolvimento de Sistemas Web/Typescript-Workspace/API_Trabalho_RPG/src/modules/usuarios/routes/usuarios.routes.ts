@@ -1,7 +1,7 @@
 import { Router } from "express";
 import UsuariosController from "../controllers/UsuariosController";
 import { celebrate, Joi, Segments } from "celebrate";
-import isAuthenticadted from "../../../shared/http/middlewares/isAuthenticated";
+import isAuthenticated from "../../../shared/http/middlewares/isAuthenticated";
 import multer from 'multer';
 import uploadConfig from '@config/upload';
 import UsuarioAvatarController from "../controllers/UsuarioAvatarController";
@@ -11,7 +11,7 @@ const usuariosController = new UsuariosController();
 const usuarioAvatarController = new UsuarioAvatarController();
 const upload = multer(uploadConfig)
 
-usuariosRouter.get('/', isAuthenticadted, async (req, res, next) =>{
+usuariosRouter.get('/', isAuthenticated, async (req, res, next) =>{
     try{
         await usuariosController.index(req, res, next)
     }catch(err){
@@ -34,7 +34,7 @@ usuariosRouter.post('/', celebrate({
     }
 });
 
-usuariosRouter.patch('/avatar', isAuthenticadted, upload.single('avatar'), async (req, res, next) =>{
+usuariosRouter.patch('/avatar', isAuthenticated, upload.single('avatar'), async (req, res, next) =>{
     try{
         await usuarioAvatarController.update(req, res, next);
     }catch(err){

@@ -11,4 +11,8 @@ export default class CampanhaRepository extends Repository<Campanha>{
         const campanha = this.findOne({where: {id}});
         return campanha
     }
+    public async findByMestreId(mestre_id: string) : Promise <Campanha[]>{
+        const campanha = this.find({where : {mestre_id}});
+        return campanha
+    }
 }

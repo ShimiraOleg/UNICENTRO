@@ -1,12 +1,12 @@
 import { Router } from "express";
 import PerfilController from "../controllers/PerfilController";
-import isAuthenticadted from "@shared/http/middlewares/isAuthenticated";
+import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
 import { celebrate, Joi, Segments } from "celebrate";
 
 
 const perfilRouter = Router();
 const perfilController = new PerfilController();
-perfilRouter.use(isAuthenticadted);
+perfilRouter.use(isAuthenticated);
 
 perfilRouter.get('/', async(req, res, next)=>{
     try{
