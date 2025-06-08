@@ -17,7 +17,7 @@ export default class CampanhasController{
         }
     }
 
-    public async UsuarioCampanhas(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
+    public async usuarioCampanhas(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
         try{
             const mestre_id = request.usuario.id
             const listUsuarioCampanhas = new ListUsuarioCampanhasService();

@@ -16,7 +16,7 @@ campanhasRouter.get('/', async (req, res, next) =>{
 
 campanhasRouter.get('/minhas', isAuthenticated, async (req, res, next) =>{
     try{
-        await campanhasController.UsuarioCampanhas(req, res, next);
+        await campanhasController.usuarioCampanhas(req, res, next);
     }catch(err){
         next(err);
     }
