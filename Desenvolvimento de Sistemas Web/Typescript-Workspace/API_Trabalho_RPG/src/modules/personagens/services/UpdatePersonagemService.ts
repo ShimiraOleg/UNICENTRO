@@ -18,7 +18,8 @@ export default class UpdatePersonagemService{
     public async execute({personagem_id, usuario_id, nome, classe, raca, nivel, atributos}: IRequest): Promise<Personagem>{
         const personagensRepository = getCustomRepository(PersonagensRepository);
 
-        const personagem = await personagensRepository.findByIdWithPermissions(personagem_id);
+        const personagem = await personagensRepository.findByIdWithRelations(personagem_id);
+        console.log(personagem);    
         if(!personagem){
             throw new AppError('Personagem não encontrado.');
         }
@@ -31,12 +32,8 @@ export default class UpdatePersonagemService{
             throw new AppError(`O nível máximo permitido nesta campanha é ${personagem.campanha.nivel_max}.`);
         }
         if(nome && nome !== personagem.nome){
-            const personagemNomeIgual = await personagensRepository.createQueryBuilder('personagem')
-                                            .where('personagem.nome = :nome', { nome })
-                                            .andWhere('personagem.campanha_id = :campanha_id', {campanha_id: personagem.campanha_id})
-                                            .andWhere('personagem.id != :id', {id: personagem_id})
-                                            .getOne();
-            if(personagemNomeIgual){
+            const personagemNomeIgual = await personagensRepository.findByName(nome);
+            if(personagemNomeIgual && personagemNomeIgual.id !== personagem.id){
                 throw new AppError('Já existe uma personagem com esse nome nesta campanha.');
             }
         }

@@ -34,10 +34,8 @@ export default class CreatePersonagemService{
         if(nivelPersonagem > campanhaExists.nivel_max){
             throw new AppError(`O nível máximo permitido nesta campanha é ${campanhaExists.nivel_max}.`);
         }
-        const personagemExists = await personagensRepository.createQueryBuilder('personagem')
-                                    .where('personagem.nome = :nome', { nome })
-                                    .andWhere('personagem.campanha_id = :campanha_id', { campanha_id })
-                                    .getOne();
+        const personagemExists = await personagensRepository.findByName(nome);
+        console.log(personagemExists)
         if(personagemExists){
             throw new AppError('Já existe um personagem com esse nome nesta campanha.');
         }

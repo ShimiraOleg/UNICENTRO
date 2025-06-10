@@ -12,7 +12,7 @@ export default class DeletePersonagemService{
     public async execute({personagem_id, usuario_id}: IRequest): Promise<void>{
         const personagensRepository = getCustomRepository(PersonagensRepository);
 
-        const personagem = await personagensRepository.findByIdWithPermissions(personagem_id);
+        const personagem = await personagensRepository.findByIdWithRelations(personagem_id);
         if(!personagem){
             throw new AppError('Personagem não encontrado.');
         }

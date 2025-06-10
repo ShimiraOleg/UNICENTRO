@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import ListPersonagemService from "../services/ListPersonagemService";
-import ListUsuarioPersonagensService from "../services/ListUsuarioPersonagensService";
 import ListCampanhaPersonagensService from "../services/ListCampanhaPersonagensService";
 import ShowPersonagemService from "../services/ShowPersonagemService";
 import CreatePersonagemService from "../services/CreatePersonagemService";
@@ -17,18 +16,7 @@ export default class PersonagensController{
             next(err);
         }
     }
-
-    public async usuarioPersonagens(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
-        try{
-            const jogador_id = request.usuario.id
-            const listUsuarioPersonagens = new ListUsuarioPersonagensService();
-            const personagens = await listUsuarioPersonagens.execute({ jogador_id });
-            return response.json(personagens);
-        }catch(err){
-            next(err);
-        }
-    }
-
+    
     public async campanhaPersonagens(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
         try{
             const { campanha_id } = request.params;

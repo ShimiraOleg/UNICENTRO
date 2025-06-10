@@ -55,11 +55,11 @@ campanhasRouter.put('/:id', isAuthenticated, celebrate({
         id: Joi.string().uuid().required()
     },
     [Segments.BODY]: {
-        nome: Joi.string().optional(),
-        descricao: Joi.string().optional(),
-        sistema_rpg: Joi.string().optional(),
-        nivel_max: Joi.number().integer().min(1).optional(),
-        status: Joi.string().valid('ativa', 'pausada', 'concluida', 'cancelada').optional()
+        nome: Joi.string().required(),
+        descricao: Joi.string().required(),
+        sistema_rpg: Joi.string().required(),
+        nivel_max: Joi.number().integer().min(1).required(),
+        status: Joi.string().valid('ativa', 'pausada', 'concluida', 'cancelada').required()
     }
 }), async (req, res, next) => {
     try {

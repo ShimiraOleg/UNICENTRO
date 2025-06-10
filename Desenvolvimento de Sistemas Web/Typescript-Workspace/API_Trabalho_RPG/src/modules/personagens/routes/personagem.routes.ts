@@ -13,13 +13,6 @@ personagensRouter.get('/', async (req, res, next) => {
         next(err);
     }
 });
-personagensRouter.get('/meus', isAuthenticated, async (req, res, next) => {
-    try {
-        await personagensController.usuarioPersonagens(req, res, next);
-    } catch (err) {
-        next(err);
-    }
-});
 personagensRouter.get('/campanha/:campanha_id', celebrate({
     [Segments.PARAMS]: {
         campanha_id: Joi.string().uuid().required()
@@ -63,11 +56,11 @@ personagensRouter.put('/:id', isAuthenticated, celebrate({
         id: Joi.string().uuid().required()
     },
     [Segments.BODY]: {
-        nome: Joi.string().optional(),
-        classe: Joi.string().optional(),
-        raca: Joi.string().optional(),
-        nivel: Joi.number().integer().min(1).optional(),
-        atributos: Joi.object().optional()
+        nome: Joi.string().required(),
+        classe: Joi.string().required(),
+        raca: Joi.string().required(),
+        nivel: Joi.number().integer().min(1).required(),
+        atributos: Joi.object().required()
     }
 }), async (req, res, next) => {
     try {

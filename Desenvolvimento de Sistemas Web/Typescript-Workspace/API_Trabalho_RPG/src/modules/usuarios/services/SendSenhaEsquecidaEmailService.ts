@@ -19,7 +19,6 @@ export default class SendSenhaEsquecidaEmailService{
             throw new AppError('O usuário não existe.')
         }
         const {token} = await usuariosTokensRepository.generate(usuario.id);
-        console.log(token);
         await EtherealMail.sendMail({
             to: {name: usuario.nome, email: usuario.email},
             subject: '[API RPG] Recuperação de Senha',
