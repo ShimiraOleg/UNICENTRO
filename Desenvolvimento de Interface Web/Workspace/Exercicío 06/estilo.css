@@ -40,7 +40,7 @@ p{
     margin-right: 5em;
 }
 .paragrafo_grande{
-    padding: 1em;
+    padding: em;
     box-sizing: content-box;
 }
 
