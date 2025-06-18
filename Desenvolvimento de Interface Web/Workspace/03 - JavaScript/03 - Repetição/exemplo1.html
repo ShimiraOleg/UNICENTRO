@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estruturas de repetição</title>
+  </head>
+  <body>
+    <script>
+      let n = parseFloat(prompt("digite um número"));
+      if (!isNaN(n)) {
+        let cont = 0;
+        while (cont <= 100) {
+          document.write(n + "x" + cont + " :" + n * cont + "<br />");
+          cont++;
+        }
+      } else {
+        alert("digite apenas números");
+      }
+    </script>
+    <h1>Estruturas de Repetição</h1>
+  </body>
+</html>

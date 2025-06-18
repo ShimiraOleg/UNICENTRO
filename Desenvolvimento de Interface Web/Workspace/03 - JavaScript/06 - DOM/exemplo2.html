@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <div class="top-bar">
+        <p>Bem vindo, </p>
+    </div>
+    <script>
+        (function(){
+            const nomeUsuário = "Shimira"
+            const elemento = document.querySelector(".top-bar p")
+            if(nomeUsuário){
+                elemento.innerHTML += "<b>" + nomeUsuário + "</b>"
+            } else {
+                const elementoRemover = elemento.parentElement
+                elementoRemover.parentElement.removeChild(elementoRemover)
+            }
+        })()
+    </script>
+</body>
+</html>

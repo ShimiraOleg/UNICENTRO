@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays e Objetos</title>
+    <script>
+    const diasDaSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+    const date = new Date()
+    const hoje = date.getDay();
+    if(hoje > 0 || hoje < 6) {
+      alert("Olá, hoje é " + diasDaSemana[hoje] + "-Feira")
+    } else {
+      alert("Olá, hoje é " + diasDaSemana[hoje])
+    }
+    </script>
+  </head>
+  <body>
+    <h1>Objetos</h1>
+  </body>
+</html>

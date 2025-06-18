@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays e Objetos</title>
+    <script>
+      const numeros = [2, undefined, 31, 0, "9", 12, "qualquer", 98, true, [], null]
+      let soma = 0
+      for(let i = 0; i <= numeros.length; i++){
+        let n = numeros[i]
+        if(typeof(n) === "number")
+        {
+          soma = soma + n;
+        }
+      }
+      alert("A soma é: " + soma)
+    </script>
+  </head>
+  <body>
+    <h1>Objetos</h1>
+  </body>
+</html>
