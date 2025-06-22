@@ -1,15 +1,13 @@
 function operacoesComDoisNumeros(num1, num2) {    
     if (isNaN(num1) || isNaN(num2)) {
-        console.log("Erro: Por favor, digite números válidos.");
+        console.log("Digite números válidos.");
         return;
     }
-    
     const soma = num1 + num2;
     const subtracao = num1 - num2;
     const multiplicacao = num1 * num2;
     const divisao = num2 !== 0 ? num1 / num2 : "Divisão por zero!";
     const resto = num2 !== 0 ? num1 % num2 : "Divisão por zero!";
-    
     console.log(`Números: ${num1} e ${num2}`);
     console.log(`Soma: ${soma}`);
     console.log(`Subtração: ${subtracao}`);
@@ -20,10 +18,9 @@ function operacoesComDoisNumeros(num1, num2) {
 
 function verificarMaioridade(idade) {    
     if (isNaN(idade) || idade < 0) {
-        console.log("Erro: Por favor, digite uma idade válida.");
+        console.log("Digite uma idade válida.");
         return;
     }
-    
     if (idade >= 18) {
         console.log(`Idade: ${idade} anos - Você é maior de idade.`);
     } else {
@@ -32,12 +29,8 @@ function verificarMaioridade(idade) {
 }
 
 function contadorDeUmAteN(n) {
-    if(n === undefined){
-        throw Error("valor inválido")
-    }
-    
     if (isNaN(n) || n <= 0) {
-        console.log("Erro: Por favor, digite um número inteiro positivo.");
+        console.log("Digite um número inteiro positivo.");
         return;
     }
     
@@ -47,11 +40,9 @@ function contadorDeUmAteN(n) {
     }
 }
 
-function somaNumeroImpares() {
-    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+function somaNumeroImpares(array) {
     let soma = 0;
     let impares = [];
-    
     for (let i = 0; i < array.length; i++) {
         if (array[i] % 2 !== 0) {
             soma += array[i];
@@ -71,20 +62,19 @@ function calcularIMC(peso, altura) {
     const imc = peso / (altura * altura);
     let classificacao;
     
-    if (imc < 18.5) {
-        classificacao = "Abaixo do peso";
-    } else if (imc < 25) {
-        classificacao = "Peso normal";
-    } else if (imc < 30) {
-        classificacao = "Sobrepeso";
-    } else if (imc < 35) {
+    if (imc < 16.9) {
+        classificacao = "IMC muito baixo";
+    } else if (imc < 18.4) {
+        classificacao = "Baixo";
+    } else if (imc < 24.9) {
+        classificacao = "Normal";
+    } else if (imc < 29.9) {
+        classificacao = "Acima do peso";
+    } else if (imc < 34.9) {
         classificacao = "Obesidade grau 1";
-    } else if (imc < 40) {
+    } else if (imc < 39.9) {
         classificacao = "Obesidade grau 2";
-    } else {
-        classificacao = "Obesidade grau 3";
     }
-    
     console.log(`Peso: ${peso} kg`);
     console.log(`Altura: ${altura} m`);
     console.log(`IMC: ${imc.toFixed(2)}`);
@@ -119,8 +109,7 @@ function mediaDeNotas(nota1, nota2, nota3, nota4) {
     }
 }
 
-function maiorValorDaLista() {
-    const array = [45, 23, 67, 89, 12, 34, 56, 78, 90, 11];
+function maiorValorDaLista(array) {
     let maior = array[0];
     for (let i = 1; i < array.length; i++) {
         if (array[i] > maior) {
@@ -142,13 +131,16 @@ function inversorDePalavra(palavra) {
     console.log(`Texto invertido: "${palavraInvertida}"`);
 }
 
+let array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+let array2 = [45, 23, 67, 89, 12, 34, 56, 78, 90, 11]
+
 operacoesComDoisNumeros(5, 5);
 verificarMaioridade(17);
 contadorDeUmAteN(5);
-somaNumeroImpares();
+somaNumeroImpares(array1);
 calcularIMC(110, 2);
 numeroParOuImpar(3);
 contadorRegressivo(4);
 mediaDeNotas(5,6,7,9);
-maiorValorDaLista();
+maiorValorDaLista(array2);
 inversorDePalavra("Teste");
