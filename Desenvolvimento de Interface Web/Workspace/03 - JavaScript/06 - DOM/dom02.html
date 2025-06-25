@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Teste DOM</h1>
+    <div class="container">
+      <p>Teste 1</p>
+      <p>Lorem <a href="#">link</a>.</p>
+      <p>Teste 2</p>
+      <h2>Lista</h2>
+      <ul>
+        <li>Item 1</li>
+        <li>
+          Item 2
+          <ul>
+            <li>Item 2.a</li>
+            <li>Item 2.b</li>
+            <li>Item 2.c</li>
+          </ul>
+        </li>
+        <li>Item <a href="#">link</a>.</li>
+      </ul>
+    </div>
+    <script>
+      //console.log(document.body)
+      //console.log(document.body.parentElement)
+      //console.log(document.body.parentNode)
+      const html = document.body.parentElement;
+      //console.log(html);
+      //console.log(html.parentElement);
+      //console.log(html.parentNode);
+      const h2 = document.querySelector("h2");
+      //console.log(h2.nextSibling.nextSibling);
+      //console.log(h2.nextElementSibling);
+      //console.log(h2.previousSibling.previousSibling);
+      //console.log(h2.previousElementSibling);
+      const h2NextSibling = h2.nextElementSibling
+      h2NextSibling.style.background = "yellow"
+      const sublist = document.querySelector("ul ul")
+      //console.log(sublist.childNodes)
+      //console.log(sublist.children)
+      const link = document.querySelector("a")
+      //console.log(link.parentElement.childNodes)
+      //console.log(link.parentElement.children)
+      console.log(link.parentElement.firstChild)
+      console.log(link.parentElement.firstElementChild)
+      console.log(link.parentElement.lastChild)
+      console.log(link.parentElement.lastElementChild)
+    </script>
+  </body>
+</html>

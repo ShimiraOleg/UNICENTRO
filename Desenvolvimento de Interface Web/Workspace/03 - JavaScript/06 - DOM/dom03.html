@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      .container2{
+        background-color: #ccc;
+      }
+      .container2 p{
+        border: 1px solid black;
+        margin: 10px;
+        padding: 1opx;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Teste DOM</h1>
+    <div class="container2">
+      <p>Paragrafo 1</p>
+      <p>Paragrafo 2</p>
+      <p>Paragrafo 3</p>
+      <p>Paragrafo 4</p>
+    </div>
+    <div class="container">
+      <p>Teste 1</p>
+      <p>Lorem <a href="#">link</a>.</p>
+      <p>Teste 2</p>
+      <h2>Lista</h2>
+      <ul>
+        <li>Item 1</li>
+        <li>
+          Item 2
+          <ul>
+            <li>Item 2.a</li>
+            <li>Item 2.b</li>
+            <li>Item 2.c</li>
+          </ul>
+        </li>
+        <li>Item <a href="#">link</a>.</li>
+      </ul>
+    </div>
+    <script>
+      const title = document.createElement("h1")
+      const atribute = document.createAttribute("id")
+      atribute.value = "title1"
+      title.setAttributeNode(atribute)
+      const text = document.createTextNode("criando nós no DOM")
+      title.appendChild(text)
+      title.setAttribute("title", "title inserido diretamente")
+      title.setAttribute("style", "color: red")
+      console.log(title)
+      //document.body.appendChild(title)
+      //document.querySelector(".container").appendChild(title)
+      //document.querySelector(".container").append(title)
+      //document.querySelector(".container").prepend(title)
+      //document.querySelector(".container").prepend(title, "texto novo")
+      const container2 = document.querySelector(".container2")
+      //container2.insertAdjacentHTML("beforebegin", "<b>beforebegin</b>")
+      //container2.insertAdjacentHTML("afterbegin", "<b>afterbegin</b>")    
+      //container2.insertAdjacentHTML("beforeend", "<b>beforeend</b>")    
+      //container2.insertAdjacentHTML("afterend", "<b>afterend</b>")
+      //container2.insertAdjacentText("beforebegin", " texto inserido dinamicamente")
+      const em = document.createElement("em")
+      em.textContent = "texto especial"
+      container2.insertAdjacentElement("beforebegin", em)
+      const list = document.querySelector("ul ul")
+      list.remove()    
+    </script>
+  </body>
+</html>
