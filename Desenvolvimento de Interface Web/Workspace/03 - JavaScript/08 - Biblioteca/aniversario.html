@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniversário</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ccc;
+            margin: 0;
+        }
+        #principal{
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="principal">
+        <h2>Insira seu Aniversário</h2>
+        <input type="date" id="txtNascimento"/>
+        <div id="quantoFalta"></div>
+    </div>
+    <script src="aniversario.js"></script>
+    <script>
+        document.getElementById("txtNascimento").addEventListener("change", checkBirthday)
+        function checkBirthday(e){
+            console.log(e.target.value)
+            const container = document.getElementById("quantoFalta")
+            const arr = e.target.value.split("-")
+            if (arr.lenght > 2){
+                container.innerHTML = `<p> Falta(m) ${quantoFaltaPara(arr[1], arr[2])} dias para o seu aniversário. </p>`
+            } else {
+                container.textContent = " ";
+            }
+        }
+    </script>
+</body>
+</html>
