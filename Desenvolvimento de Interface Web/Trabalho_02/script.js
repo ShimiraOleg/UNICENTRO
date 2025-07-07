@@ -1,5 +1,5 @@
 /**
- * MOMENTOS ETERNOS - JavaScript Simplificado
+ * MOMENTOS ETERNOS - JavaScript Corrigido
  * Funcionalidades essenciais com código limpo e moderno
  */
 
@@ -16,12 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initForm();
   initTestimonials();
   setMinDate();
+  initAnimations();
 });
 
 // ===== TEMA =====
 function initTheme() {
   const toggle = document.querySelector('.theme-toggle');
   const icon = document.querySelector('.theme-icon');
+  
+  if (!toggle || !icon) return;
   
   // Verifica preferência salva ou do sistema
   const savedTheme = localStorage.getItem('theme');
@@ -45,6 +48,8 @@ function initNavigation() {
   const header = document.querySelector('.header');
   const links = document.querySelectorAll('.nav__link');
   
+  if (!header) return;
+  
   // Header scroll effect
   let lastScroll = 0;
   window.addEventListener('scroll', () => {
@@ -64,12 +69,13 @@ function initNavigation() {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       
-      if (href.startsWith('#')) {
+      if (href && href.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(href);
         
         if (target) {
-          const offset = target.offsetTop - 70;
+          const headerHeight = header.offsetHeight || 70;
+          const offset = target.offsetTop - headerHeight;
           window.scrollTo({
             top: offset,
             behavior: 'smooth'
@@ -108,27 +114,82 @@ function initNavigation() {
 // ===== FORMULÁRIO =====
 function initForm() {
   const form = document.getElementById('contact-form');
+  if (!form) return;
+  
   const successMessage = form.querySelector('.form-success');
   
   // Formatação automática do telefone
   const phoneInput = document.getElementById('telefone');
-  phoneInput.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '');
-    
-    if (value.length > 10) {
-      value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
-    } else if (value.length > 5) {
-      value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
-    } else if (value.length > 2) {
-      value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-    }
-    
-    e.target.value = value;
+  if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length > 10) {
+        value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+      } else if (value.length > 5) {
+        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+      } else if (value.length > 2) {
+        value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+      }
+      
+      e.target.value = value;
+    });
+  }
+  
+  // Validação em tempo real
+  const inputs = form.querySelectorAll('input[required], textarea[required]');
+  inputs.forEach(input => {
+    input.addEventListener('blur', validateField);
+    input.addEventListener('input', clearError);
   });
+  
+  function validateField(e) {
+    const field = e.target;
+    const errorMessage = field.parentNode.querySelector('.error-message');
+    
+    if (!field.checkValidity() && field.value.trim() !== '') {
+      field.classList.add('error');
+      if (errorMessage) {
+        errorMessage.style.display = 'block';
+      }
+    } else {
+      field.classList.remove('error');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    }
+  }
+  
+  function clearError(e) {
+    const field = e.target;
+    const errorMessage = field.parentNode.querySelector('.error-message');
+    
+    if (field.checkValidity()) {
+      field.classList.remove('error');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    }
+  }
   
   // Envio do formulário
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    // Valida todos os campos obrigatórios
+    let isValid = true;
+    inputs.forEach(input => {
+      if (!input.checkValidity()) {
+        isValid = false;
+        input.classList.add('error');
+        const errorMessage = input.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+          errorMessage.style.display = 'block';
+        }
+      }
+    });
+    
+    if (!isValid) return;
     
     // Simula envio (substitua por sua lógica real)
     const button = form.querySelector('button[type="submit"]');
@@ -137,88 +198,258 @@ function initForm() {
     button.textContent = 'Enviando...';
     button.disabled = true;
     
-    // Simula delay de envio
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Mostra mensagem de sucesso
-    successMessage.hidden = false;
-    form.reset();
-    
-    button.textContent = originalText;
-    button.disabled = false;
-    
-    // Esconde mensagem após 5 segundos
-    setTimeout(() => {
-      successMessage.hidden = true;
-    }, 5000);
+    try {
+      // Simula delay de envio
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mostra mensagem de sucesso
+      if (successMessage) {
+        successMessage.hidden = false;
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      form.reset();
+      
+      // Esconde mensagem após 5 segundos
+      setTimeout(() => {
+        if (successMessage) {
+          successMessage.hidden = true;
+        }
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      alert('Erro ao enviar formulário. Tente novamente.');
+    } finally {
+      button.textContent = originalText;
+      button.disabled = false;
+    }
   });
 }
 
-// ===== DEPOIMENTOS =====
+// ===== DEPOIMENTOS CORRIGIDOS =====
 function initTestimonials() {
+  const testimonials = document.querySelector('.testimonials');
   const inputs = document.querySelectorAll('.testimonial-input');
-  let currentIndex = 0;
+  const navLabels = document.querySelectorAll('.testimonial-nav label');
   
-  // Auto-play
+  if (!testimonials || inputs.length === 0) return;
+  
+  let currentIndex = 0;
+  let interval;
+  let isPaused = false;
+  
+  // Função para ir para o próximo depoimento
   function nextTestimonial() {
+    if (isPaused) return;
+    
     currentIndex = (currentIndex + 1) % inputs.length;
     inputs[currentIndex].checked = true;
+    updateNavigation();
   }
   
-  let interval = setInterval(nextTestimonial, CONFIG.animationDelay);
+  // Função para ir para um depoimento específico
+  function goToTestimonial(index) {
+    if (index >= 0 && index < inputs.length) {
+      currentIndex = index;
+      inputs[currentIndex].checked = true;
+      updateNavigation();
+    }
+  }
   
-  // Pausa ao interagir
-  const testimonials = document.querySelector('.testimonials');
+  // Atualiza a navegação visual
+  function updateNavigation() {
+    navLabels.forEach((label, index) => {
+      if (index === currentIndex) {
+        label.classList.add('active');
+      } else {
+        label.classList.remove('active');
+      }
+    });
+  }
   
+  // Inicia o auto-play
+  function startAutoPlay() {
+    if (interval) clearInterval(interval);
+    interval = setInterval(nextTestimonial, CONFIG.animationDelay);
+  }
+  
+  // Para o auto-play
+  function stopAutoPlay() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
+  }
+  
+  // Event listeners para os inputs radio
+  inputs.forEach((input, index) => {
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        currentIndex = index;
+        updateNavigation();
+        stopAutoPlay();
+        setTimeout(startAutoPlay, 1000); // Reinicia após 1 segundo
+      }
+    });
+  });
+  
+  // Event listeners para os labels de navegação
+  navLabels.forEach((label, index) => {
+    label.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToTestimonial(index);
+      stopAutoPlay();
+      setTimeout(startAutoPlay, 1000); // Reinicia após 1 segundo
+    });
+  });
+  
+  // Controles de mouse
   testimonials.addEventListener('mouseenter', () => {
-    clearInterval(interval);
+    isPaused = true;
+    stopAutoPlay();
   });
   
   testimonials.addEventListener('mouseleave', () => {
-    interval = setInterval(nextTestimonial, CONFIG.animationDelay);
+    isPaused = false;
+    startAutoPlay();
   });
   
-  // Pausa ao selecionar manualmente
-  inputs.forEach((input, index) => {
-    input.addEventListener('change', () => {
-      currentIndex = index;
-      clearInterval(interval);
-      interval = setInterval(nextTestimonial, CONFIG.animationDelay);
-    });
+  // Controle de visibilidade da página
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoPlay();
+    } else if (!isPaused) {
+      startAutoPlay();
+    }
   });
+  
+  // Controle por teclado (acessibilidade)
+  testimonials.addEventListener('keydown', (e) => {
+    switch(e.key) {
+      case 'ArrowLeft':
+        e.preventDefault();
+        goToTestimonial(currentIndex > 0 ? currentIndex - 1 : inputs.length - 1);
+        stopAutoPlay();
+        setTimeout(startAutoPlay, 2000);
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        goToTestimonial((currentIndex + 1) % inputs.length);
+        stopAutoPlay();
+        setTimeout(startAutoPlay, 2000);
+        break;
+    }
+  });
+  
+  // Suporte a touch/swipe (básico)
+  let startX = 0;
+  let endX = 0;
+  
+  testimonials.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    stopAutoPlay();
+  });
+  
+  testimonials.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+    setTimeout(startAutoPlay, 1000);
+  });
+  
+  function handleSwipe() {
+    const threshold = 50; // mínimo de pixels para considerar swipe
+    const diff = startX - endX;
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // Swipe left - próximo
+        goToTestimonial((currentIndex + 1) % inputs.length);
+      } else {
+        // Swipe right - anterior
+        goToTestimonial(currentIndex > 0 ? currentIndex - 1 : inputs.length - 1);
+      }
+    }
+  }
+  
+  // Inicialização
+  inputs[0].checked = true; // Garante que o primeiro está selecionado
+  updateNavigation();
+  startAutoPlay();
+  
+  // Log para debug
+  console.log('Testimonials initialized with', inputs.length, 'items');
 }
 
 // ===== UTILITÁRIOS =====
 function setMinDate() {
   const dateInput = document.getElementById('data');
   if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+    dateInput.setAttribute('min', minDate);
   }
 }
 
-// ===== MELHORIAS DE PERFORMANCE =====
-// Lazy loading de imagens já está no HTML
-// Intersection Observer para animações sob demanda
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
+// ===== ANIMAÇÕES =====
+function initAnimations() {
+  // Intersection Observer para animações sob demanda
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.animationPlayState = 'running';
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
 
-// Observa elementos animados
-document.addEventListener('DOMContentLoaded', () => {
+  // Observa elementos animados
   const animatedElements = document.querySelectorAll('.benefit-card, .portfolio-item');
   animatedElements.forEach(el => {
-    el.style.animationPlayState = 'paused';
     observer.observe(el);
   });
+}
+
+// ===== MELHORIAS DE PERFORMANCE =====
+// Debounce para scroll
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Aplicar debounce aos eventos de scroll se necessário
+window.addEventListener('scroll', debounce(() => {
+  // Código adicional de scroll se necessário
+}, 10));
+
+// ===== TRATAMENTO DE ERROS =====
+window.addEventListener('error', (e) => {
+  console.error('Erro JavaScript:', e.error);
 });
+
+// ===== COMPATIBILITY =====
+// Polyfill para navegadores mais antigos
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function(s) {
+    var el = this;
+    do {
+      if (el.matches(s)) return el;
+      el = el.parentElement || el.parentNode;
+    } while (el !== null && el.nodeType === 1);
+    return null;
+  };
+}
