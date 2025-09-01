@@ -1,0 +1,71 @@
+name,release_date,developer,genres,price,expected_result
+Half-Life 2,2004-11-16,Valve,Action,7.19,01
+Portal,2007-10-10,Valve,Action,7.19,01
+Counter-Strike: Global Offensive,2012-08-21,Valve;Hidden Path Entertainment,Action;Free to Play,0.0,01
+Left 4 Dead 2,2009-11-19,Valve,Action,7.19,01
+Team Fortress 2,2007-10-10,Valve,Action;Free to Play,0.0,01
+Quake III Arena,2007-08-03,id Software,Action,12.99,01
+DOOM 3,2007-08-03,id Software,Action,0.0,01
+Fallout 3,2008-10-28,Bethesda Game Studios,RPG,7.99,10
+The Elder Scrolls V: Skyrim,2011-11-10,Bethesda Game Studios,RPG,9.99,10
+Mass Effect,2008-12-19,BioWare,Action;RPG,7.99,11
+Dragon Age: Origins,2009-11-05,BioWare,RPG,14.99,10
+Deus Ex: Human Revolution - Director's Cut,2013-10-25,Eidos Montreal;Feral Interactive (Mac),Action;RPG,12.99,11
+BioShock™ 2 Remastered,2016-09-15,2K Marin;2K China;Digital Extremes;2K Australia;Blind Squirrel,Action;RPG,13.99,11
+Call of Duty® 4: Modern Warfare®,2007-11-12,Infinity Ward;Aspyr (Mac),Action,19.99,01
+Garry's Mod,2006-11-29,Facepunch Studios,Indie;Simulation,6.99,00
+The Elder Scrolls III: Morrowind® Game of the Year Edition,2009-06-16,Bethesda Game Studios,RPG,12.99,01
+Gothic II: Gold Edition,2010-01-13,Piranha Bytes,Action;RPG,8.99,11
+STAR WARS™ - Knights of the Old Republic™,2009-09-05,BioWare;Aspyr (Mac),Adventure;RPG,7.19,10
+Baldur's Gate II: Enhanced Edition,2013-11-15,Beamdog,RPG;Strategy,14.99,10
+System Shock 2,2013-05-10,Irrational Games;Looking Glass Studios,Action;RPG,6.99,11
+Thief™ Gold,2012-05-22,Looking Glass Studios,Action;Simulation,4.99,01
+Deus Ex: Game of the Year Edition,2007-03-29,Ion Storm,Action,4.99,01
+Vampire: The Masquerade - Bloodlines,2007-03-22,Troika Games,Action,14.99,01
+Planescape: Torment: Enhanced Edition,2017-04-11,Beamdog,Adventure;RPG;Strategy,14.99,10
+Icewind Dale: Enhanced Edition,2014-10-30,Beamdog,Adventure;RPG;Strategy,14.99,10
+Neverwinter Nights: Enhanced Edition,2018-03-27,Beamdog,RPG,15.49,10
+Arcanum: Of Steamworks and Magick Obscura,2016-08-29,Troika Games,RPG,4.99,10
+Might & Magic® Heroes® VII,2015-09-29,Limbic Entertainment,RPG;Strategy,33.99,10
+Wizardry 8,2013-09-10,Sir-Tech Canada,Adventure;RPG,6.99,10
+Call of Duty: World at War,2008-11-18,Treyarch,Action,19.99,01
+Crysis,2008-09-17,Crytek,Action,9.99,01
+Far Cry®,2008-04-01,Crytek Studios,Action,8.59,01
+Max Payne,2008-01-04,Remedy Entertainment,Action,5.99,01
+Max Payne 2: The Fall of Max Payne,2008-01-04,Remedy Entertainment,Action,5.99,01
+Grand Theft Auto: Vice City,2011-01-10,Rockstar Games,Action,5.99,01
+Grand Theft Auto: San Andreas,2008-01-04,Rockstar Games,Action,9.99,01
+Hitman: Blood Money,2007-03-15,Io-Interactive A/S,Action,9.29,01
+Tom Clancy's Splinter Cell®,2008-04-01,Ubisoft,Action,4.29,01
+Tom Clancy's Rainbow Six® 3 Gold,2008-09-25,Red Storm Entertainment;Ubisoft Montreal,Action,4.29,01
+Medal of Honor™,2010-10-12,Electronic Arts,Action,14.99,01
+Return to Castle Wolfenstein,2007-08-03,Gray Matter Studios,Action,3.99,01
+Wolfenstein: The New Order,2014-05-19,Machine Games,Action,14.99,01
+Serious Sam HD: The First Encounter,2009-11-24,Croteam,Action;Indie,10.99,00
+Painkiller Overdose,2007-10-30,Mindware Studios,Action,4.49,01
+F.E.A.R. 2: Project Origin,2009-02-12,Monolith,Action,9.99,01
+Dead Space,2009-01-09,EA Redwood Shores,Action,14.99,01
+Mirror's Edge™,2009-01-14,DICE,Action;Adventure,9.99,01
+Assassin's Creed™: Director's Cut Edition,2008-04-09,Ubisoft Montreal,Action;Adventure,8.59,01
+Prince of Persia®: The Sands of Time,2009-08-27,Kudosoft,Action;Adventure,8.59,01
+Beyond Good and Evil™,2008-05-13,Ubisoft,Action;Adventure,4.29,01
+Psychonauts,2006-10-11,Double Fine Productions,Action,6.99,01
+XIII Century – Gold Edition,2009-08-28,Unicorn Games Studio,Strategy,3.99,00
+Left in the Dark: No One on Board,2014-10-02,Moonrise Interactive,Adventure;Casual,6.99,00
+Alien Swarm,2010-07-19,Valve,Action,0.0,01
+Unreal Tournament 2004: Editor's Choice Edition,2004-03-17,"Epic Games, Inc.",Action,8.99,01
+Unreal Tournament 3 Black,2009-03-05,"Epic Games, Inc.",Action,13.99,01
+Burnout Paradise: The Ultimate Box,2009-03-12,Criterion Games,Racing,9.99,00
+GridVR,2017-01-17,iPOL,Action,1.99,01
+Need For Speed: Hot Pursuit,2010-12-14,Criterion Games,Racing,14.99,00
+Trackmania United Forever Star Edition,2008-04-16,Nadeo,Racing,25.99,00
+World of Goo,2008-10-13,2D BOY,Indie,6.99,00
+Braid,2009-04-10,Number None,Casual;Indie;Strategy,10.99,00
+LIMBO,2011-08-02,Playdead,Adventure;Indie,6.99,00
+Peggle Extreme,2007-09-11,"PopCap Games, Inc.",Casual,0.0,00
+Trials 2: Second Edition,2008-05-28,Redlynx,Indie;Racing;Sports,5.99,00
+Terraria,2011-05-16,Re-Logic,Action;Adventure;Indie;RPG,6.99,11
+Wolfenstein 3D,2007-08-03,id Software,Action,2.99,01
+DOOM II,2007-08-03,id Software,Action,3.99,01
+Thief™ II: The Metal Age,2012-05-22,Looking Glass Studios,Action;Simulation,4.99,01
+Quake IV,2011-08-04,RavenSoft / id Software,Action,12.99,01
