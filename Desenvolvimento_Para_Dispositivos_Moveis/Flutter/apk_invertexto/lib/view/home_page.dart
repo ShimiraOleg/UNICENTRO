@@ -1,4 +1,5 @@
 import 'package:apk_invertexto/view/busca_cep_page.dart';
+import 'package:apk_invertexto/view/conversor_moeda.dart';
 import 'package:apk_invertexto/view/por_extenso_page.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +62,25 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => BuscaCepPage()),
+                );
+              },
+            ),
+            SizedBox(height: 30),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.account_balance, color: Colors.white, size: 70.0),
+                  SizedBox(width: 30),
+                  Text(
+                    "Conversor de Moedas",
+                    style: TextStyle(color: Colors.white, fontSize: 20.0),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ConversorMoedaPage()),
                 );
               },
             ),

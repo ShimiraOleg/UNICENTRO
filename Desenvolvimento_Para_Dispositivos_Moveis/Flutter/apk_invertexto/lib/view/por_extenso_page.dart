@@ -10,6 +10,7 @@ class PorExtensoPage extends StatefulWidget {
 
 class _PorExtensoPageState extends State<PorExtensoPage> {
   String? campo;
+  String? moeda;
   String? resultado;
   final apiService = InvertextoService();
 
@@ -55,9 +56,61 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
                 });
               },
             ),
+            SizedBox(height: 30),
+            Text(
+              "Selecione uma Moeda: ",
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            DropdownButton(
+              value: moeda,
+              style: TextStyle(color: Colors.white, fontSize: 18),
+              dropdownColor: Colors.black,
+              items: [
+                DropdownMenuItem(value: "BRL", child: Text("Real (BRL)")),
+                DropdownMenuItem(value: "USD", child: Text("Dólar (USD)")),
+                DropdownMenuItem(value: "EUR", child: Text("Euro (EUR)")),
+                DropdownMenuItem(
+                  value: "GBP",
+                  child: Text("Libra Esterlina (GBP)"),
+                ),
+                DropdownMenuItem(value: "JPY", child: Text("Iene (JPY)")),
+                DropdownMenuItem(
+                  value: "ARS",
+                  child: Text("Peso Argentino (ARS)"),
+                ),
+                DropdownMenuItem(
+                  value: "MXN",
+                  child: Text("Peso Mexicano (MXN)"),
+                ),
+                DropdownMenuItem(
+                  value: "UYU",
+                  child: Text("Peso Uruguaio (UYU)"),
+                ),
+                DropdownMenuItem(value: "PYG", child: Text("Guarani (PYG)")),
+                DropdownMenuItem(value: "BOB", child: Text("Boliviano (BOB)")),
+                DropdownMenuItem(
+                  value: "CLP",
+                  child: Text("Peso Chileno (CLP)"),
+                ),
+                DropdownMenuItem(
+                  value: "COP",
+                  child: Text("Peso Colombiano (COP)"),
+                ),
+                DropdownMenuItem(
+                  value: "CUP",
+                  child: Text("Peso Cubano (CUP)"),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  moeda = value;
+                });
+              },
+            ),
+            SizedBox(height: 30),
             Expanded(
               child: FutureBuilder(
-                future: apiService.convertePorExtenso(campo),
+                future: apiService.convertePorExtenso(campo, moeda),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
