@@ -135,17 +135,15 @@ class _ConversorMoedaPageState extends State<ConversorMoedaPage> {
 
   Widget exibeErrorMessage(String error) {
     final displayError = error.replaceFirst("Exception: ", "");
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(
-          'Ocorreu um erro:\n$displayError',
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.redAccent,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Text(
+        displayError,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
