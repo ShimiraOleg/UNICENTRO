@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:apk_invertexto/service/invertexto_service.dart';
 import 'package:flutter/material.dart';
 
@@ -22,11 +23,7 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/imgs/logo.png',
-              fit: BoxFit.contain,
-              height: 40,
-            ),
+            Image.asset('assets/imgs/logo.png', fit: BoxFit.contain, height: 40),
           ],
         ),
         centerTitle: true,
@@ -69,37 +66,16 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
                 DropdownMenuItem(value: "BRL", child: Text("Real (BRL)")),
                 DropdownMenuItem(value: "USD", child: Text("Dólar (USD)")),
                 DropdownMenuItem(value: "EUR", child: Text("Euro (EUR)")),
-                DropdownMenuItem(
-                  value: "GBP",
-                  child: Text("Libra Esterlina (GBP)"),
-                ),
+                DropdownMenuItem(value: "GBP", child: Text("Libra Esterlina (GBP)")),
                 DropdownMenuItem(value: "JPY", child: Text("Iene (JPY)")),
-                DropdownMenuItem(
-                  value: "ARS",
-                  child: Text("Peso Argentino (ARS)"),
-                ),
-                DropdownMenuItem(
-                  value: "MXN",
-                  child: Text("Peso Mexicano (MXN)"),
-                ),
-                DropdownMenuItem(
-                  value: "UYU",
-                  child: Text("Peso Uruguaio (UYU)"),
-                ),
+                DropdownMenuItem(value: "ARS", child: Text("Peso Argentino (ARS)")),
+                DropdownMenuItem(value: "MXN", child: Text("Peso Mexicano (MXN)")),
+                DropdownMenuItem(value: "UYU", child: Text("Peso Uruguaio (UYU)")),
                 DropdownMenuItem(value: "PYG", child: Text("Guarani (PYG)")),
                 DropdownMenuItem(value: "BOB", child: Text("Boliviano (BOB)")),
-                DropdownMenuItem(
-                  value: "CLP",
-                  child: Text("Peso Chileno (CLP)"),
-                ),
-                DropdownMenuItem(
-                  value: "COP",
-                  child: Text("Peso Colombiano (COP)"),
-                ),
-                DropdownMenuItem(
-                  value: "CUP",
-                  child: Text("Peso Cubano (CUP)"),
-                ),
+                DropdownMenuItem(value: "CLP", child: Text("Peso Chileno (CLP)")),
+                DropdownMenuItem(value: "COP", child: Text("Peso Colombiano (COP)")),
+                DropdownMenuItem(value: "CUP", child: Text("Peso Cubano (CUP)")),
               ],
               onChanged: (value) {
                 setState(() {
@@ -120,15 +96,13 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
                         height: 200,
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
-                          ),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                           strokeWidth: 8.0,
                         ),
                       );
                     default:
                       if (snapshot.hasError) {
-                        return Container();
+                        return exibeErrorMessage(snapshot.error.toString());
                       } else {
                         return exibeResultado(context, snapshot);
                       }
@@ -149,6 +123,26 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
         snapshot.data['text'] ?? '',
         style: TextStyle(color: Colors.white, fontSize: 18),
         softWrap: true,
+      ),
+    );
+  }
+
+  Widget exibeErrorMessage(String error) {
+    int inicioErro = error.lastIndexOf(': ') + 2;
+    String erroJson = error.substring(inicioErro);
+    Map<String, dynamic> displayError = jsonDecode(erroJson);
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          displayError['message']!,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

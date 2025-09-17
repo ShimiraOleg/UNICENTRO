@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:apk_invertexto/service/invertexto_service.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
   String? campo;
   String? resultado;
   final apiService = InvertextoService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +22,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/imgs/logo.png',
-              fit: BoxFit.contain,
-              height: 40,
-            ),
+            Image.asset('assets/imgs/logo.png', fit: BoxFit.contain, height: 40),
           ],
         ),
         centerTitle: true,
@@ -66,15 +64,13 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
                         height: 200,
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
-                          ),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                           strokeWidth: 8.0,
                         ),
                       );
                     default:
                       if (snapshot.hasError) {
-                        return Container();
+                        return exibeErrorMessage(snapshot.error.toString());
                       } else {
                         return exibeResultado(context, snapshot);
                       }
@@ -90,7 +86,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
 
   Widget exibeResultado(BuildContext context, AsyncSnapshot snapshot) {
     String enderecoCompleto = '';
-    if(snapshot.data != null){
+    if (snapshot.data != null) {
       enderecoCompleto += snapshot.data['street'] ?? "Rua não disponivel";
       enderecoCompleto += "\n";
       enderecoCompleto += snapshot.data['neighborhood'] ?? "Bairro não disponivel";
@@ -105,6 +101,26 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
         enderecoCompleto,
         style: TextStyle(color: Colors.white, fontSize: 18),
         softWrap: true,
+      ),
+    );
+  }
+
+  Widget exibeErrorMessage(String error) {
+    int inicioErro = error.lastIndexOf(': ') + 2;
+    String erroJson = error.substring(inicioErro);
+    Map<String, dynamic> displayError = jsonDecode(erroJson);
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          displayError['message']!,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
