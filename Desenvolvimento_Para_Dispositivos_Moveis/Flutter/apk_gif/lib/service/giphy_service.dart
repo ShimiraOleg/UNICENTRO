@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-String _key = "CHAVE";
+String _key = "IzjksL9bKleNGudRUP2dvx82nkVUpyHq";
 
 class GiphyService {
   Future<Map> getGifs(String _search, int _offset) async {

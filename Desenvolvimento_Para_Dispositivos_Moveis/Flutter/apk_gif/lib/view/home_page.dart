@@ -1,4 +1,5 @@
 import 'package:apk_gif/service/giphy_service.dart';
+import 'package:apk_gif/view/gif_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,12 +70,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: _gifData.isEmpty && !_loadingMore && !_isSearching
-                ? Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      strokeWidth: 5.0,
-                    ),
-                  )
+                ? _gifLoadingIndicator()
                 : _createGifTable(),
           ),
         ],
@@ -82,7 +78,63 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _gifLoadingIndicator() {
+    return Center(
+      child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+        strokeWidth: 5.0,
+      ),
+    );
+  }
+
   Widget _createGifTable() {
-    return Container();
+    bool hasMoreGifs = _gifData.length < 25;
+
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10.0,
+      ),
+      itemCount: _gifData.length + 1,
+      padding: EdgeInsets.all(10.0),
+      itemBuilder: (context, index) {
+        if (index < _gifData.length) {
+          var gif = _gifData[index];
+          var gifUrl = gif["images"]["original"]["url"];
+          return GestureDetector(
+            child: Image.network(gifUrl, height: 300.0, fit: BoxFit.cover),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GifPage(gif)),
+              );
+            },
+          );
+        } else {
+          GestureDetector(
+            onTap: !_loadingMore
+                ? () {
+                    setState(() {
+                      _loadingMore = true;
+                      _offset += 25;
+                    });
+                    _loadGifs();
+                  }
+                : null,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.add, color: Colors.white, size: 70.0),
+                Text(
+                  "Carregar mais...",
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
+              ],
+            ),
+          );
+        }
+      },
+    );
   }
 }
