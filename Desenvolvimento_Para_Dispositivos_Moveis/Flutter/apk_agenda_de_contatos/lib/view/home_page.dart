@@ -96,9 +96,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _showContactPage({Contact? contact}) async {
-    Navigator.push(
+    final updatedContact = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ContactPage(contact: contact)),
     );
+    if (updatedContact != null) {
+      setState(() {
+        helper.getAllContacts().then((list) {
+          setState(() {
+            contacts = list;
+          });
+        });
+      });
+    }
   }
 }
