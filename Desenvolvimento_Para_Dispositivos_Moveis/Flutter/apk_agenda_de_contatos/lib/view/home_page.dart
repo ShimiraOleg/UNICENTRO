@@ -3,6 +3,10 @@ import 'package:apk_agenda_de_contatos/database/helper/contact_helper.dart';
 import 'package:apk_agenda_de_contatos/database/model/contact_model.dart';
 import 'package:apk_agenda_de_contatos/view/contact_page.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+enum OrderOptions { orderAZ, orderZA }
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +37,15 @@ class _HomePageState extends State<HomePage> {
         title: Text("Agenda de Contatos"),
         backgroundColor: Colors.blue,
         centerTitle: true,
+        actions: <Widget>[
+          PopupMenuButton<OrderOptions>(
+            itemBuilder: (context) => <PopupMenuEntry<OrderOptions>>[
+              PopupMenuItem(value: OrderOptions.orderAZ, child: Text("Ordenar de A-Z")),
+              PopupMenuItem(value: OrderOptions.orderZA, child: Text("Ordenar de Z-A")),
+            ],
+            onSelected: _orderList,
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
@@ -90,7 +103,58 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: () {
-        _showContactPage(contact: contacts[index]);
+        _showOptions(context, index);
+      },
+    );
+  }
+
+  void _showOptions(BuildContext context, int index) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return BottomSheet(
+          onClosing: () {},
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      launch("tel: ${contacts[index].phone}");
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Ligar",
+                      style: TextStyle(color: Colors.green, fontSize: 20.0),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _showContactPage(contact: contacts[index]);
+                    },
+                    child: Text(
+                      "Editar",
+                      style: TextStyle(color: Colors.blue, fontSize: 20.0),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _showDeleteConfirmation(context, index);
+                    },
+                    child: Text(
+                      "Excluir",
+                      style: TextStyle(color: Colors.red, fontSize: 20.0),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
       },
     );
   }
@@ -109,5 +173,53 @@ class _HomePageState extends State<HomePage> {
         });
       });
     }
+  }
+
+  void _orderList(OrderOptions result) {
+    switch (result) {
+      case OrderOptions.orderAZ:
+        contacts.sort((a, b) {
+          return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+        });
+        break;
+      case OrderOptions.orderZA:
+        contacts.sort((a, b) {
+          return b.name.toLowerCase().compareTo(a.name.toLowerCase());
+        });
+        break;
+    }
+    setState(() {});
+  }
+
+  void _showDeleteConfirmation(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Excluir Contato"),
+          content: Text("Deseja realmente excluir o contato ${contacts[index].name}?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Não", style: TextStyle(color: Colors.grey)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Sim, desejo excluir", style: TextStyle(color: Colors.red)),
+              onPressed: () {
+                if (contacts[index].id != null) {
+                  helper.deleteContact(contacts[index].id!);
+                  setState(() {
+                    contacts.removeAt(index);
+                  });
+                }
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

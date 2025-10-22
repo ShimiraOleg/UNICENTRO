@@ -4,6 +4,7 @@ import 'package:apk_agenda_de_contatos/database/helper/contact_helper.dart';
 import 'package:apk_agenda_de_contatos/database/model/contact_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class ContactPage extends StatefulWidget {
   final Contact? contact;
@@ -22,6 +23,10 @@ class _ContactPageState extends State<ContactPage> {
   final _imgController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final ContactHelper _helper = ContactHelper();
+  final phoneMask = MaskTextInputFormatter(
+    mask: '(##) ####-####',
+    filter: {'#': RegExp(r'[0-9]')},
+  );
 
   @override
   void initState() {
@@ -103,6 +108,7 @@ class _ContactPageState extends State<ContactPage> {
                 });
               },
               keyboardType: TextInputType.phone,
+              inputFormatters: [phoneMask],
             ),
           ],
         ),
@@ -119,16 +125,34 @@ class _ContactPageState extends State<ContactPage> {
     }
   }
 
-  void _saveContact() {
+  void _saveContact() async {
     if (_editContact?.img == "") {
       _editContact?.img = null;
     }
-    if (_editContact?.name != null && _editContact!.name!.isNotEmpty) {
-      if (_editContact?.id != null) {
-        _helper.updateContact(_editContact!);
-      } else {
-        _helper.saveContact(_editContact!);
+
+    if (_editContact?.name != null && _editContact!.name.isNotEmpty) {
+      final emailRegex = RegExp(r'^[\w\.-]+@[\w\.-]+\.\w+$');
+
+      if (!emailRegex.hasMatch(_editContact!.email)) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("E-mail inválido")));
+        return;
       }
+
+      if (_editContact!.phone.length < 15) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Telefone inválido!")));
+        return;
+      }
+
+      if (_editContact?.id != null) {
+        await _helper.updateContact(_editContact!);
+      } else {
+        await _helper.saveContact(_editContact!);
+      }
+
       Navigator.pop(context, _editContact);
     } else {
       ScaffoldMessenger.of(
