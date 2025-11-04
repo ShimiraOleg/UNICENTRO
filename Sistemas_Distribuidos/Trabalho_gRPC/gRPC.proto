@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+service ForcaService {
+  rpc IniciarJogo (IniciarJogoRequest) returns (IniciarJogoReply);
+  rpc FazerPalpite (PalpiteRequest) returns (StatusJogoReply);
+  rpc GetLeaderboard (GetLeaderboardRequest) returns (GetLeaderboardReply);
+}
+
+message IniciarJogoRequest {
+  string nome_cliente = 1; 
+}
+
+message IniciarJogoReply {
+  string cliente_id = 1;        
+  string palavra_escondida = 2;
+  int32 chutes_restantes = 3;  
+}
+
+message PalpiteRequest {
+  string cliente_id = 1; 
+  string palpite = 2;
+}
+
+message ResultadoJogo {
+  string nome_cliente = 1; 
+  string palavra = 2;        
+  bool isVencedor = 3;
+}
+
+message GetLeaderboardRequest {
+}
+
+message GetLeaderboardReply {
+  repeated ResultadoJogo leaderboard = 1;
+}
+
+message StatusJogoReply {
+  enum GameState {
+    JOGANDO = 0;
+    GANHOU = 1;
+    PERDEU = 2;
+  }
+
+  GameState estado = 1;          
+  string palavra_escondida = 2; 
+  int32 chutes_restantes = 3;  
+  string letras_chutadas = 4;
+  string messagem = 5;           
+}
