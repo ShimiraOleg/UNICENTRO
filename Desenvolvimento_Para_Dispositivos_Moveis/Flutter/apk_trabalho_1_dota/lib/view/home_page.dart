@@ -1,13 +1,28 @@
 import 'package:apk_trabalho_1_dota/service/dota_service.dart';
 import 'package:apk_trabalho_1_dota/view/hero_detail_page.dart';
+import 'package:apk_trabalho_1_dota/model/dota_hero.dart';
 import 'package:apk_trabalho_1_dota/widgets/role_chip.dart';
 import 'package:flutter/material.dart';
 
 enum OrderOptions { orderAZ, orderZA, orderWinRate, orderPickRate }
 
+extension OrderOptionsExtension on OrderOptions {
+  String get displayName {
+    switch (this) {
+      case OrderOptions.orderAZ:
+        return "A-Z";
+      case OrderOptions.orderZA:
+        return "Z-A";
+      case OrderOptions.orderWinRate:
+        return "Win Rate";
+      case OrderOptions.orderPickRate:
+        return "Pick Rate";
+    }
+  }
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -15,11 +30,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final DotaService dotaService = DotaService();
   final TextEditingController _searchController = TextEditingController();
-  final _allHeroData = [];
-  List _filteredHeroData = [];
+  final List<DotaHero> _allHeroData = [];
+  List<DotaHero> _filteredHeroData = [];
   bool _isLoading = true;
-  int _totalTurboPicks = 0;
-
   @override
   void initState() {
     super.initState();
@@ -29,15 +42,6 @@ class _HomePageState extends State<HomePage> {
   void _loadHeroes() async {
     try {
       var heroes = await dotaService.getHeroes();
-      for (var hero in heroes) {
-        _totalTurboPicks += hero['turbo_picks'] as int;
-      }
-      for (var hero in heroes) {
-        int turboWins = hero['turbo_wins'] as int;
-        int turboPicks = hero['turbo_picks'] as int;
-        hero['winRate'] = (turboPicks == 0) ? 0.0 : (turboWins / turboPicks);
-        hero['pickRate'] = (_totalTurboPicks == 0) ? 0.0 : (turboPicks / _totalTurboPicks);
-      }
       setState(() {
         _allHeroData.addAll(heroes);
         _filteredHeroData = _allHeroData;
@@ -46,18 +50,20 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       setState(() {
         _isLoading = false;
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+        }
       });
     }
   }
 
   void _filterHeroes(String query) {
-    List<dynamic> results = [];
+    List<DotaHero> results = [];
     if (query.isEmpty) {
       results = _allHeroData;
     } else {
       results = _allHeroData
-          .where((hero) => hero['localized_name'].toLowerCase().contains(query.toLowerCase()))
+          .where((hero) => hero.localizedName.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
     setState(() {
@@ -69,22 +75,22 @@ class _HomePageState extends State<HomePage> {
     switch (result) {
       case OrderOptions.orderAZ:
         _filteredHeroData.sort((a, b) {
-          return a['localized_name'].toLowerCase().compareTo(b['localized_name'].toLowerCase());
+          return a.localizedName.toLowerCase().compareTo(b.localizedName.toLowerCase());
         });
         break;
       case OrderOptions.orderZA:
         _filteredHeroData.sort((a, b) {
-          return b['localized_name'].toLowerCase().compareTo(a['localized_name'].toLowerCase());
+          return b.localizedName.toLowerCase().compareTo(a.localizedName.toLowerCase());
         });
         break;
       case OrderOptions.orderWinRate:
         _filteredHeroData.sort((a, b) {
-          return a['winRate'].compareTo(b['winRate']);
+          return b.winRate.compareTo(a.winRate);
         });
         break;
       case OrderOptions.orderPickRate:
         _filteredHeroData.sort((a, b) {
-          return b['pickRate'].compareTo(a['pickRate']);
+          return b.pickRate.compareTo(a.pickRate);
         });
         break;
     }
@@ -102,29 +108,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Dota 2", style: TextStyle(color: Colors.white)),
+        title: const Text("Dota 2", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton<OrderOptions>(
-            icon: Icon(Icons.sort, color: Colors.white),
+            icon: const Icon(Icons.sort, color: Colors.white),
             color: Colors.grey[900],
             itemBuilder: (context) => <PopupMenuEntry<OrderOptions>>[
-              const PopupMenuItem<OrderOptions>(
-                value: OrderOptions.orderAZ,
-                child: Text("Ordenar de A-Z", style: TextStyle(color: Colors.white)),
-              ),
-              const PopupMenuItem<OrderOptions>(
-                value: OrderOptions.orderZA,
-                child: Text("Ordenar de Z-A", style: TextStyle(color: Colors.white)),
-              ),
-              const PopupMenuItem<OrderOptions>(
-                value: OrderOptions.orderWinRate,
-                child: Text("Maior Win Rate", style: TextStyle(color: Colors.white)),
-              ),
-              const PopupMenuItem<OrderOptions>(
-                value: OrderOptions.orderPickRate,
-                child: Text("Maior Pick Rate", style: TextStyle(color: Colors.white)),
-              ),
+              for (var option in OrderOptions.values)
+                PopupMenuItem<OrderOptions>(
+                  value: option,
+                  child: Text(option.displayName, style: const TextStyle(color: Colors.white)),
+                ),
             ],
             onSelected: _orderList,
           ),
@@ -158,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       )
                     : null,
               ),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           Expanded(child: _isLoading ? _loadingIndicator() : _createHeroList()),
@@ -168,7 +163,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _loadingIndicator() {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
         strokeWidth: 5.0,
@@ -177,10 +172,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _createHeroList() {
-    final String baseImgUrl = "https://cdn.steamstatic.com";
-
     if (_filteredHeroData.isEmpty && !_isLoading) {
-      return Center(
+      return const Center(
         child: Text(
           "Nenhum herói encontrado.",
           style: TextStyle(color: Colors.white, fontSize: 18),
@@ -189,14 +182,12 @@ class _HomePageState extends State<HomePage> {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       itemCount: _filteredHeroData.length,
       itemBuilder: (context, index) {
-        var hero = _filteredHeroData[index];
-        double displayWinRate = (hero['winRate'] as double) * 100;
-        double displayPickRate = (hero['pickRate'] as double) * 100;
-        String heroIconUrl = baseImgUrl + hero["icon"];
-        List<String> roles = List<String>.from(hero['roles'] ?? []);
+        final hero = _filteredHeroData[index];
+        double displayWinRate = hero.winRate * 100;
+        double displayPickRate = hero.pickRate * 100;
 
         return GestureDetector(
           onTap: () {
@@ -204,7 +195,7 @@ class _HomePageState extends State<HomePage> {
           },
           child: Card(
             color: Colors.grey[900],
-            margin: EdgeInsets.symmetric(vertical: 8.0),
+            margin: const EdgeInsets.symmetric(vertical: 8.0),
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
@@ -214,10 +205,10 @@ class _HomePageState extends State<HomePage> {
                     height: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      image: DecorationImage(image: NetworkImage(heroIconUrl), fit: BoxFit.cover),
+                      image: DecorationImage(image: NetworkImage(hero.iconUrl), fit: BoxFit.cover),
                     ),
                   ),
-                  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,28 +218,28 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Expanded(
                               child: Text(
-                                hero['localized_name'],
-                                style: TextStyle(
+                                hero.localizedName,
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                for (int i = 0; i < roles.length; i += 2)
+                                for (int i = 0; i < hero.roles.length; i += 2)
                                   Padding(
                                     padding: EdgeInsets.only(top: i == 0 ? 0 : 4.0),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        roleChip(roles[i]),
-                                        if (i + 1 < roles.length) ...[
-                                          SizedBox(width: 6.0),
-                                          roleChip(roles[i + 1]),
+                                        RoleChip(hero.roles[i]),
+                                        if (i + 1 < hero.roles.length) ...[
+                                          const SizedBox(width: 6.0),
+                                          RoleChip(hero.roles[i + 1]),
                                         ],
                                       ],
                                     ),
@@ -257,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           "Pick Rate: ${displayPickRate.toStringAsFixed(2)}% / Win Rate: ${displayWinRate.toStringAsFixed(2)}%",
                           style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
