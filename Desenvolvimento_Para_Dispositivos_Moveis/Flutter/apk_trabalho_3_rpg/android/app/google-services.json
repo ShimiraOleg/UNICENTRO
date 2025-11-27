@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1016072234583",
+    "project_id": "tunnelsandtrolls-46472",
+    "storage_bucket": "tunnelsandtrolls-46472.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016072234583:android:426fedbea27791e8876512",
+        "android_client_info": {
+          "package_name": "com.example.apk_trabalho_2_3_rpg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYms3VK5Wj417zWjZwAAKuH6ZG_qLCiVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
