@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:apk_trabalho_3_rpg/components/my_button.dart';
 import 'package:apk_trabalho_3_rpg/models/character_model.dart';
+import 'package:apk_trabalho_3_rpg/service/firebase_auth_service.dart';
 import 'package:apk_trabalho_3_rpg/view/character_sheet_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,9 +18,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final _firestore = FirebaseFirestore.instance;
   final User? _currentUser = FirebaseAuth.instance.currentUser;
-  final TextEditingController _searchController = TextEditingController();
+  final _searchController = TextEditingController();
+  final _authService = FirebaseAuthService();
   OrderOptions _currentOrder = OrderOptions.orderAZ;
   final TextStyle _titleStyle = GoogleFonts.cinzel();
   final TextStyle _fontStyle = GoogleFonts.roboto();
@@ -40,9 +42,8 @@ class _HomePageState extends State<HomePage> {
             TextButton(
               child: Text("Yes, Logout", style: _fontStyle.copyWith(color: Colors.red)),
               onPressed: () async {
-                Navigator.of(context).pop(); // Fecha o diálogo
-                await FirebaseAuth.instance.signOut(); // Desloga do Firebase
-                // O StreamBuilder na main.dart (se houver) cuidará do redirecionamento
+                Navigator.of(context).pop();
+                await _authService.signOut();
               },
             ),
           ],
@@ -186,7 +187,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          // ...
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: MyButton(text: "CREATE NEW CHARACTER", onTap: () => _showCharacterPage()),
