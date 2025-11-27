@@ -75,93 +75,88 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(
-        context,
-      ).copyWith(textTheme: GoogleFonts.cinzelTextTheme(Theme.of(context).textTheme)),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Characters",
-            style: _titleStyle.copyWith(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.brown[800],
-          foregroundColor: Colors.white,
-          centerTitle: true,
-          actions: <Widget>[
-            PopupMenuButton<OrderOptions>(
-              icon: const Icon(Icons.sort),
-              color: const Color(0xFFEFEBE9),
-              itemBuilder: (context) => [
-                const PopupMenuItem(value: OrderOptions.orderAZ, child: Text("A-Z")),
-                const PopupMenuItem(value: OrderOptions.orderZA, child: Text("Z-A")),
-                const PopupMenuItem(value: OrderOptions.orderLevel, child: Text("Level")),
-              ],
-              onSelected: _orderList,
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Characters",
+          style: _titleStyle.copyWith(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color(0xFFF5E6CB),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
-              child: TextField(
-                controller: _searchController,
-                onChanged: _filterCharacters,
-                style: TextStyle(color: Colors.brown[900]),
-                decoration: InputDecoration(
-                  labelText: "Search characters",
-                  labelStyle: TextStyle(color: Colors.brown[800]),
-                  hintText: "Character Name...",
-                  fillColor: const Color(0xFFEFEBE9),
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: BorderSide(color: Colors.brown[800]!),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: BorderSide(color: Colors.brown[300]!),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: BorderSide(color: Colors.brown[800]!, width: 2),
-                  ),
-                  prefixIcon: Icon(Icons.search, color: Colors.brown[800]),
-                  suffixIcon: _searchController.text.isNotEmpty
-                      ? IconButton(
-                          icon: Icon(Icons.clear, color: Colors.brown[600]),
-                          onPressed: () {
-                            _searchController.clear();
-                            _filterCharacters("");
-                          },
-                        )
-                      : null,
+        backgroundColor: Colors.brown[800],
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        actions: <Widget>[
+          PopupMenuButton<OrderOptions>(
+            icon: const Icon(Icons.sort),
+            color: const Color(0xFFEFEBE9),
+            itemBuilder: (context) => [
+              const PopupMenuItem(value: OrderOptions.orderAZ, child: Text("A-Z")),
+              const PopupMenuItem(value: OrderOptions.orderZA, child: Text("Z-A")),
+              const PopupMenuItem(value: OrderOptions.orderLevel, child: Text("Level")),
+            ],
+            onSelected: _orderList,
+          ),
+        ],
+      ),
+      backgroundColor: const Color(0xFFF5E6CB),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
+            child: TextField(
+              controller: _searchController,
+              onChanged: _filterCharacters,
+              style: TextStyle(color: Colors.brown[900]),
+              decoration: InputDecoration(
+                labelText: "Search characters",
+                labelStyle: TextStyle(color: Colors.brown[800]),
+                hintText: "Character Name...",
+                fillColor: const Color(0xFFEFEBE9),
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: Colors.brown[800]!),
                 ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: Colors.brown[300]!),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: Colors.brown[800]!, width: 2),
+                ),
+                prefixIcon: Icon(Icons.search, color: Colors.brown[800]),
+                suffixIcon: _searchController.text.isNotEmpty
+                    ? IconButton(
+                        icon: Icon(Icons.clear, color: Colors.brown[600]),
+                        onPressed: () {
+                          _searchController.clear();
+                          _filterCharacters("");
+                        },
+                      )
+                    : null,
               ),
             ),
-            Expanded(
-              child: _filteredCharacters.isEmpty
-                  ? Center(
-                      child: Text(
-                        "No Character Found...",
-                        style: _fontStyle.copyWith(fontSize: 18, color: Colors.brown),
-                      ),
-                    )
-                  : ListView.builder(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      itemCount: _filteredCharacters.length,
-                      itemBuilder: (context, index) =>
-                          _characterCard(context, _filteredCharacters[index]),
+          ),
+          Expanded(
+            child: _filteredCharacters.isEmpty
+                ? Center(
+                    child: Text(
+                      "No Character Found...",
+                      style: _fontStyle.copyWith(fontSize: 18, color: Colors.brown),
                     ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: MyButton(text: "CREATE NEW CHARACTER", onTap: () => _showCharacterPage()),
-            ),
-          ],
-        ),
+                  )
+                : ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    itemCount: _filteredCharacters.length,
+                    itemBuilder: (context, index) =>
+                        _characterCard(context, _filteredCharacters[index]),
+                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: MyButton(text: "CREATE NEW CHARACTER", onTap: () => _showCharacterPage()),
+          ),
+        ],
       ),
     );
   }
