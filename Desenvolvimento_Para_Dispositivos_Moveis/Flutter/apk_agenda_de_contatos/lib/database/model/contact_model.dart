@@ -6,13 +6,7 @@ String imageColumn = "imageColumn";
 String contactTable = "contactTable";
 
 class Contact {
-  Contact({
-    this.id,
-    required this.name,
-    required this.email,
-    required this.phone,
-    this.img,
-  });
+  Contact({this.id, required this.name, required this.email, required this.phone, this.img});
 
   int? id;
   String name;

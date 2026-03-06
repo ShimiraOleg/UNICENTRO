@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'auth-37d9a',
     storageBucket: 'auth-37d9a.firebasestorage.app',
   );
+
 }

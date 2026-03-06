@@ -23,10 +23,7 @@ class _ContactPageState extends State<ContactPage> {
   final _imgController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   final ContactHelper _helper = ContactHelper();
-  final phoneMask = MaskTextInputFormatter(
-    mask: '(##) ####-####',
-    filter: {'#': RegExp(r'[0-9]')},
-  );
+  final phoneMask = MaskTextInputFormatter(mask: '(##) ####-####', filter: {'#': RegExp(r'[0-9]')});
 
   @override
   void initState() {
@@ -134,16 +131,12 @@ class _ContactPageState extends State<ContactPage> {
       final emailRegex = RegExp(r'^[\w\.-]+@[\w\.-]+\.\w+$');
 
       if (!emailRegex.hasMatch(_editContact!.email)) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("E-mail inválido")));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("E-mail inválido")));
         return;
       }
 
-      if (_editContact!.phone.length < 15) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Telefone inválido!")));
+      if (_editContact!.phone.length < 8) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Telefone inválido!")));
         return;
       }
 
@@ -155,9 +148,7 @@ class _ContactPageState extends State<ContactPage> {
 
       Navigator.pop(context, _editContact);
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Nome é Obrigatório")));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Nome é Obrigatório")));
     }
   }
 }
