@@ -4,7 +4,9 @@ contatos = {
     "Josiel Neumann Kuk":90036788
 }
 
-nome = str(input("Insira o nome do contato\n"))
-for chave, valor in contatos.items:
+nome = input("Insira o nome do contato\n")
+for chave, valor in contatos.items():
     if nome == chave:
-        print(f"{chave} : {valor}")
+        print(f"{chave}: {valor}")
+else:
+    print("Contato não encontrado na lista.")

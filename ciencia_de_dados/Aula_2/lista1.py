@@ -30,3 +30,12 @@ print(f"Exercicio 7: \n{arr_random.max(axis=1)}\n")
 #Ex8
 a = np.array([1, 2, 3, 4, 5])
 print(f"Exercicio 8: \n{a + 2}\n")
+
+#Ex9
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+print(f"Exercicio 9: \n{np.concatenate((a, b))}\n")
+
+#Ex10
+arr_inv = np.array([10, 20, 30, 40])
+print(f"Exercicio 10: \n{arr_inv[::-1]}\n")
