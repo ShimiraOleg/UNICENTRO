@@ -1,0 +1,53 @@
+# Este é um cabeçalho de comentário
+# Data da geração: 2024-01-01
+id_evento,tipo,timestamp,descricao
+1,login,2024-01-01 08:00:00,Usuário admin logou
+2,erro,2024-01-01 08:05:10,Falha ao carregar módulo X
+3,login,2024-01-01 08:10:00,Usuário convidado logou
+4,sucesso,2024-01-01 08:15:30,Operação concluída
+5,info,2024-01-01 08:20:00,Verificação de rotina iniciada
+6,sucesso,2024-01-01 08:25:00,Backup diário concluído
+7,aviso,2024-01-01 08:30:45,Memória RAM acima de 80%
+8,erro,2024-01-01 08:35:12,Timeout na conexão com o banco
+9,login,2024-01-01 09:00:00,Usuário suporte logou
+10,sucesso,2024-01-01 09:15:00,Configuração de rede atualizada
+11,info,2024-01-01 09:30:00,Sincronização de arquivos iniciada
+12,sucesso,2024-01-01 09:45:22,Sincronização finalizada
+13,erro,2024-01-01 10:05:00,Permissão negada no diretório /tmp
+14,login,2024-01-01 10:15:00,Usuário financeiro logou
+15,info,2024-01-01 10:45:00,Limpeza de logs antigos executada
+16,sucesso,2024-01-01 11:00:00,Relatório mensal gerado
+17,aviso,2024-01-01 11:30:00,Espaço em disco reduzido (15%)
+18,login,2024-01-01 12:00:00,Usuário admin logou
+19,sucesso,2024-01-01 12:15:10,Patch de segurança aplicado
+20,info,2024-01-01 13:00:00,Reinicialização do serviço web
+21,sucesso,2024-01-01 13:05:00,Serviço web online
+22,erro,2024-01-01 13:40:55,Erro 404 detectado em larga escala
+23,info,2024-01-01 14:00:00,Escaneamento de vulnerabilidades
+24,login,2024-01-01 14:30:00,Usuário auditor logou
+25,sucesso,2024-01-01 15:00:00,Exportação de dados concluída
+26,aviso,2024-01-01 15:20:00,Latência de rede detectada
+27,erro,2024-01-01 15:45:00,Falha no envio de e-mail SMTP
+28,sucesso,2024-01-01 16:00:00,Acesso restabelecido ao DB
+29,info,2024-01-01 16:30:00,Log de acessos rotacionado
+30,login,2024-01-01 17:00:00,Usuário marketing logou
+31,sucesso,2024-01-01 17:30:00,Upload de ativos concluído
+32,erro,2024-01-01 18:00:00,Kernel Panic em nó secundário
+33,info,2024-01-01 18:15:00,Failover acionado com sucesso
+34,login,2024-01-01 19:00:00,Usuário admin logou
+35,sucesso,2024-01-01 19:30:00,Ajuste de firewall realizado
+36,info,2024-01-01 20:00:00,Início do processamento Batch
+37,sucesso,2024-01-01 20:45:00,Processamento Batch concluído
+38,aviso,2024-01-01 21:00:00,Certificado SSL expira em 30 dias
+39,login,2024-01-01 21:30:00,Usuário dev logou
+40,info,2024-01-01 22:00:00,Deploy de versão v2.1.0
+41,sucesso,2024-01-01 22:10:00,Smoke tests aprovados
+42,login,2024-01-01 22:45:00,Usuário suporte logou
+43,erro,2024-01-01 23:15:00,Erro de I/O em disco externo
+44,info,2024-01-01 23:30:00,Otimização de índices SQL
+45,sucesso,2024-01-01 23:50:00,Manutenção preventiva finalizada
+46,login,2024-01-02 00:00:00,Sistema iniciou novo ciclo
+47,info,2024-01-02 00:05:00,Verificando integridade do FS
+48,sucesso,2024-01-02 00:15:00,Integridade OK
+49,login,2024-01-02 00:30:00,Usuário cron logou
+50,sucesso,2024-01-02 00:45:00,Scripts automáticos executados
