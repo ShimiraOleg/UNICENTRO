@@ -1,0 +1,6 @@
+URL: http://www.google.com
+URL: https://unicentro.br/ensino/cursos
+URL: ftp://files.server.org/downloads/manual.pdf
+URL: https://github.com/tcc
+URL: http://site.com.br/busca?q=flex+lex
+URL: https://sub.dominio.com/caminho/arquivo_123.txt

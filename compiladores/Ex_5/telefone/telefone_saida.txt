@@ -1,0 +1,7 @@
+Telefone fixo válido: 42 3621-1000
+Celular válido: 42 99988-7766
+Telefone com DDD válido: (42) 98877-6655
+Telefone com DDD válido: (42)3422-3030
+Celular (sem formatação) válido: 42984001122
+Celular válido: 11 91234-5678
+Telefone com DDD válido: (11) 2020-3030

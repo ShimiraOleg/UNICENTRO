@@ -1,0 +1,7 @@
+IP valido: 127.0.0.1
+IP valido: 192.168.0.1
+IP valido: 255.255.255.255
+IP valido: 8.8.8.8
+IP valido: 10.0.0.0
+IP valido: 1.2.3.4
+IP valido: 192.168.0.0

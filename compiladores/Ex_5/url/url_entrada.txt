@@ -1,0 +1,11 @@
+http://www.google.com
+https://unicentro.br/ensino/cursos
+ftp://files.server.org/downloads/manual.pdf
+http://localhost:8080/index.html
+https://github.com/tcc
+http://site.com.br/busca?q=flex+lex
+https://sub.dominio.com/caminho/arquivo_123.txt
+
+www.google.com
+http://site  
+https://     
